@@ -7,23 +7,23 @@
 		<script src="resources/sap-ui-core.js"
 				id="sap-ui-bootstrap"
 				data-sap-ui-libs="sap.m"
-				data-sap-ui-theme="sap_bluecrystal">
+				data-sap-ui-theme="sap_bluecrystal"
+				data-sap-ui-resourceroots='{
+           		 "com.ui5.yoon": "./zui5tpl_yoon"
+           		 }'>
 		</script>
 		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
 
 		<script>
-			<!-- TEST4 -->
+	
+			 sap.ui.getCore().attachInit(function () {
+		            new sap.ui.core.ComponentContainer({
+		               name : "com.ui5.yoon"
+		            }).placeAt("content");
+
+		         });
+			 
 		</script>
-
-
-
-
-
-
-
-<!-- test00 -->
-<!--  하이.. 청윤.. -->
-
 
 	</head>
 	<body class="sapUiBody" role="application">
