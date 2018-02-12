@@ -1,5 +1,5 @@
 {
-  "_version": "1.8.0",
+  "_version": "1.4.0",
   "sap.app": {
 	"id": "com.ui5.yoon",
 	"type": "application",
@@ -31,6 +31,7 @@
 		"sap.m" : { "minVersion" : "1.40.0", "lazy" : "true"}
 	  }
 	},
+	
 	"models": {
 	  "i18n": {
 		"type": "sap.ui.model.resource.ResourceModel",
@@ -46,8 +47,7 @@
 		"viewPath": "com.ui5.yoon",
 		"controlId": "app",
 		"clearTarget" : "true",
-		"controlAggregation": "pages",
-		"async": true
+		"controlAggregation": "pages"
 	  },
 	  "routes": [
 		{ "name": "main", "target" : "main", "pattern": "" }
