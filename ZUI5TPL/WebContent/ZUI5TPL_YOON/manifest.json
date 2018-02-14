@@ -26,7 +26,8 @@
 		"dependencies": {
 			"minUI5Version": "1.30",
 			"libs": {
-				"sap.m": {}
+				"sap.m": {},
+				"sap.tnt": {}
 			}
 		},
 		"models": {
@@ -48,7 +49,7 @@
 			"config": {
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
-				"viewPath": "com.ui5.yoon",
+				"viewPath": "com.ui5.yoon.temp",
 				"controlId": "app",
 				"controlAggregation": "pages",
 				"async": true
@@ -58,7 +59,7 @@
 				
 			],
 			"targets": {
-				"main": {"viewName": "temp/Main"}
+				"main": {"viewName": "Main"}
 				
 			}
 		}

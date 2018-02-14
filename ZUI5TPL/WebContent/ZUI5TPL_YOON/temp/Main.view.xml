@@ -1,16 +1,59 @@
 <mvc:View
 	controllerName="com.ui5.yoon.temp.Main"
 	xmlns="sap.m"
+	xmlns:tnt="sap.tnt"
 	xmlns:mvc="sap.ui.core.mvc">
 
 <Page
-title="UI5 Main Temp"
-showHeader="true"
-class="sapUiContentPadding"
-width="auto"
-showNavButton="false"
-navButtonPress="onNavBack"
->
-	
+	title="UI5 Main Temp"
+	showHeader="false"
+	class="sapUiContentPadding"
+	width="auto"
+	showNavButton="false"
+	navButtonPress="onNavBack">
+	<tnt:ToolPage id="ToolApp">
+		<tnt:header>
+			<tnt:ToolHeader>
+				<Button
+					id="sideNavigationToggleButton"
+					icon="sap-icon://menu2"
+					type="Transparent"
+					press="onSideNavButtonPress"
+					tooltip="small size">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow"/>
+					</layoutData>
+				</Button>
+				<ToolbarSpacer/>
+				<Title text="Yoon's UI5 Main Page"/>
+				<ToolbarSpacer/>				
+			</tnt:ToolHeader>
+		</tnt:header>
+		
+		<tnt:sideContent>
+			<tnt:SideNavigation
+				expanded="true"
+				itemSelect="onItemSelect">
+				<tnt:NavigationList>
+					<tnt:NavigationListItem
+						expanded="false"
+						text="Table Samples"
+						key="rootTable">
+						<tnt:items>
+							<tnt:NavigationListItem
+								text="sap.m.table"
+								key="TableItem_M_Table"/>
+							<tnt:NavigationListItem
+								text="sap.ui.table"
+								key="TableItem_Ui_Table"/>	
+						</tnt:items>
+					</tnt:NavigationListItem>
+				</tnt:NavigationList>
+			</tnt:SideNavigation>
+		</tnt:sideContent>
+		<tnt:mainContents>
+			<App id="mainContents"/>
+		</tnt:mainContents>
+	</tnt:ToolPage>
 </Page>
 </mvc:View>

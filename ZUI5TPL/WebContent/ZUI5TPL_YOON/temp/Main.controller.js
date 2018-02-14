@@ -25,6 +25,19 @@ sap.ui.define([
 			} else {
 				this._oRouter.navTo("master");
 			}
+		},
+		
+		onSideNavButtonPress: function() {
+			var oToolPage = this.byId("ToolApp");
+			var bSideExpanded = oToolPage.getSideExpanded();
+//			this._setToggleButtonTooltip(bSideExpanded);
+			oToolPage.setSideExpanded(!oToolPage.getSideExpanded());
+		},
+		
+		onItemSelect : function(oEvent){
+			var evt = oEvent;
+			var oItem = oEvent.getParameter('item');
+			var sKey = oItem.getKey();
 		}
 		
 	});
