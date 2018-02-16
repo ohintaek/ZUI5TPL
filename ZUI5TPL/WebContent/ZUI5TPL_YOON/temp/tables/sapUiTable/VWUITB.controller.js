@@ -5,16 +5,15 @@ sap.ui.define([
 ], function (Controller, History, MessageToast) {
 	"use strict";
 
-	return Controller.extend("com.ui5.yoon.temp.tables.VWMTB", {
+	return Controller.extend("com.ui5.yoon.temp.tables.sapUiTable.VWUITB", {
 
 		onInit : function() {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			oRouter.getRoute("mtable").attachPatternMatched(this.onRouteMatched, this);
+			oRouter.getRoute("VWUITB").attachPatternMatched(this.onRouteMatched, this);
 		},
 		
 		onRouteMatched : function(oEvent) {
 			var oSource = oEvent.getSource();
-			MessageToast.show("VWMTB");
 		},
 		
 		onNavBack: function() {

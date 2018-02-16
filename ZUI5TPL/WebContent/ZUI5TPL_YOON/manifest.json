@@ -54,12 +54,14 @@
 			},
 			"routes": [
 				{"name": "Home", "target": "Home", "pattern": ""},
-				{"name": "mtable", "target": "mtable", "pattern": "tables/VWMTB"}
+				{"name": "VWMTB", "target": "VWMTB", "pattern": "tables/sapMTable"},
+				{"name": "VWUITB", "target": "VWUITB", "pattern": "tables/sapUiTable"}
 				
 			],
 			"targets": {
-				"Home": {"viewName": "Home"},
-				"mtable": {"viewName": "tables/VWMTB"}
+				"Home"		: {"viewName": "Home"},
+				"VWMTB"		: {"viewName": "tables/sapMTable/VWMTB"},
+				"VWUITB"	: {"viewName": "tables/sapUiTable/VWUITB"}
 				
 			}
 		}

@@ -40,10 +40,10 @@
 						<tnt:items>
 							<tnt:NavigationListItem
 								text="sap.m.table"
-								key="mtable"/>
+								key="VWMTB"/>
 							<tnt:NavigationListItem
 								text="sap.ui.table"
-								key="uitable"/>	
+								key="VWUITB"/>	
 						</tnt:items>
 					</tnt:NavigationListItem>
 				</tnt:NavigationList>
