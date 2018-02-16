@@ -18,10 +18,10 @@
 	},
 	"sap.ui5": {
 		"rootView": {
-			"viewName": "com.ui5.yoon.App",
+			"viewName": "com.ui5.yoon.temp.Main",
 			"type": "XML",
 			"async": true,
-			"id": "app"
+			"id": "ToolApp"
 		},
 		"dependencies": {
 			"minUI5Version": "1.30",
@@ -40,9 +40,7 @@
 		},
 		"resources": {
 			"css": [
-				{
-					"uri": "../css/style.css"
-				}
+				{"uri": "../css/style.css"}
 			]
 		},
 		"routing": {
@@ -50,16 +48,18 @@
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
 				"viewPath": "com.ui5.yoon.temp",
-				"controlId": "app",
+				"controlId": "mainContents",
 				"controlAggregation": "pages",
 				"async": true
 			},
 			"routes": [
-				{"name": "temp", "target": "main", "pattern": ""}
+				{"name": "Home", "target": "Home", "pattern": ""},
+				{"name": "mtable", "target": "mtable", "pattern": "tables/VWMTB"}
 				
 			],
 			"targets": {
-				"main": {"viewName": "Main"}
+				"Home": {"viewName": "Home"},
+				"mtable": {"viewName": "tables/VWMTB"}
 				
 			}
 		}

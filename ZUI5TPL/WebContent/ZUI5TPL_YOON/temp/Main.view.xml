@@ -3,7 +3,6 @@
 	xmlns="sap.m"
 	xmlns:tnt="sap.tnt"
 	xmlns:mvc="sap.ui.core.mvc">
-
 <Page
 	title="UI5 Main Temp"
 	showHeader="false"
@@ -42,10 +41,10 @@
 						<tnt:items>
 							<tnt:NavigationListItem
 								text="sap.m.table"
-								key="TableItem_M_Table"/>
+								key="mtable"/>
 							<tnt:NavigationListItem
 								text="sap.ui.table"
-								key="TableItem_Ui_Table"/>	
+								key="uitable"/>	
 						</tnt:items>
 					</tnt:NavigationListItem>
 				</tnt:NavigationList>

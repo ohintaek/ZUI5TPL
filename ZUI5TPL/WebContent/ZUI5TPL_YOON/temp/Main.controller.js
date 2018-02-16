@@ -1,5 +1,5 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller",
+	"com/ui5/yoon/controller/BaseController",
 	"sap/ui/core/routing/History",
 	"sap/m/MessageToast"
 ], function (Controller, History, MessageToast) {
@@ -9,7 +9,7 @@ sap.ui.define([
 		
 		onInit : function() {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			oRouter.getRoute("temp").attachPatternMatched(this.onRouteMatched, this);
+			oRouter.getRoute("Main").attachPatternMatched(this.onRouteMatched, this);
 		},
 		
 		onRouteMatched : function(oEvent) {
@@ -23,7 +23,7 @@ sap.ui.define([
 			if (sPreviousHash !== undefined){	
 				window.history.go(-1);
 			} else {
-				this._oRouter.navTo("master");
+				this._oRouter.navTo("main");
 			}
 		},
 		
@@ -38,8 +38,24 @@ sap.ui.define([
 			var evt = oEvent;
 			var oItem = oEvent.getParameter('item');
 			var sKey = oItem.getKey();
-		}
+			this.getRouter().navTo(sKey);
+		},
 		
+		/*onItemSelect: function(oEvent) {
+			var oItem = oEvent.getParameter('item');
+			var sKey = oItem.getKey();
+			// if you click on home, settings or statistics button, call the navTo function
+			if ((sKey === "home" || sKey === "masterSettings" || sKey === "statistics")) {
+				// if the device is phone, collaps the navigation side of the app to give more space
+				if (Device.system.phone) {
+					this.onSideNavButtonPress();
+				}
+				this.getRouter().navTo(sKey);
+			} else {
+				MessageToast.show(sKey);
+			}
+		},
+		*/
 	});
 
 });
