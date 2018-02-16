@@ -8,8 +8,8 @@ sap.ui.define([
 	return Controller.extend("com.ui5.yoon.temp.Main", {
 		
 		onInit : function() {
-			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			oRouter.getRoute("Main").attachPatternMatched(this.onRouteMatched, this);
+			/*var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			oRouter.getRoute("Main").attachPatternMatched(this.onRouteMatched, this);*/
 		},
 		
 		onRouteMatched : function(oEvent) {
@@ -17,14 +17,7 @@ sap.ui.define([
 		},
 		
 		onNavBack: function() {
-			var oHistory = History.getInstance();
-			
-			var sPreviousHash = oHistory.getPreviousHash();
-			if (sPreviousHash !== undefined){	
-				window.history.go(-1);
-			} else {
-				this._oRouter.navTo("main");
-			}
+			Controller.prototype.onNavBack.apply(this);
 		},
 		
 		onSideNavButtonPress: function() {
@@ -39,6 +32,7 @@ sap.ui.define([
 			var oItem = oEvent.getParameter('item');
 			var sKey = oItem.getKey();
 			this.getRouter().navTo(sKey);
+			
 		},
 		
 		/*onItemSelect: function(oEvent) {

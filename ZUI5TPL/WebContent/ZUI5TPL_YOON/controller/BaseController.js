@@ -1,6 +1,7 @@
 sap.ui.define([
-		"sap/ui/core/mvc/Controller"
-	], function (Controller) {
+		"sap/ui/core/mvc/Controller",
+		"sap/ui/core/routing/History"
+	], function (Controller, History) {
 		"use strict";
 
 		return Controller.extend("sap.ui.demo.toolpageapp.controller.BaseController", {
@@ -33,7 +34,18 @@ sap.ui.define([
 			 */
 			setModel : function (oModel, sName) {
 				return this.getView().setModel(oModel, sName);
-			}
+			},
+			
+			onNavBack: function() {
+				var oHistory = History.getInstance();
+				
+				var sPreviousHash = oHistory.getPreviousHash();
+				if (sPreviousHash !== undefined){	
+					window.history.go(-1);
+				} else {
+					this.getRouter().navTo("Home");
+				}
+			},
 		});
 
 	});

@@ -4,7 +4,6 @@
 	xmlns:tnt="sap.tnt"
 	xmlns:mvc="sap.ui.core.mvc">
 <Page
-	title="UI5 Main Temp"
 	showHeader="false"
 	class="sapUiContentPadding"
 	width="auto"
@@ -24,7 +23,7 @@
 					</layoutData>
 				</Button>
 				<ToolbarSpacer/>
-				<Title text="Yoon's UI5 Main Page"/>
+				<Title text="Yoon's UI5 Sample Project"/>
 				<ToolbarSpacer/>				
 			</tnt:ToolHeader>
 		</tnt:header>

@@ -14,17 +14,11 @@ sap.ui.define([
 		
 		onRouteMatched : function(oEvent) {
 			var oSource = oEvent.getSource();
+			MessageToast.show("VWMTB");
 		},
 		
 		onNavBack: function() {
-			var oHistory = History.getInstance();
-			
-			var sPreviousHash = oHistory.getPreviousHash();
-			if (sPreviousHash !== undefined){	
-				window.history.go(-1);
-			} else {
-				this._oRouter.navTo("main");
-			}
+			Controller.prototype.onNavBack.apply(this);
 		},
 		
 	});

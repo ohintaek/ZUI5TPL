@@ -15,6 +15,9 @@ sap.ui.define([
 			var oSource = oEvent.getSource();
 		},
 
+		onNavBack: function() {
+			Controller.prototype.onNavBack.apply(this);
+		},
 	});
 
 });
