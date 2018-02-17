@@ -36,6 +36,7 @@
 					<tnt:NavigationListItem
 						expanded="false"
 						text="Table Samples"
+						icon="sap-icon://table-view"
 						key="rootTable">
 						<tnt:items>
 							<tnt:NavigationListItem
