@@ -1,10 +1,12 @@
 sap.ui.define([
 	"jquery.sap.global",
 	"com/ui5/yoon/controller/BaseController",
+	"com/ui5/yoon/controller/CommonUtil",
+	"sap/ui/model/odata/ODataModel",
 	"sap/ui/core/routing/History",
 	"sap/ui/model/json/JSONModel",
 	"sap/m/MessageToast"
-], function (jQuery, Controller, History, JSONModel, MessageToast) {
+], function (jQuery, Controller, CommonUtil, ODataModel, History, JSONModel, MessageToast) {
 	"use strict";
 
 	return Controller.extend("com.ui5.yoon.temp.tables.sapMTable.VWMTB", {
@@ -17,9 +19,8 @@ sap.ui.define([
 		onRouteMatched : function(oEvent) {
 			var jsonModel = new JSONModel(jQuery.sap.getModulePath("com.ui5.yoon.models", "/customers.json"));
 			this.getView().setModel(jsonModel);
-			
-			var date = '10.02.2018';
-			var oDate = new Date(date);
+		
+			var oModel = new ODataModel(CommonUtil.getOdataServiceUrl(), true);
 			
 			var oTable = this.getView().byId("mtable");
 			oTable.setModel(jsonModel);
@@ -29,22 +30,22 @@ sap.ui.define([
 					cells : [
 						new sap.m.Text({ text : "{name}"}),
 						new sap.m.Text({ text : "{productId}"}),
-						new sap.m.Text({ text : "{lastPurchase}"}),
-						/*new sap.m.DatePicker({ 
+//						new sap.m.Text({ text : "{lastPurchase}"}),
+						new sap.m.DatePicker().bindProperty("value", "lastPurchase", function(cellValue){
+//							var oFormat = 
+						}),
+					/*	new sap.m.DatePicker({ 
 							value : {
 								path: '/lastPurchase',
 								type: 'sap.ui.model.type.Date',
 								formatOptions : {
-									source : { pattern : 'yyyy-MM-dd' },
-									pattern: 'yyyy-MM-dd',
-									style : 'full',
-									relative: true,
-									relativeScale: "auto"
+									source : { pattern : 'dd-MM-yyyy' },
+									pattern: 'dd-MM-yyyy',
 								}
-								formatOptions : {
-									source : { pattern : 'yyyy-MM-dd' },
-									pattern: 'yyyy-MM-dd'
-								},
+//								formatOptions : {
+//									source : { pattern : 'yyyy-MM-dd' },
+//									pattern: 'yyyy-MM-dd'
+//								},
 							},
 //							width : "9rem"
 						}),*/

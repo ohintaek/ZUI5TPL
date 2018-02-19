@@ -18,17 +18,16 @@
 		</ux:headerTitle>
 
 		<ux:sections>
-			<ux:ObjectPageSection title="example">
+			<ux:ObjectPageSection>
 				<ux:subSections>
 
-					<ux:ObjectPageSubSection title="Example">
+					<ux:ObjectPageSubSection >
 						<ux:blocks>
 							<Table
 								id="mtable"
 								mode="MultiSelect"
 								fixedLayout="false"
-								backgroundDesign="Transparent"
-								PopinLayout="GridLarge">
+								backgroundDesign="Transparent">
 								<columns>
 									<Column
 										hAlign="Center">
