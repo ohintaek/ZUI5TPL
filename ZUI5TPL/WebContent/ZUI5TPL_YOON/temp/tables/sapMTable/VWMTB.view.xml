@@ -14,7 +14,7 @@
 	
 	<ux:ObjectPageLayout id="ObjectPageLayout">
 		<ux:headerTitle>
-			<ux:ObjectPageHeader objectTitle="Single View"/>
+			<ux:ObjectPageHeader objectTitle="JSON Model Binding"/>
 		</ux:headerTitle>
 
 		<ux:sections>
@@ -53,10 +53,6 @@
 									<Column
 										hAlign="Center">
 										<Text text="amount" />
-									</Column>
-									<Column
-										hAlign="Center">
-										<Text text="currencyCode" />
 									</Column>
 								</columns>
 							</Table>
