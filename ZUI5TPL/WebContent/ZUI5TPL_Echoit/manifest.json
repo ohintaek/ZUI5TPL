@@ -1,7 +1,7 @@
 {
 	"_version": "1.8.0",
 	"sap.app": {
-		"id": "com.ui5.yoon",
+		"id": "com.ui5.echoit",
 		"type": "application",
 		"i18n": "i18n/i18n.properties",
 		"title": "{{appTitle}}",
@@ -18,7 +18,7 @@
 	},
 	"sap.ui5": {
 		"rootView": {
-			"viewName": "com.ui5.yoon.temp.Main",
+			"viewName": "com.ui5.echoit.temp.Main",
 			"type": "XML",
 			"async": true,
 			"id": "ToolApp"
@@ -47,7 +47,7 @@
 			"config": {
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
-				"viewPath": "com.ui5.yoon.temp",
+				"viewPath": "com.ui5.echoit.temp",
 				"controlId": "mainContents",
 				"controlAggregation": "pages",
 				"async": true

@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="com.ui5.yoon.temp.Main"
+	controllerName="com.ui5.echoit.temp.Main"
 	xmlns="sap.m"
 	xmlns:tnt="sap.tnt"
 	xmlns:mvc="sap.ui.core.mvc">

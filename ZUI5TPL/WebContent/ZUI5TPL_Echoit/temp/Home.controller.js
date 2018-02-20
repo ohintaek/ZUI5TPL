@@ -1,11 +1,11 @@
 sap.ui.define([
-	"com/ui5/yoon/controller/BaseController",
+	"com/ui5/echoit/controller/BaseController",
 	"sap/ui/core/routing/History",
 	"sap/m/MessageToast"
 ], function (Controller, History, MessageToast) {
 	"use strict";
 
-	return Controller.extend("com.ui5.yoon.temp.Home", {
+	return Controller.extend("com.ui5.echoit.temp.Home", {
 		onInit : function() {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.getRoute("Home").attachPatternMatched(this.onRouteMatched, this);

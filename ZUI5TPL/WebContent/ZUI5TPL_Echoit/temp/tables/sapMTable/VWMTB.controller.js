@@ -1,7 +1,7 @@
 sap.ui.define([
 	"jquery.sap.global",
-	"com/ui5/yoon/controller/BaseController",
-	"com/ui5/yoon/controller/CommonUtil",
+	"com/ui5/echoit/controller/BaseController",
+	"com/ui5/echoit/controller/CommonUtil",
 	"sap/ui/model/odata/ODataModel",
 	"sap/ui/core/routing/History",
 	"sap/ui/model/json/JSONModel",
@@ -9,7 +9,7 @@ sap.ui.define([
 ], function (jQuery, Controller, CommonUtil, ODataModel, History, JSONModel, MessageToast) {
 	"use strict";
 
-	return Controller.extend("com.ui5.yoon.temp.tables.sapMTable.VWMTB", {
+	return Controller.extend("com.ui5.echoit.temp.tables.sapMTable.VWMTB", {
 
 		onInit : function() {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
@@ -17,7 +17,7 @@ sap.ui.define([
 		},
 		
 		onRouteMatched : function(oEvent) {
-			var jsonModel = new JSONModel(jQuery.sap.getModulePath("com.ui5.yoon.models", "/customers.json"));
+			var jsonModel = new JSONModel(jQuery.sap.getModulePath("com.ui5.echoit.models", "/customers.json"));
 			this.getView().setModel(jsonModel);
 		
 			var oModel = new ODataModel(CommonUtil.getOdataServiceUrl(), true);

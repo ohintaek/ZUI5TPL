@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="com.ui5.yoon.temp.tables.sapMTable.VWMTB"
+	controllerName="com.ui5.echoit.temp.tables.sapMTable.VWMTB"
 	xmlns="sap.m"
 	xmlns:ux="sap.uxap"
 	xmlns:html="http://www.w3.org/1999/xhtml"
