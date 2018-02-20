@@ -21,7 +21,7 @@ sap.ui.define([
 		onRouteMatched : function(oEvent) {
 			var jsonModel = new JSONModel(jQuery.sap.getModulePath("com.ui5.echoit.models", "/customers.json"));
 			this.getView().setModel(jsonModel);
-			
+		
 			var oTable = this.getView().byId("mtable");
 			oTable.setModel(jsonModel);
 			oTable.bindItems({
