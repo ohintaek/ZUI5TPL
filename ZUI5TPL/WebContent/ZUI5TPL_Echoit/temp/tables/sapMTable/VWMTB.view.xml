@@ -1,0 +1,68 @@
+<mvc:View
+	controllerName="com.ui5.echoit.temp.tables.sapMTable.VWMTB"
+	xmlns="sap.m"
+	xmlns:ux="sap.uxap"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:mvc="sap.ui.core.mvc">
+<Page
+	title="sap.m.Table"
+	showHeader="true"
+	class="sapUiContentPadding"
+	width="auto"
+	showNavButton="true"
+	navButtonPress="onNavBack">
+	
+	<ux:ObjectPageLayout id="ObjectPageLayout">
+		<ux:headerTitle>
+			<ux:ObjectPageHeader objectTitle="JSON Model Binding"/>
+		</ux:headerTitle>
+
+		<ux:sections>
+			<ux:ObjectPageSection>
+				<ux:subSections>
+
+					<ux:ObjectPageSubSection >
+						<ux:blocks>
+							<Table
+								id="mtable"
+								mode="MultiSelect"
+								fixedLayout="false"
+								backgroundDesign="Transparent">
+								<columns>
+									<Column
+										hAlign="Center">
+										<Text text="name" />
+									</Column>
+									<Column
+										hAlign="Center">
+										<Text text="productId" />
+									</Column>
+									<Column
+										hAlign="Center">
+										<Text text="lastPurchase" />
+									</Column>
+									<Column
+										hAlign="Center">
+										<Text text="payment" />
+									</Column>
+									<Column
+										hAlign="Center">
+										<Text text="state" />
+									</Column>
+									<Column
+										hAlign="Center">
+										<Text text="amount" />
+									</Column>
+								</columns>
+							</Table>
+						</ux:blocks>
+					</ux:ObjectPageSubSection>
+				</ux:subSections>
+			</ux:ObjectPageSection>
+		</ux:sections>
+	</ux:ObjectPageLayout>
+</Page>
+
+
+
+</mvc:View>
