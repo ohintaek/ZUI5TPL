@@ -7,8 +7,9 @@ sap.ui.define([
 	"sap/ui/model/FilterOperator",
 	"sap/ui/core/routing/History",
 	"sap/ui/model/json/JSONModel",
-	"sap/m/MessageToast"
-], function (jQuery, Controller, CommonUtil, ODataModel, Filter, FilterOperator, History, JSONModel, MessageToast) {
+	"sap/m/MessageToast",
+	"sap/m/MessageBox"
+], function (jQuery, Controller, CommonUtil, ODataModel, Filter, FilterOperator, History, JSONModel, MessageToast, MessageBox) {
 	"use strict";
 
 	return Controller.extend("com.ui5.echoit.temp.tables.sapMTable.VWMTB", {
@@ -22,7 +23,14 @@ sap.ui.define([
 			var jsonModel = new JSONModel(jQuery.sap.getModulePath("com.ui5.echoit.models", "/customers.json"));
 			this.getView().setModel(jsonModel);
 		
-			var oTable = this.getView().byId("mtable");
+			var oFilter = [
+				new Filter("ZInput", FilterOperator.EQ, "")
+			];
+			
+			var result = this.getGatewayReadData(oFilter);
+			var outputjson = JSON.parse(result[0].OutputJson);
+			
+			/*var oTable = this.getView().byId("mtable");
 			oTable.setModel(jsonModel);
 			oTable.bindItems({
 				path : "/customers",
@@ -34,7 +42,7 @@ sap.ui.define([
 						new sap.m.DatePicker().bindProperty("value", "lastPurchase", function(cellValue){
 //							var oFormat = 
 						}),
-					/*	new sap.m.DatePicker({ 
+						new sap.m.DatePicker({ 
 							value : {
 								path: '/lastPurchase',
 								type: 'sap.ui.model.type.Date',
@@ -48,13 +56,13 @@ sap.ui.define([
 //								},
 							},
 //							width : "9rem"
-						}),*/
+						}),
 						new sap.m.Text({ text : "{payment}"}),
 						new sap.m.ObjectStatus({ text : "{state}", state : "{state}"}),
 						new sap.m.ObjectNumber({ number : "{amount}", unit : "{currencyCode}"})
 					]
 				})
-			})
+			})*/
 		},
 		
 		onNavBack: function() {
