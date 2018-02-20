@@ -15,9 +15,9 @@ sap.ui.define([
 		
 		onRouteMatched : function(oEvent) {
 			var jsonModel = new JSONModel(jQuery.sap.getModulePath("com/ui5", "/models/customers.json"));
-				jsonModel.attachRequestCompleted(function(oEvent){  
-					var ModelNEW = oEvent.getSource();
-				});
+//				jsonModel.attachRequestCompleted(function(oEvent){  
+//					var ModelNEW = oEvent.getSource();
+//				});
 				
 //			jsonModel.loadData("com/ui5/models/customers.json");
 //			jsonModel.loadData("../../../../models/customers.json");
