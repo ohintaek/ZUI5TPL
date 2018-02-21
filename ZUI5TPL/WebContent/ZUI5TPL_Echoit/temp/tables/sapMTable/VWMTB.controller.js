@@ -20,7 +20,9 @@ sap.ui.define([
 		},
 		
 		onRouteMatched : function(oEvent) {
-			var jsonModel = new JSONModel(jQuery.sap.getModulePath("com.ui5.echoit.models", "/customers.json"));
+			this.onSearch();
+			
+			/*var jsonModel = new JSONModel(jQuery.sap.getModulePath("com.ui5.echoit.models", "/customers.json"));
 			this.getView().setModel(jsonModel);
 		
 			var oFilter = [
@@ -28,7 +30,7 @@ sap.ui.define([
 			];
 			
 			var result = this.getGatewayReadData(oFilter);
-			var outputjson = JSON.parse(result[0].OutputJson);
+			var outputjson = JSON.parse(result[0].OutputJson);*/
 			
 			/*var oTable = this.getView().byId("mtable");
 			oTable.setModel(jsonModel);
@@ -76,6 +78,28 @@ sap.ui.define([
 			
 			var result = this.getGatewayReadData(oFilter);
 			var outputjson = JSON.parse(result[0].OutputJson);
+			
+			var jsonModel = new JSONModel();
+			jsonModel.setData(outputjson);
+			
+			var oTable = this.getView().byId("mtable");
+			oTable.setModel(jsonModel);
+			oTable.bindItems({
+				path : "/",
+				template : new sap.m.ColumnListItem({
+					cells : [
+						new sap.m.Text({ text : "{CARRID}"}),
+						new sap.m.Text({ text : "{CONNID}"}),
+						new sap.m.Text({ text : "{FLDATE}"}),
+						new sap.m.Text({ text : "{PRICE}"}),
+						new sap.m.Text({ text : "{CURRENCY}"}),
+						new sap.m.Text({ text : "{PLANETYPE}"}),
+						new sap.m.Text({ text : "{SEATSMAX}"}),
+						new sap.m.Text({ text : "{SEATSOCC}"}),
+						new sap.m.Text({ text : "{PAYMENTSUM}"}),	
+					]
+				})
+			});
 		},
 		
 		// Gateway를 호출하는 Function
