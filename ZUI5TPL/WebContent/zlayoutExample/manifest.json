@@ -1,0 +1,69 @@
+{
+	"_version": "1.8.0",
+	"sap.app": {
+		"id": "com.ui5.echoit",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": { "version": "1.0.0" }
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "com.ui5.echoit.temp.Main",
+			"type": "XML",
+			"async": true,
+			"id": "ToolApp"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30",
+			"libs": {
+				"sap.m": {},
+				"sap.tnt": {}
+			}
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "com.ui5.i18n.i18n"
+				}
+			}
+		},
+		"resources": {
+			"css": [
+				{"uri": "../css/style.css"}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "com.ui5.echoit.temp",
+				"controlId": "mainContents",
+				"controlAggregation": "pages",
+				"async": true
+			},
+			"routes": [
+				{"name": "Home", "target": "Home", "pattern": ""},
+				{"name": "VWMTB", "target": "VWMTB", "pattern": "tables/sapMTable"},
+				{"name": "VWUITB", "target": "VWUITB", "pattern": "tables/sapUiTable"}
+				
+			],
+			"targets": {
+				"Home"		: {"viewName": "Home"},
+				"VWMTB"		: {"viewName": "tables/sapMTable/VWMTB"},
+				"VWUITB"	: {"viewName": "tables/sapUiTable/VWUITB"}
+				
+			}
+		}
+	}
+}
