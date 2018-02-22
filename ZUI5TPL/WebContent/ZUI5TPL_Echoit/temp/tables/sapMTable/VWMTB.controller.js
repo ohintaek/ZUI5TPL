@@ -20,8 +20,18 @@ sap.ui.define([
 		},
 		
 		onRouteMatched : function(oEvent) {
-			this.onSearch();
+			// sample Code for Odata Model Binding Method via SAP Gateway.
+			this.getOdataModelBinding();
 			
+			// sample Code for Json Model Binding Method via SAP Gateway.
+			this.getJsonModelBinding();
+		},
+		
+		onNavBack: function() {
+			Controller.prototype.onNavBack.apply(this);
+		},
+		
+		getJsonModelBinding : function(){
 			var jsonModel = new JSONModel(jQuery.sap.getModulePath("com.ui5.echoit.models", "/customers.json"));
 			this.getView().setModel(jsonModel);
 			
@@ -60,11 +70,7 @@ sap.ui.define([
 			})
 		},
 		
-		onNavBack: function() {
-			Controller.prototype.onNavBack.apply(this);
-		},
-		
-		onSearch : function() {
+		getOdataModelBinding : function() {
 			var oFilter = [
 				new Filter("ZInput", FilterOperator.EQ, "")
 			];
