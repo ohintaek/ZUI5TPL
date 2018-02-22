@@ -6,24 +6,34 @@
 	xmlns:mvc="sap.ui.core.mvc">
 	<Page
 		title="sap.m.Table"
-		showHeader="true"
+		showHeader="false"
 		class="sapUiContentPadding"
 		width="auto"
 		showNavButton="true"
 		navButtonPress="onNavBack">
-		<ux:ObjectPageLayout id="ObjectPageLayout">
+		<ux:ObjectPageLayout id="ObjectPageLayout" enableLazyLoading="false">
 			<ux:headerTitle>
-				<ux:ObjectPageHeader objectTitle="JSON Model Binding"/>
+				<ux:ObjectPageHeader objectTitle="sap.m.table"/>
 			</ux:headerTitle>
+			
+			<ux:headerContent>
+				<ObjectAttribute text="sap.m.table에 대한 데이터 바인딩 방법 중 JSON Model Binding과  SAP Gateway를 이용한 Odata Binding의 방법에 대한 Sample."/>
+			</ux:headerContent>
+			
 			<ux:sections>
-				<ux:ObjectPageSection>
+				<ux:ObjectPageSection title="">
 					<ux:subSections>
-						<ux:ObjectPageSubSection >
+						<ux:ObjectPageSubSection title="OData Model Binding">
 							<ux:blocks>
 								<Table
 									id="mtable"
 									mode="MultiSelect"
+									showUnread="true"
 									fixedLayout="false"
+									headerText="OData Model Binding"
+									growing="true"
+									growingThreshold="10"
+									noDataText="데이터가 없습니다."
 									backgroundDesign="Transparent">
 									<columns>
 										<Column
@@ -68,7 +78,45 @@
 						</ux:ObjectPageSubSection>
 					</ux:subSections>
 				</ux:ObjectPageSection>
-			</ux:sections>
-		</ux:ObjectPageLayout>
-	</Page>
+				
+				<ux:ObjectPageSection title="">
+					<ux:ObjectPageSubSection title="JSON Model Binding">
+						<ux:blocks>
+							<Table
+								id="mtableJson"
+								mode="MultiSelect"
+								showUnread="true"
+								fixedLayout="false"
+								headerText="JSON Model Binding"
+								growing="true"
+								growingThreshold="10"
+								noDataText="데이터가 없습니다."
+								backgroundDesign="Transparent">
+								<columns>
+								<Column Align="Center">
+									<Text text="Name" />
+								</Column>
+								<Column Align="Center">
+									<Text text="ProductId" />
+								</Column>
+								<Column Align="Center">
+									<Text text="LastPurchase" />
+								</Column>
+								<Column Align="Center">
+									<Text text="Payment" />
+								</Column>
+								<Column Align="Center">
+									<Text text="State" />
+								</Column>
+								<Column Align="Center">
+									<Text text="Amount" />
+								</Column>
+							</columns>
+						</Table>
+					</ux:blocks>
+				</ux:ObjectPageSubSection>
+			</ux:ObjectPageSection>
+		</ux:sections>
+	</ux:ObjectPageLayout>
+</Page>
 </mvc:View>

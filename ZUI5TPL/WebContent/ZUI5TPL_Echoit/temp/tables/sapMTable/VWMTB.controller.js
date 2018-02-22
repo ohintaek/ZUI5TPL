@@ -22,17 +22,10 @@ sap.ui.define([
 		onRouteMatched : function(oEvent) {
 			this.onSearch();
 			
-			/*var jsonModel = new JSONModel(jQuery.sap.getModulePath("com.ui5.echoit.models", "/customers.json"));
+			var jsonModel = new JSONModel(jQuery.sap.getModulePath("com.ui5.echoit.models", "/customers.json"));
 			this.getView().setModel(jsonModel);
-		
-			var oFilter = [
-				new Filter("ZInput", FilterOperator.EQ, "")
-			];
 			
-			var result = this.getGatewayReadData(oFilter);
-			var outputjson = JSON.parse(result[0].OutputJson);*/
-			
-			/*var oTable = this.getView().byId("mtable");
+			var oTable = this.getView().byId("mtableJson");
 			oTable.setModel(jsonModel);
 			oTable.bindItems({
 				path : "/customers",
@@ -64,7 +57,7 @@ sap.ui.define([
 						new sap.m.ObjectNumber({ number : "{amount}", unit : "{currencyCode}"})
 					]
 				})
-			})*/
+			})
 		},
 		
 		onNavBack: function() {
