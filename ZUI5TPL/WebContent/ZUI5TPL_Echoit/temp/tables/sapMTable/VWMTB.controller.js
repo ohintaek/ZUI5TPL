@@ -31,6 +31,7 @@ sap.ui.define([
 			Controller.prototype.onNavBack.apply(this);
 		},
 		
+		// Json Model Table Binding
 		getJsonModelBinding : function(){
 			var jsonModel = new JSONModel(jQuery.sap.getModulePath("com.ui5.echoit.models", "/customers.json"));
 			this.getView().setModel(jsonModel);
@@ -43,25 +44,26 @@ sap.ui.define([
 					cells : [
 						new sap.m.Text({ text : "{name}"}),
 						new sap.m.Text({ text : "{productId}"}),
-//						new sap.m.Text({ text : "{lastPurchase}"}),
-						new sap.m.DatePicker().bindProperty("value", "lastPurchase", function(cellValue){
-//							var oFormat = 
-						}),
-						new sap.m.DatePicker({ 
+						new sap.m.Text({ text : "{lastPurchase}"}),
+//						new sap.m.DatePicker({ value : "{lastPurchase}", width : "9rem"}),
+						/*new sap.m.DatePicker().bindProperty("value", "lastPurchase", function(cellValue){
+							return new Date(cellValue); 
+						}),*/
+						/*new sap.m.DatePicker({ 
 							value : {
-								path: '/lastPurchase',
+								path: 'lastPurchase',
 								type: 'sap.ui.model.type.Date',
 								formatOptions : {
 									source : { pattern : 'dd-MM-yyyy' },
 									pattern: 'dd-MM-yyyy',
 								}
-//								formatOptions : {
-//									source : { pattern : 'yyyy-MM-dd' },
-//									pattern: 'yyyy-MM-dd'
-//								},
+								formatOptions : {
+									source : { pattern : 'yyyy-MM-dd' },
+									pattern: 'yyyy-MM-dd'
+								},
 							},
-//							width : "9rem"
-						}),
+							width : "9rem"
+						}),*/
 						new sap.m.Text({ text : "{payment}"}),
 						new sap.m.ObjectStatus({ text : "{state}", state : "{state}"}),
 						new sap.m.ObjectNumber({ number : "{amount}", unit : "{currencyCode}"})
@@ -70,6 +72,7 @@ sap.ui.define([
 			})
 		},
 		
+		// OData Model Table Binding 
 		getOdataModelBinding : function() {
 			var oFilter = [
 				new Filter("ZFlag", FilterOperator.EQ, "TABLEBINDING")
@@ -94,7 +97,16 @@ sap.ui.define([
 							}.bind(this)
 						}),
 						new sap.m.Text({ text : "{CONNID}"}),
-						new sap.m.Text({ text : "{FLDATE}"}),
+						new sap.m.Text({
+							text : {
+								path: 'FLDATE',
+								type: 'sap.ui.model.type.Date',
+								formatOptions : {
+									source : { pattern : 'yyyy-MM-dd' },
+									pattern: 'yyyy-MM-dd',
+								}
+							}
+						}),
 						new sap.m.Text({ text : "{PRICE}"}),
 						new sap.m.Text({ text : "{CURRENCY}"}),
 						new sap.m.Text({ text : "{PLANETYPE}"}),
@@ -121,7 +133,7 @@ sap.ui.define([
 			return sResult;
 		},
 		
-		
+		// OData Model Binding 테이블의 SearchField
 		onSearchFieldLiveChangeTop : function(oEvent){
 			var aFilters = [];
 			var sQuery = oEvent.getSource().getValue();
@@ -135,6 +147,7 @@ sap.ui.define([
 			binding.filter(aFilters, "Application");
 		},
 		
+		// JSON Model Binding 테이블의 SearchField
 		onSearchFieldLiveChangeBottom : function(oEvent){
 			var aFilters = [];
 			var sQuery = oEvent.getSource().getValue();
@@ -148,6 +161,7 @@ sap.ui.define([
 			binding.filter(aFilters, "Application");
 		},
 		
+		// AirLine Code 링크 선택 시 ...
 		onPressAirLineCode : function(oEvent){
 			var sAirLineCode = oEvent.getSource().getProperty("text");
 			var oFilter = [
@@ -170,6 +184,7 @@ sap.ui.define([
 			this.oPopOver.openBy(oEvent.getSource());
 		},
 		
+		// AirLine Code Popover의 Close 버튼
 		onPressPopoverCloseBtn : function(){
 			this.oPopOver.close();
 		}

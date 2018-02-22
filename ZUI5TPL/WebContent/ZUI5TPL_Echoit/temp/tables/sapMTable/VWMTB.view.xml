@@ -110,22 +110,22 @@
 									</Toolbar>
 								</headerToolbar>
 								<columns>
-								<Column Align="Center">
+								<Column hAlign="Center">
 									<Text text="Name" />
 								</Column>
-								<Column Align="Center">
+								<Column hAlign="Center">
 									<Text text="ProductId" />
 								</Column>
-								<Column Align="Center">
+								<Column hAlign="Center">
 									<Text text="LastPurchase" />
 								</Column>
-								<Column Align="Center">
+								<Column hAlign="Center">
 									<Text text="Payment" />
 								</Column>
-								<Column Align="Center">
+								<Column hAlign="Center">
 									<Text text="State" />
 								</Column>
-								<Column Align="Center">
+								<Column hAlign="Center">
 									<Text text="Amount" />
 								</Column>
 							</columns>
