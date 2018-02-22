@@ -44,7 +44,7 @@ sap.ui.define([
 					cells : [
 						new sap.m.Text({ text : "{name}"}),
 						new sap.m.Text({ text : "{productId}"}),
-						new sap.m.Text({ text : "{lastPurchase}"}),
+//						new sap.m.Text({ text : "{lastPurchase}"}),
 //						new sap.m.DatePicker({ value : "{lastPurchase}", width : "9rem"}),
 						/*new sap.m.DatePicker().bindProperty("value", "lastPurchase", function(cellValue){
 							return new Date(cellValue); 
