@@ -4,6 +4,11 @@
 	xmlns:ux="sap.uxap"
 	xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:mvc="sap.ui.core.mvc">
+	<html:style>
+	.mTableTableHeaderToolbarLabel{
+		font-size : 1.2rem;
+	}
+	</html:style>
 	<Page
 		title="sap.m.Table"
 		showHeader="false"
@@ -30,11 +35,17 @@
 									mode="MultiSelect"
 									showUnread="true"
 									fixedLayout="false"
-									headerText="OData Model Binding"
 									growing="true"
 									growingThreshold="10"
 									noDataText="데이터가 없습니다."
 									backgroundDesign="Transparent">
+									<headerToolbar>
+										<Toolbar>
+											<Label design="Bold" text="OData Model Binding" class="mTableTableHeaderToolbarLabel"/>
+											<ToolbarSpacer/>
+											<SearchField id="topSearchField" liveChange="onSearchFieldLiveChangeTop" width="30%"/>
+										</Toolbar>
+									</headerToolbar>
 									<columns>
 										<Column
 											hAlign="Center">
@@ -87,11 +98,17 @@
 								mode="MultiSelect"
 								showUnread="true"
 								fixedLayout="false"
-								headerText="JSON Model Binding"
 								growing="true"
 								growingThreshold="10"
 								noDataText="데이터가 없습니다."
 								backgroundDesign="Transparent">
+								<headerToolbar>
+									<Toolbar>
+										<Label design="Bold" text="JSON Model Binding" class="mTableTableHeaderToolbarLabel"/>
+										<ToolbarSpacer/>
+										<SearchField id="bottomSearchField" liveChange="onSearchFieldLiveChangeBottom" width="30%"/>
+									</Toolbar>
+								</headerToolbar>
 								<columns>
 								<Column Align="Center">
 									<Text text="Name" />

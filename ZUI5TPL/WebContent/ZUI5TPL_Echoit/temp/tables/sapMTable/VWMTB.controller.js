@@ -72,7 +72,7 @@ sap.ui.define([
 		
 		getOdataModelBinding : function() {
 			var oFilter = [
-				new Filter("ZInput", FilterOperator.EQ, "")
+				new Filter("ZFlag", FilterOperator.EQ, "TABLEBINDING")
 			];
 			
 			var result = this.getGatewayReadData(oFilter);
@@ -87,7 +87,12 @@ sap.ui.define([
 				path : "/",
 				template : new sap.m.ColumnListItem({
 					cells : [
-						new sap.m.Text({ text : "{CARRID}"}),
+						new sap.m.Link({ 
+							text : "{CARRID}",
+							press: function(oEvent){
+								this.onPressAirLineCode(oEvent);
+							}.bind(this)
+						}),
 						new sap.m.Text({ text : "{CONNID}"}),
 						new sap.m.Text({ text : "{FLDATE}"}),
 						new sap.m.Text({ text : "{PRICE}"}),
@@ -114,7 +119,61 @@ sap.ui.define([
 			});
 			
 			return sResult;
+		},
+		
+		
+		onSearchFieldLiveChangeTop : function(oEvent){
+			var aFilters = [];
+			var sQuery = oEvent.getSource().getValue();
+			if(sQuery && sQuery.length > 0){
+				var oFilter = new Filter("CARRID", FilterOperator.Contains, sQuery);
+				aFilters.push(oFilter);
+			}
+			
+			var oTable = oEvent.getSource().getParent().getParent();
+			var binding = oTable.getBinding("items");
+			binding.filter(aFilters, "Application");
+		},
+		
+		onSearchFieldLiveChangeBottom : function(oEvent){
+			var aFilters = [];
+			var sQuery = oEvent.getSource().getValue();
+			if(sQuery && sQuery.length > 0){
+				var oFilter = new Filter("name", FilterOperator.Contains, sQuery);
+				aFilters.push(oFilter);
+			}
+			
+			var oTable = oEvent.getSource().getParent().getParent();
+			var binding = oTable.getBinding("items");
+			binding.filter(aFilters, "Application");
+		},
+		
+		onPressAirLineCode : function(oEvent){
+			var sAirLineCode = oEvent.getSource().getProperty("text");
+			var oFilter = [
+				new Filter("ZFlag", FilterOperator.EQ, "AIRLINE"),
+				new Filter("Carrid", FilterOperator.EQ, sAirLineCode)
+			];
+			
+			var result = this.getGatewayReadData(oFilter);
+			var oAirLineInfo = JSON.parse(result[0].OutputJson);
+			
+			var oJsonModel = new JSONModel(oAirLineInfo);
+			this.getView().setModel(oJsonModel);
+			
+			if(!this.oPopOver){
+				this.oPopOver = sap.ui.xmlfragment("com.ui5.echoit.temp.tables.sapMTable.AirLineInfo", this);
+				this.getView().addDependent(this.oPopOver);
+				this.oPopOver.bindElement("/");
+			}
+			
+			this.oPopOver.openBy(oEvent.getSource());
+		},
+		
+		onPressPopoverCloseBtn : function(){
+			this.oPopOver.close();
 		}
+		
 	});
 
 });
