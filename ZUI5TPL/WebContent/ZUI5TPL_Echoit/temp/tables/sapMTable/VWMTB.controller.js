@@ -23,7 +23,7 @@ sap.ui.define([
 			// sample Code for Odata Model Binding Method via SAP Gateway.
 			this.getOdataModelBinding();
 			
-			// sample Code for Json Model Binding Method via SAP Gateway.
+			// sample Code for Json Model Binding Method via local Json file.
 			this.getJsonModelBinding();
 		},
 		
