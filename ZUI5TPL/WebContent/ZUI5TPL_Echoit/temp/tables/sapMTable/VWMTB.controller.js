@@ -78,7 +78,7 @@ sap.ui.define([
 				new Filter("ZFlag", FilterOperator.EQ, "TABLEBINDING")
 			];
 			
-			var result = this.getGatewayReadData(oFilter);
+			var result = CommonUtil.getGatewayReadData(oFilter, "/ZUI5TPL_TESTSet");
 			var outputjson = JSON.parse(result[0].OutputJson);
 			
 			var jsonModel = new JSONModel();
@@ -118,7 +118,7 @@ sap.ui.define([
 			});
 		},
 		
-		// Gateway를 호출하는 Function
+		/*// Gateway를 호출하는 Function
 		getGatewayReadData : function(oFilter){
 			var oModel = new ODataModel(CommonUtil.getOdataServiceUrl(), true);
 			
@@ -131,7 +131,7 @@ sap.ui.define([
 			});
 			
 			return sResult;
-		},
+		},*/
 		
 		// OData Model Binding 테이블의 SearchField
 		onSearchFieldLiveChangeTop : function(oEvent){
@@ -169,14 +169,14 @@ sap.ui.define([
 				new Filter("Carrid", FilterOperator.EQ, sAirLineCode)
 			];
 			
-			var result = this.getGatewayReadData(oFilter);
+			var result = CommonUtil.getGatewayReadData(oFilter, "/ZUI5TPL_TESTSet");
 			var oAirLineInfo = JSON.parse(result[0].OutputJson);
 			
 			var oJsonModel = new JSONModel(oAirLineInfo);
 			this.getView().setModel(oJsonModel);
 			
 			if(!this.oPopOver){
-				this.oPopOver = sap.ui.xmlfragment("com.ui5.echoit.temp.tables.sapMTable.AirLineInfo", this);
+				this.oPopOver = sap.ui.xmlfragment("com.ui5.echoit.temp.tables.sapMTable.FRAirLineInfo", this);
 				this.getView().addDependent(this.oPopOver);
 				this.oPopOver.bindElement("/");
 			}

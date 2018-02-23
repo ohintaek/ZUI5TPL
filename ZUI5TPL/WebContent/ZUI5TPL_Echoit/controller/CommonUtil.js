@@ -1,5 +1,6 @@
 sap.ui.define([
-	], function () {
+	"sap/ui/model/odata/ODataModel",
+	], function (ODataModel) {
 		"use strict";
 
 		var CommonUtil = {
@@ -13,7 +14,22 @@ sap.ui.define([
 			  } else {
 			      return sServiceUrl;
 			  }
-		}
+		},
+		
+		// Gateway를 호출하는 Function
+		getGatewayReadData : function(oFilter, sEntitySetName){
+			var oModel = new ODataModel(this.getOdataServiceUrl(), true);
+			
+			var sResult;
+			oModel.read(sEntitySetName,{
+				filters : oFilter,
+				async	: false,
+				success : function(oData, oResponse) { sResult = oData.results; },
+				error	: function(oError) { sap.m.MessageBox.error(oError.response.body, { title : "Error" }); }
+			});
+			
+			return sResult;
+		},
 	};
 		return CommonUtil;
 });

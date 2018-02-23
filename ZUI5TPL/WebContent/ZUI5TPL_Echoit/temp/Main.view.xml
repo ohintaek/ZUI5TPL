@@ -22,9 +22,15 @@
 						<OverflowToolbarLayoutData priority="NeverOverflow"/>
 					</layoutData>
 				</Button>
+				<Button 
+					id="btnHome" 
+					icon="sap-icon://home"
+					type="Transparent" 
+					press="onPressHome" 
+					tooltip="Home"/>
 				<ToolbarSpacer/>
-				<Title text="Yoon's UI5 Sample Project"/>
-				<ToolbarSpacer/>				
+				<Title text="UI5 Sample Project"/>
+				<ToolbarSpacer/>
 			</tnt:ToolHeader>
 		</tnt:header>
 		
@@ -34,10 +40,16 @@
 				itemSelect="onItemSelect">
 				<tnt:NavigationList>
 					<tnt:NavigationListItem
+							expanded="false"
+							text="공지사항"
+							icon="sap-icon://table-view"
+							key="VWNoticeBoard">
+					</tnt:NavigationListItem>
+					<tnt:NavigationListItem
 						expanded="false"
 						text="Table Samples"
 						icon="sap-icon://table-view"
-						key="rootTable">
+						key="sapMTable">
 						<tnt:items>
 							<tnt:NavigationListItem
 								text="sap.m.table"
@@ -54,5 +66,14 @@
 			<App id="mainContents"/>
 		</tnt:mainContents>
 	</tnt:ToolPage>
+<footer>
+	<Toolbar>
+		<content>
+			<ToolbarSpacer/>
+				<Text text="COPYRIGHT (C) 2018 Echo IT, LTD. ALL RIGHTS RESERVED."/>
+			<ToolbarSpacer/>
+		</content>
+	</Toolbar>
+</footer>
 </Page>
 </mvc:View>

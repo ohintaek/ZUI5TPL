@@ -10,3 +10,8 @@ html[dir="rtl"] .myAppDemoWT .myCustomButton.sapMBtn {
 	display: inline-block;
 	font-weight: bold;
 }
+
+/* Table header Toolbar Label */
+.mTableTableHeaderToolbarLabel{
+		font-size : 1.2rem;
+}

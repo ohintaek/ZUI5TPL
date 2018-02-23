@@ -4,11 +4,6 @@
 	xmlns:ux="sap.uxap"
 	xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:mvc="sap.ui.core.mvc">
-	<html:style>
-	.mTableTableHeaderToolbarLabel{
-		font-size : 1.2rem;
-	}
-	</html:style>
 	<Page
 		title="sap.m.Table"
 		showHeader="false"

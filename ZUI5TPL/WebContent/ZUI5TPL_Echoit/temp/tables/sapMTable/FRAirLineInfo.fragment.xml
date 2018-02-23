@@ -7,7 +7,7 @@
   	placement="Right"
   	height="300px"
   	contentWidth="320px"
-  	contentHeight="250px">
+  	contentHeight="280px">
   	<content>
   		<ObjectHeader title="{CARRID}">
   			<attributes>
