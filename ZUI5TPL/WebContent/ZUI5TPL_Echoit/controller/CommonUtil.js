@@ -25,7 +25,9 @@ sap.ui.define([
 				filters : oFilter,
 				async	: false,
 				success : function(oData, oResponse) { sResult = oData.results; },
-				error	: function(oError) { sap.m.MessageBox.error(oError.response.body, { title : "Error" }); }
+				error	: function(oError) {
+					sap.m.MessageBox.error(oError.response.body, { title : "Error" });
+				}
 			});
 			
 			return sResult;

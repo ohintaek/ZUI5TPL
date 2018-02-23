@@ -1,0 +1,12 @@
+<mvc:View
+	controllerName="com.ui5.echoit.temp.NotFound"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	<MessagePage
+		title="Page Not Found"
+		text="페이지를 찾을 수 없습니다."
+		description="Please check the URL and try again."
+		showNavButton="true"
+		navButtonPress="onNavBack"/>
+	
+</mvc:View>

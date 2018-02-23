@@ -74,11 +74,14 @@ sap.ui.define([
 		
 		// OData Model Table Binding 
 		getOdataModelBinding : function() {
+			
 			var oFilter = [
 				new Filter("ZFlag", FilterOperator.EQ, "TABLEBINDING")
 			];
 			
 			var result = CommonUtil.getGatewayReadData(oFilter, "/ZUI5TPL_TESTSet");
+			if(result == null)
+				return;
 			var outputjson = JSON.parse(result[0].OutputJson);
 			
 			var jsonModel = new JSONModel();
@@ -116,22 +119,8 @@ sap.ui.define([
 					]
 				})
 			});
-		},
 		
-		/*// Gateway를 호출하는 Function
-		getGatewayReadData : function(oFilter){
-			var oModel = new ODataModel(CommonUtil.getOdataServiceUrl(), true);
-			
-			var sResult;
-			oModel.read("/ZUI5TPL_TESTSet",{
-				filters : oFilter,
-				async	: false,
-				success : function(oData, oResponse) { sResult = oData.results; },
-				error	: function(oError) { sap.m.MessageBox.error(oError.response.body, { title : "Error" }); }
-			});
-			
-			return sResult;
-		},*/
+		},
 		
 		// OData Model Binding 테이블의 SearchField
 		onSearchFieldLiveChangeTop : function(oEvent){

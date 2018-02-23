@@ -25,15 +25,30 @@ sap.ui.define([
 			oToolPage.setSideExpanded(!oToolPage.getSideExpanded());
 		},
 		
-		onItemSelect : function(oEvent){
+		onPressItemSelect : function(oEvent){
 			var oItem = oEvent.getParameter('item');
 			var sKey = oItem.getKey();
 			
 			var oRouter = this.getRouter();
-			if(oRouter.getRoute(sKey) == null)
+			if(oRouter.getRoute(sKey) == null){
 				return;
+			}
 			
-			oRouter.navTo(sKey);
+			var iDuration = 300;
+			var iDelay = 0;
+			sap.ui.core.BusyIndicator.show(iDelay);
+			
+			if(iDuration > 0){
+				if(this._sTimeoutId){
+					jQuery.sap.clearDelayedCall(this._sTimeoutId);
+					this._sTimeoutId = null;
+				}
+				
+				this._sTimeoutId = jQuery.sap.delayedCall(iDuration, this, function(){
+					oRouter.navTo(sKey);
+					sap.ui.core.BusyIndicator.hide();
+				})
+			}
 		},
 		
 		onPressHome : function(oEvent){

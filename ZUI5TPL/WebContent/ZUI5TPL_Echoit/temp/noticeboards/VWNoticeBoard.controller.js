@@ -18,6 +18,21 @@ sap.ui.define([
 		onNavBack: function() {
 			Controller.prototype.onNavBack.apply(this);
 		},
+		
+		// 공지사항의 신규등록 팝업 열기
+		onBoardCreatePopup : function() {
+			if(!this.oNoticeDialog){
+				this.oNoticeDialog = sap.ui.xmlfragment("com.ui5.echoit.temp.noticeboards.FRNoticeCreate", this);
+				this.getView().addDependent(this.oNoticeDialog);
+			}
+			
+			this.oNoticeDialog.open();
+		},
+		
+		// 공지사항의 신규등록 팝업 닫기
+		onPressDialogClose : function(){
+			this.oNoticeDialog.close();
+		}
 	});
 
 });

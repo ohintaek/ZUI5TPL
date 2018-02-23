@@ -1,0 +1,17 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core" >
+  <Dialog
+  	title="공지사항 등록"
+  	class="sapUiContentPadding"
+  	contentWidth="50rem"
+  	contentHeight="30rem">
+  	<content>
+  		
+  	</content>
+  	<buttons>
+  		<Button text="저장" press="onPressNoticeCreate"/>
+  		<Button text="닫기" press="onPressDialogClose"/>
+  	</buttons>
+  </Dialog>
+</core:FragmentDefinition>

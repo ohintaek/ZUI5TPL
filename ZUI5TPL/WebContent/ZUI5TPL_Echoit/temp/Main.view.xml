@@ -36,13 +36,14 @@
 		
 		<tnt:sideContent>
 			<tnt:SideNavigation
+				id="sideNav"
 				expanded="true"
-				itemSelect="onItemSelect">
+				itemSelect="onPressItemSelect">
 				<tnt:NavigationList>
 					<tnt:NavigationListItem
 							expanded="false"
 							text="공지사항"
-							icon="sap-icon://table-view"
+							icon="sap-icon://notification-2"
 							key="VWNoticeBoard">
 					</tnt:NavigationListItem>
 					<tnt:NavigationListItem

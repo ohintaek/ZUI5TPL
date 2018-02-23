@@ -50,20 +50,25 @@
 				"viewPath": "com.ui5.echoit.temp",
 				"controlId": "mainContents",
 				"controlAggregation": "pages",
-				"async": true
+				"async": true,
+				"bypassed": {
+					"target" : "notFound"
+				}
 			},
 			"routes": [
-				{"name": "Home", "target": "Home", "pattern": ""},
-				{"name": "VWMTB", "target": "VWMTB", "pattern": "tables/sapMTable"},
-				{"name": "VWUITB", "target": "VWUITB", "pattern": "tables/sapUiTable"},
-				{"name": "VWNoticeBoard", "target": "VWNoticeBoard", "pattern": "noticeboard"}
+				{"name": "Home",		 	"target": "Home", 			"pattern": ""},
+				{"name": "VWMTB", 		 	"target": "VWMTB", 			"pattern": "tables/sapMTable"},
+				{"name": "VWUITB", 		 	"target": "VWUITB", 		"pattern": "tables/sapUiTable"},
+				{"name": "VWNoticeBoard", 	"target": "VWNoticeBoard", 	"pattern": "noticeboard"}
 				
 			],
 			"targets": {
-				"Home"		: {"viewName": "Home"},
-				"VWMTB"		: {"viewName": "tables/sapMTable/VWMTB"},
-				"VWUITB"	: {"viewName": "tables/sapUiTable/VWUITB"},
-				"VWNoticeBoard"	: {"viewName": "noticeboards/VWNoticeBoard"}
+				"Home"			: {"viewName": "Home"},
+				"VWMTB"			: {"viewName": "tables/sapMTable/VWMTB"},
+				"VWUITB"		: {"viewName": "tables/sapUiTable/VWUITB"},
+				"VWNoticeBoard"	: {"viewName": "noticeboards/VWNoticeBoard"},
+				
+				"notFound"  	: {"viewName": "NotFound"}
 				
 			}
 		}
