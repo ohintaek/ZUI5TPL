@@ -1,0 +1,14 @@
+<core:View 
+		xmlns:core="sap.ui.core" 
+		xmlns:mvc="sap.ui.core.mvc" 
+		xmlns="sap.m"
+		controllerName="echoit.zuitpl.layoutExample.main.Main" 
+		xmlns:html="http://www.w3.org/1999/xhtml">
+		
+	<Page title="Main">
+		<content>
+			<Text text="main 화면입니다."/>
+		</content>
+	</Page>
+	
+</core:View>
