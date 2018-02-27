@@ -23,14 +23,24 @@
 		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
 
 		<script>
-	
-			 sap.ui.getCore().attachInit(function () {
-		            new sap.ui.core.ComponentContainer({
-		               name : "com.ui5.echoit"
-		            }).placeAt("content");
 
-		         });
-			 
+		
+		// OOOOO Example
+ 		sap.ui.getCore().attachInit(function () {
+	            new sap.ui.core.ComponentContainer({
+	               name : "com.ui5.echoit"
+	            }).placeAt("content");
+	    });
+ 				 
+ 
+ 
+		// Layout Example
+/* 		sap.ui.getCore().attachInit(function () {
+	            new sap.ui.core.ComponentContainer({
+	               name : "echoit.zuitpl.layoutExample"
+	            }).placeAt("content");
+	    }); */
+		 
 		</script>
 
 	</head>

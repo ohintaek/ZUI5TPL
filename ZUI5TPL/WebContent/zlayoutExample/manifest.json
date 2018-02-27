@@ -18,10 +18,10 @@
 	},
 	"sap.ui5": {
 		"rootView": {
-			"viewName": "com.ui5.echoit.temp.Main",
+			"viewName": "echoit.zuitpl.layoutExample.App",
 			"type": "XML",
 			"async": true,
-			"id": "ToolApp"
+			"id": "App"
 		},
 		"dependencies": {
 			"minUI5Version": "1.30",
@@ -47,22 +47,16 @@
 			"config": {
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
-				"viewPath": "com.ui5.echoit.temp",
-				"controlId": "mainContents",
+				"viewPath": "echoit.zuitpl.layoutExample",
+				"controlId": "app",
 				"controlAggregation": "pages",
 				"async": true
 			},
 			"routes": [
-				{"name": "Home", "target": "Home", "pattern": ""},
-				{"name": "VWMTB", "target": "VWMTB", "pattern": "tables/sapMTable"},
-				{"name": "VWUITB", "target": "VWUITB", "pattern": "tables/sapUiTable"}
-				
+				{"name": "Main", "target": "Main", "pattern": ""}			
 			],
 			"targets": {
-				"Home"		: {"viewName": "Home"},
-				"VWMTB"		: {"viewName": "tables/sapMTable/VWMTB"},
-				"VWUITB"	: {"viewName": "tables/sapUiTable/VWUITB"}
-				
+				"Main"		: {"viewName": "main/Main"}			
 			}
 		}
 	}
