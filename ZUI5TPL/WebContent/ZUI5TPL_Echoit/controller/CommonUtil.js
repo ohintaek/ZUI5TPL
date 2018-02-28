@@ -1,6 +1,7 @@
 sap.ui.define([
 	"sap/ui/model/odata/ODataModel",
-	], function (ODataModel) {
+	"sap/m/MessageBox"
+	], function (ODataModel, MessageBox) {
 		"use strict";
 
 		var CommonUtil = {
@@ -16,7 +17,7 @@ sap.ui.define([
 			  }
 		},
 		
-		// Gateway를 호출하는 Function
+		// Gateway의 Read (Query)를 호출하는 Function
 		getGatewayReadData : function(oFilter, sEntitySetName){
 			var oModel = new ODataModel(this.getOdataServiceUrl(), true);
 			
@@ -32,6 +33,22 @@ sap.ui.define([
 			
 			return sResult;
 		},
+		
+		// Gateway의 Create Method를 호출하는 Function
+		setGatewayCreateData : function(sEntitySetName, gateway_parameter){
+			var oModel = new ODataModel(this.getOdataServiceUrl(), true);
+			
+			var sResult;
+			oModel.create(sEntitySetName, gateway_parameter, {
+				async : false,
+				success : function(oData, oResponse) {sResult = oData;},
+				error	: function(oError) {
+					MessageBox.error(oError.response.body, { title : "Error" });
+				}
+			})
+			
+			return sResult;
+		}
 	};
 		return CommonUtil;
 });

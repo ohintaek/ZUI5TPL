@@ -1,13 +1,45 @@
 <core:FragmentDefinition
    xmlns="sap.m"
-   xmlns:core="sap.ui.core" >
+   xmlns:l="sap.ui.layout"
+   xmlns:core="sap.ui.core"
+   xmlns:html="http://www.w3.org/1999/xhtml">
   <Dialog
   	title="공지사항 등록"
+  	icon="sap-icon://notification-2"
   	class="sapUiContentPadding"
   	contentWidth="50rem"
   	contentHeight="30rem">
   	<content>
-  		
+  		<l:VerticalLayout width="100%">
+  			<l:content>
+  				<HBox>
+  					<l:VerticalLayout>
+  						<Label text="작성자" required="true"/>
+	  					<Input id="noticeWriter"/>	
+  					</l:VerticalLayout>
+					
+					<l:VerticalLayout>
+						<Label text="작성일자"/>
+	  					<DatePicker id="writeDate" dateValue="{path:'/createDate'}" displayFormat="yyyy-MM-dd" valueFormat="yyyyMMdd" editable="False"/>	
+					</l:VerticalLayout>
+  				</HBox>
+  				
+  				<Label text="제목"/>
+				<Input id="noticeTitle"/>
+				
+				<Label text="내용"/>
+				<TextArea id="noticeArea" width="100%" height="14rem"/>
+				
+				<HBox>
+					<l:VerticalLayout>
+						<CheckBox id="globalNotice" text="전체공지" select="onGlobalNoticeCheck"/>
+					</l:VerticalLayout>
+					<l:VerticalLayout>
+						<CheckBox id="importantNotice" text="중요" select="onImportantNoticeCheck"/>
+					</l:VerticalLayout>
+				</HBox>
+  			</l:content>
+  		</l:VerticalLayout>
   	</content>
   	<buttons>
   		<Button text="저장" press="onPressNoticeCreate"/>
