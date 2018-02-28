@@ -31,7 +31,6 @@ sap.ui.define([
 				this.getView().addDependent(this.oNoticeDialog);
 			}
 			
-			
 			this.oNoticeDialog.open();
 		},
 		
@@ -56,17 +55,35 @@ sap.ui.define([
 				var bImportantNotice = this.getView().byId("importantNotice").getSelected();
 				var bNoticeAll = this.getView().byId("globalNotice").getSelected();
 				
+				// 공지사항 정보를 저장
 				var noticeInfo = {
 						noticetitle 	: sNoticeTitle,
 						noticecontents 	: sNoticeContent,
 						impflag 		: (bImportantNotice ? "X" : ""),
-						noticeall 		: (bNoticeAll ? "X" : "")
+						noticeall 		: (bNoticeAll ? "X" : ""),
+						crusername 		: sNoticeWriter
 				}
+				
+				// Gateway를 호출하기 위한 Parameter
 				var gwParam = {
 						ZInput : JSON.stringify(noticeInfo)
 				}
 				
 				var result = CommonUtil.setGatewayCreateData("/ZUI5TPL_TESTSet", gwParam);
+				MessageToast.show(result.Emsg);
+				
+				// 공지사항 팝업창 닫기
+				if(this.oNoticeDialog){
+					this.oNoticeDialog.close();
+				}
+				
+				// 공지사항 테이블에 바인딩
+				var oFilter = [
+					new Filter("ZFlag", FilterOperator.EQ, "GETNOTICEINFO")
+				];
+				
+				var selectResult = CommonUtil.getGatewayReadData(oFilter, "/ZUI5TPL_TESTSet");
+				var oTable = this.getView().byId("noticeTable");
 				
 			} catch(ex) {
 				
