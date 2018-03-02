@@ -1,23 +1,26 @@
 sap.ui.define([
 	"com/ui5/echoit/controller/BaseController",
 	"com/ui5/echoit/controller/CommonUtil",
+	"sap/ui/model/Filter",
+	"sap/ui/model/FilterOperator",
 	"sap/ui/model/json/JSONModel",
 	"sap/ui/core/routing/History",
 	"sap/m/MessageToast"
-], function (Controller, CommonUtil, JSONModel, History, MessageToast) {
+], function (Controller, CommonUtil, Filter, FilterOperator, JSONModel, History, MessageToast) {
 	"use strict";
 
 	return Controller.extend("com.ui5.echoit.temp.noticeboards.VWNoticeBoard", {
 		onInit : function() {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			oRouter.getRoute("VWNoticeBoard").attachPatternMatched(this.onRouteMatched, this);
+			oRouter.getRoute("VWNoticeBoard").attachMatched(this.onRouteMatched, this);
 			
 			var oModel = new JSONModel({createDate : new Date()});
 			this.getView().setModel(oModel);
 		},
 		
 		onRouteMatched : function(oEvent) {
-			var oSource = oEvent.getSource();
+			// 공지사항 정보 가져오기
+			this.getNoticeInfo();
 		},
 
 		onNavBack: function() {
@@ -83,12 +86,34 @@ sap.ui.define([
 				];
 				
 				var selectResult = CommonUtil.getGatewayReadData(oFilter, "/ZUI5TPL_TESTSet");
+				
+				
 				var oTable = this.getView().byId("noticeTable");
 				
 			} catch(ex) {
 				
 				MessageToast.show(ex);
 			}
+		},
+		
+		getNoticeInfo : function(){
+			// 공지사항 테이블에 바인딩
+			var oFilter = [
+				new Filter("ZFlag", FilterOperator.EQ, "GETNOTICEINFO")
+			];
+			
+			var selectResult = CommonUtil.getGatewayReadData(oFilter, "/ZUI5TPL_TESTSet");
+			if(selectResult[0].EType == 'E')
+				throw selectResult[0].EMsg;
+			
+			// 공지 사항 정보를 구한다.
+			var aNoticeData = JSON.parse(selectResult[0].OutputJson);
+			
+			var jsonModel = new JSONModel();
+			jsonModel.setData(aNoticeData);
+			
+			var oTable = this.getView().byId("noticeTable");
+			
 		}
 	});
 
