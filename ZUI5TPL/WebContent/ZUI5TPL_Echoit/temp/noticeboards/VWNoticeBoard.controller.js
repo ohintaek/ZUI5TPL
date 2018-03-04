@@ -90,7 +90,7 @@ sap.ui.define([
 		},
 		
 		getNoticeInfo : function(){
-			// 공지사항 테이블에 바인딩
+			
 			var oFilter = [
 				new Filter("ZFlag", FilterOperator.EQ, "GETNOTICEINFO")
 			];
@@ -115,6 +115,13 @@ sap.ui.define([
 						this.onPressItem(oEvent);
 					}.bind(this),
 					cells : [
+						new sap.m.ObjectStatus().bindProperty("state", "IMPFLAG", function(cellValue){
+							if(cellValue == 'X')
+								return 'Error';
+						}).bindProperty("icon", "IMPFLAG", function(cellValue){
+							if(cellValue == 'X')
+								return "sap-icon://alert";
+						}),
 						new sap.m.Text({ text : "{NOTICETITLE}"}),
 						new sap.m.Text({ text : "{CRUSERNAME}"}),
 						new sap.m.Text({ text : "{CREATEDATE}"})

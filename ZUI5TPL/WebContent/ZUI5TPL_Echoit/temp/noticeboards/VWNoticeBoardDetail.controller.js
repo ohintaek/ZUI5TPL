@@ -34,10 +34,27 @@ sap.ui.define([
 			var aNoticeRead = CommonUtil.getGatewayReadData("/ZUI5TPL_TESTSet", akeyValue);
 			if(aNoticeRead.EType == "E")
 				return;
+			
+			// 공지사항 정보를 구한다.
 			var aNoticeInfo = JSON.parse(aNoticeRead.OutputJson);
+			
+			var objStatus = this.getView().byId("NoticeObjStatus");
+			if(aNoticeInfo[0].IMPFLAG == "X"){
+				objStatus.setIcon("sap-icon://alert");
+				objStatus.setText("중요");
+				objStatus.setState("Error");
+			} else {
+				objStatus.setIcon();
+				objStatus.setText();
+				objStatus.setState();
+			}
+			
 			
 			var JsonModel = new JSONModel(aNoticeInfo);
 			this.getView().setModel(JsonModel);
+			
+			
+			
 		}
 	
 	});

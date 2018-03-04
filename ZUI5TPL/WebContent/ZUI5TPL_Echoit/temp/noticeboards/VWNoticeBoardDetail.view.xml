@@ -18,6 +18,9 @@
 				 title="{NOTICETITLE}"
 				 fullScreenOptimized="true"
 				 responsive="true"
+				 showMarkers="false"
+				 markFlagged="true"
+				 markFavorite="true"
 				 backgroundDesign="Translucent">
 			 	<attributes>
 					<ObjectAttribute
@@ -27,6 +30,9 @@
 						title="작성일자"
 						text="{CREATEDATE}"/>
 				</attributes>
+			 	<statuses>
+			 		<ObjectStatus id="NoticeObjStatus"/>
+			 	</statuses>
 				<headerContainer>
 					<IconTabBar
 						id="itb01"

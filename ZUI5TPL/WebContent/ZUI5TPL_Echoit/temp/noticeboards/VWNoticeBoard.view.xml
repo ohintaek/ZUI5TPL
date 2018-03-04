@@ -20,6 +20,7 @@
 				growing="true"
 				growingThreshold="10"
 				noDataText="데이터가 없습니다."
+				alternateRowColors="true"
 				backgroundDesign="Transparent">
 				<headerToolbar>
 					<Toolbar>
@@ -30,6 +31,10 @@
 					</Toolbar>
 				</headerToolbar>
 				<columns>
+					<Column
+						hAlign="Center">
+						<Text text="중요" />
+					</Column>
 					<Column
 						hAlign="Center">
 						<Text text="제목" />
