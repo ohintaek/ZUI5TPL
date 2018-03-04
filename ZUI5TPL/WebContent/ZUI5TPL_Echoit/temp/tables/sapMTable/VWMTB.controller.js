@@ -79,7 +79,7 @@ sap.ui.define([
 				new Filter("ZFlag", FilterOperator.EQ, "TABLEBINDING")
 			];
 			
-			var result = CommonUtil.getGatewayReadData(oFilter, "/ZUI5TPL_TESTSet");
+			var result = CommonUtil.getGatewayQueryData(oFilter, "/ZUI5TPL_TESTSet");
 			if(result == null)
 				return;
 			var outputjson = JSON.parse(result[0].OutputJson);
@@ -158,7 +158,7 @@ sap.ui.define([
 				new Filter("Carrid", FilterOperator.EQ, sAirLineCode)
 			];
 			
-			var result = CommonUtil.getGatewayReadData(oFilter, "/ZUI5TPL_TESTSet");
+			var result = CommonUtil.getGatewayQueryData(oFilter, "/ZUI5TPL_TESTSet");
 			var oAirLineInfo = JSON.parse(result[0].OutputJson);
 			
 			var oJsonModel = new JSONModel(oAirLineInfo);

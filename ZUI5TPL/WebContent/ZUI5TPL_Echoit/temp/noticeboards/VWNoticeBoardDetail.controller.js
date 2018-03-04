@@ -27,7 +27,17 @@ sap.ui.define([
 		},
 		
 		getNoticeInfo : function(noticeNumber) {
+			var akeyValue = [{
+					key : "Noticeno",
+					value : noticeNumber
+			}]
+			var aNoticeRead = CommonUtil.getGatewayReadData("/ZUI5TPL_TESTSet", akeyValue);
+			if(aNoticeRead.EType == "E")
+				return;
+			var aNoticeInfo = JSON.parse(aNoticeRead.OutputJson);
 			
+			var JsonModel = new JSONModel(aNoticeInfo);
+			this.getView().setModel(JsonModel);
 		}
 	
 	});

@@ -17,12 +17,12 @@ sap.ui.define([
 			  }
 		},
 		
-		// Gateway의 Read (Query)를 호출하는 Function
-		getGatewayReadData : function(oFilter, sEntitySetName){
+		// Gateway의 Query (Query)를 호출하는 Function
+		getGatewayQueryData : function(oFilter, sEntitySetName){
 			var oModel = new ODataModel(this.getOdataServiceUrl(), true);
 			
 			var sResult;
-			oModel.read(sEntitySetName,{
+			oModel.read(sEntitySetName, {
 				filters : oFilter,
 				async	: false,
 				success : function(oData, oResponse) { sResult = oData.results; },
@@ -46,6 +46,35 @@ sap.ui.define([
 					MessageBox.error(oError.response.body, { title : "Error" });
 				}
 			})
+			
+			return sResult;
+		},
+		
+		getGatewayReadData : function(sEntitySetName, aKeyValue){
+			
+			if(aKeyValue.length == 0)
+				return;
+			
+			var sEntitySetName;
+			for(var i = 0; i < aKeyValue.length; i++){
+				if(i == 0)
+					sEntitySetName += "(";
+				
+				sEntitySetName += aKeyValue[i].key + "="
+				sEntitySetName += "'" + aKeyValue[i].value + "'";
+				
+				if(i == (aKeyValue.length - 1))
+					sEntitySetName += ")";
+				else
+					sEntitySetName += ",";
+			}
+			var oModel = new ODataModel(this.getOdataServiceUrl(), true);
+			
+			var sResult;
+			oModel.read(sEntitySetName, null, null, false,
+				function(oData, oResponse){ sResult = oData;},
+				function(oError){ MessageBox.error(oError.response.body, { title : "Error" });
+            });
 			
 			return sResult;
 		}

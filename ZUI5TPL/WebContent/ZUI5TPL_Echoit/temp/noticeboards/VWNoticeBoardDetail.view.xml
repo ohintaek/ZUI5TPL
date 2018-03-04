@@ -5,27 +5,47 @@
 	xmlns:ux="sap.uxap"
 	xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:mvc="sap.ui.core.mvc">
-	<ObjectHeader
-	 title="{NOTICETITLE}"
-	 fullScreenOptimized="true">
-	 	<attributes>
-			<ObjectAttribute
-				title="작성자"
-				text="{CRUSERNAME}"/>
-			<ObjectAttribute
-				title="작성일자"
-				text="{CREATEDATE}"/>
-		</attributes>
-		<headerContainer>
-			<IconTabBar
-				text="내용"
-				key="key1">
-				<l:VerticalLayout width="100%">
-	  				<l:content>
-	  					<Text text="{NOTICECONTENTS}"/>
-	  				</l:content>
-  				</l:VerticalLayout>
-			</IconTabBar>
-		</headerContainer>
-	</ObjectHeader>
+	<Page
+		title="공지사항 상세정보"
+		showHeader="true"
+		width="auto"
+		showNavButton="true"
+		navButtonPress="onNavBack">
+		<content>
+			<ObjectHeader
+				 id="NoticeObjHeader"
+				 binding="{/0}"
+				 title="{NOTICETITLE}"
+				 fullScreenOptimized="true"
+				 responsive="true"
+				 backgroundDesign="Translucent">
+			 	<attributes>
+					<ObjectAttribute
+						title="작성자"
+						text="{CRUSERNAME}"/>
+					<ObjectAttribute
+						title="작성일자"
+						text="{CREATEDATE}"/>
+				</attributes>
+				<headerContainer>
+					<IconTabBar
+						id="itb01"
+						selectedKey="tab1"
+						class="sapUiResponsiveContentPadding">
+						<items>
+							<IconTabFilter 
+								text="내용"
+								key="tab1">
+								<l:VerticalLayout width="100%">
+					  				<l:content>
+					  					<Text text="{NOTICECONTENTS}"/>
+					  				</l:content>
+			  					</l:VerticalLayout>
+							</IconTabFilter>
+		  				</items>
+					</IconTabBar>
+				</headerContainer>
+			</ObjectHeader>
+		</content>
+	</Page>
 </mvc:View>

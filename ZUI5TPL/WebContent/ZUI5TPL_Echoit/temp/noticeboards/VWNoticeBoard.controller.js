@@ -95,7 +95,7 @@ sap.ui.define([
 				new Filter("ZFlag", FilterOperator.EQ, "GETNOTICEINFO")
 			];
 			
-			var selectResult = CommonUtil.getGatewayReadData(oFilter, "/ZUI5TPL_TESTSet");
+			var selectResult = CommonUtil.getGatewayQueryData(oFilter, "/ZUI5TPL_TESTSet");
 			if(selectResult[0].EType == 'E')
 				throw selectResult[0].EMsg;
 			
