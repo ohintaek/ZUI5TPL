@@ -1,0 +1,31 @@
+<mvc:View
+	controllerName="com.ui5.echoit.temp.noticeboards.VWNoticeBoardDetail"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:ux="sap.uxap"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:mvc="sap.ui.core.mvc">
+	<ObjectHeader
+	 title="{NOTICETITLE}"
+	 fullScreenOptimized="true">
+	 	<attributes>
+			<ObjectAttribute
+				title="작성자"
+				text="{CRUSERNAME}"/>
+			<ObjectAttribute
+				title="작성일자"
+				text="{CREATEDATE}"/>
+		</attributes>
+		<headerContainer>
+			<IconTabBar
+				text="내용"
+				key="key1">
+				<l:VerticalLayout width="100%">
+	  				<l:content>
+	  					<Text text="{NOTICECONTENTS}"/>
+	  				</l:content>
+  				</l:VerticalLayout>
+			</IconTabBar>
+		</headerContainer>
+	</ObjectHeader>
+</mvc:View>

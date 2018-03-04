@@ -26,7 +26,7 @@
 						<Label design="Bold" text="공지사항" class="mTableTableHeaderToolbarLabel"/>
 						<ToolbarSpacer/>
 						<Button id="boardCreate" text="신규등록" type="Accept" press="onBoardCreatePopup" />
-						<SearchField id="topSearchField" liveChange="onSearchFieldLiveChange" width="30%"/>
+						<SearchField id="topSearchField" search="onSearchFieldLiveChange" width="30%"/>
 					</Toolbar>
 				</headerToolbar>
 				<columns>

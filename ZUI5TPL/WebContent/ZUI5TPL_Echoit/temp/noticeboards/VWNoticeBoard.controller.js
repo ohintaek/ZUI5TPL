@@ -73,7 +73,7 @@ sap.ui.define([
 				}
 				
 				var result = CommonUtil.setGatewayCreateData("/ZUI5TPL_TESTSet", gwParam);
-				MessageToast.show(result.Emsg);
+				MessageToast.show(result.EMsg);
 				
 				// 공지사항 팝업창 닫기
 				if(this.oNoticeDialog){
@@ -81,14 +81,7 @@ sap.ui.define([
 				}
 				
 				// 공지사항 테이블에 바인딩
-				var oFilter = [
-					new Filter("ZFlag", FilterOperator.EQ, "GETNOTICEINFO")
-				];
-				
-				var selectResult = CommonUtil.getGatewayReadData(oFilter, "/ZUI5TPL_TESTSet");
-				
-				
-				var oTable = this.getView().byId("noticeTable");
+				this.getNoticeInfo();
 				
 			} catch(ex) {
 				
@@ -113,7 +106,46 @@ sap.ui.define([
 			jsonModel.setData(aNoticeData);
 			
 			var oTable = this.getView().byId("noticeTable");
+			oTable.setModel(jsonModel);
+			oTable.bindItems({
+				path : '/',
+				template : new sap.m.ColumnListItem({
+					type : 'Active',
+					press : function(oEvent){
+						this.onPressItem(oEvent);
+					}.bind(this),
+					cells : [
+						new sap.m.Text({ text : "{NOTICETITLE}"}),
+						new sap.m.Text({ text : "{CRUSERNAME}"}),
+						new sap.m.Text({ text : "{CREATEDATE}"})
+						
+					]
+				})
+			});
+		},
+		
+		onPressItem : function(oEvent){
 			
+			var oTable = this.getView().byId("noticeTable");
+			var oTableModel = oTable.getModel();
+			var selectedContext = oEvent.getSource().getBindingContext();
+			
+			var sNoticeNumber = oTableModel.getProperty(selectedContext.sPath).NOTICENO;
+			this.getRouter().navTo("VWNoticeBoardDetail", { noticeNumber: sNoticeNumber });
+		},
+		
+		// Search Field
+		onSearchFieldLiveChange : function(oEvent){
+			var aFilters = [];
+			var sQuery = oEvent.getSource().getValue();
+			if(sQuery && sQuery.length > 0){
+				var oFilter = new Filter("NOTICETITLE", FilterOperator.Contains, sQuery);
+				aFilters.push(oFilter);
+			}
+			
+			var oTable = oEvent.getSource().getParent().getParent();
+			var binding = oTable.getBinding("items");
+			binding.filter(aFilters, "Application");
 		}
 	});
 
