@@ -102,6 +102,11 @@ sap.ui.define([
 			// 공지 사항 정보를 구한다.
 			var aNoticeData = JSON.parse(selectResult[0].OutputJson);
 			
+			// 공지사항 정보 중 중요 공지사항을 상단에 위치 한다.
+			aNoticeData.sort(function(a,b){
+				return (a.NOTICEALL == 'X') ? -1 : (a.NOTICEALL != 'X') ? 1 : 0;
+			});
+			
 			var jsonModel = new JSONModel();
 			jsonModel.setData(aNoticeData);
 			
@@ -115,12 +120,23 @@ sap.ui.define([
 						this.onPressItem(oEvent);
 					}.bind(this),
 					cells : [
-						new sap.m.ObjectStatus().bindProperty("state", "IMPFLAG", function(cellValue){
-							if(cellValue == 'X')
-								return 'Error';
-						}).bindProperty("icon", "IMPFLAG", function(cellValue){
-							if(cellValue == 'X')
-								return "sap-icon://alert";
+						new sap.m.HBox({
+							alignContent : "Center",
+							alignItems : "Center",
+							justifyContent : "Center",
+							items : [
+								new sap.m.ObjectStatus().bindProperty("state", "IMPFLAG", function(cellValue){
+									if(cellValue == 'X')
+										return 'Error';
+								}).bindProperty("icon", "IMPFLAG", function(cellValue){
+									if(cellValue == 'X')
+										return "sap-icon://alert";
+								}),
+								new sap.m.ObjectStatus().bindProperty("icon", "NOTICEALL", function(cellValue){
+									if(cellValue == 'X')
+										return "sap-icon://marketing-campaign";
+								}),
+							]
 						}),
 						new sap.m.Text({ text : "{NOTICETITLE}"}),
 						new sap.m.Text({ text : "{CRUSERNAME}"}),

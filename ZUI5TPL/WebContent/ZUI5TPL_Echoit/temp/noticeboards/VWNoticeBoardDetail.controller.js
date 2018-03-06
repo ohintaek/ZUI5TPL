@@ -19,14 +19,14 @@ sap.ui.define([
 		onRouteMatched : function(oEvent) {
 			var sRouteParam = oEvent.getParameter("arguments");
 			var noticeNumber = sRouteParam.noticeNumber;
-			this.getNoticeInfo(noticeNumber);
+			this.getNoticeDetailInfo(noticeNumber);
 		},
 
 		onNavBack: function() {
 			Controller.prototype.onNavBack.apply(this);
 		},
 		
-		getNoticeInfo : function(noticeNumber) {
+		getNoticeDetailInfo : function(noticeNumber) {
 			var akeyValue = [{
 					key : "Noticeno",
 					value : noticeNumber
@@ -38,7 +38,7 @@ sap.ui.define([
 			// 공지사항 정보를 구한다.
 			var aNoticeInfo = JSON.parse(aNoticeRead.OutputJson);
 			
-			var objStatus = this.getView().byId("NoticeObjStatus");
+			/*var objStatus = this.getView().byId("NoticeObjStatus");
 			if(aNoticeInfo[0].IMPFLAG == "X"){
 				objStatus.setIcon("sap-icon://alert");
 				objStatus.setText("중요");
@@ -47,10 +47,10 @@ sap.ui.define([
 				objStatus.setIcon();
 				objStatus.setText();
 				objStatus.setState();
-			}
+			}*/
 			
 			
-			var JsonModel = new JSONModel(aNoticeInfo);
+			var JsonModel = new JSONModel(aNoticeInfo[0]);
 			this.getView().setModel(JsonModel);
 			
 			

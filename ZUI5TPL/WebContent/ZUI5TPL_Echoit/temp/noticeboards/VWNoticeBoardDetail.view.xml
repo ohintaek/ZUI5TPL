@@ -12,7 +12,56 @@
 		showNavButton="true"
 		navButtonPress="onNavBack">
 		<content>
-			<ObjectHeader
+			<ux:ObjectPageLayout
+				id="NoticeObjPageLayout"
+				useIconTabBar="true"
+				binding="{/}">
+				<ux:headerTitle>
+					<ux:ObjectPageHeader objectTitle="{NOTICETITLE}">
+						<ux:actions>
+							<ux:ObjectPageHeaderActionButton icon="sap-icon://edit" text="수정" />
+							<ux:ObjectPageHeaderActionButton icon="sap-icon://delete" text="삭제" />
+						</ux:actions>
+					</ux:ObjectPageHeader>
+				</ux:headerTitle>
+				
+				<ux:sections>
+					<ux:ObjectPageSection title="내용">
+						<ux:subSections>
+							<ux:ObjectPageSubSection title = "내용">
+								<ux:blocks>
+									<Text text="{NOTICECONTENTS}"/>
+								</ux:blocks>
+							</ux:ObjectPageSubSection>
+						</ux:subSections>
+					</ux:ObjectPageSection>
+					
+					<ux:ObjectPageSection title="댓글">
+						<ux:subSections>
+							<ux:ObjectPageSubSection title = "댓글">
+								<ux:blocks>
+									<Text text="댓글 내용.."/>
+								</ux:blocks>
+							</ux:ObjectPageSubSection>
+						</ux:subSections>
+					</ux:ObjectPageSection>
+					
+					<ux:ObjectPageSection title="첨부파일">
+						<ux:subSections>
+							<ux:ObjectPageSubSection title = "첨부파일">
+								<ux:blocks>
+									<Text text="첨부파일 내용.."/>
+								</ux:blocks>
+							</ux:ObjectPageSubSection>
+						</ux:subSections>
+					</ux:ObjectPageSection>
+				</ux:sections>
+				
+			</ux:ObjectPageLayout>
+		
+		
+		
+			<!-- <ObjectHeader
 				 id="NoticeObjHeader"
 				 binding="{/0}"
 				 title="{NOTICETITLE}"
@@ -51,7 +100,7 @@
 		  				</items>
 					</IconTabBar>
 				</headerContainer>
-			</ObjectHeader>
+			</ObjectHeader> -->
 		</content>
 	</Page>
 </mvc:View>

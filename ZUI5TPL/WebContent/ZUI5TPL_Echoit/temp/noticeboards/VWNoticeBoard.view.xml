@@ -33,7 +33,7 @@
 				<columns>
 					<Column
 						hAlign="Center">
-						<Text text="중요" />
+						<Text text="상태" />
 					</Column>
 					<Column
 						hAlign="Center">
