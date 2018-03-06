@@ -5,8 +5,9 @@ sap.ui.define([
 	"sap/ui/model/FilterOperator",
 	"sap/ui/model/json/JSONModel",
 	"sap/ui/core/routing/History",
-	"sap/m/MessageToast"
-], function (Controller, CommonUtil, Filter, FilterOperator, JSONModel, History, MessageToast) {
+	"sap/m/MessageToast",
+	"sap/ui/core/format/DateFormat"
+], function (Controller, CommonUtil, Filter, FilterOperator, JSONModel, History, MessageToast, DateFormat) {
 	"use strict";
 
 	return Controller.extend("com.ui5.echoit.temp.noticeboards.VWNoticeBoardDetail", {
@@ -27,6 +28,7 @@ sap.ui.define([
 		},
 		
 		getNoticeDetailInfo : function(noticeNumber) {
+			
 			var akeyValue = [{
 					key : "Noticeno",
 					value : noticeNumber
@@ -37,24 +39,35 @@ sap.ui.define([
 			
 			// 공지사항 정보를 구한다.
 			var aNoticeInfo = JSON.parse(aNoticeRead.OutputJson);
-			
-			/*var objStatus = this.getView().byId("NoticeObjStatus");
-			if(aNoticeInfo[0].IMPFLAG == "X"){
-				objStatus.setIcon("sap-icon://alert");
-				objStatus.setText("중요");
-				objStatus.setState("Error");
-			} else {
-				objStatus.setIcon();
-				objStatus.setText();
-				objStatus.setState();
-			}*/
-			
-			
+
 			var JsonModel = new JSONModel(aNoticeInfo[0]);
 			this.getView().setModel(JsonModel);
+		},
+		
+		// 공지사항 상세화면의 댓글을 저장한다.
+		onReplyPost : function(oEvent){
+			var oFormat = sap.ui.core.format.DateFormat.getDateInstance({ pattern: "yyyy-MM-dd" });
+//			var oDateFormat = sap.ui.core.format.DateFormat.getDateInstance({ format: "yyyy-MM-dd" });
+			var oDate = new Date();
+			var sDate = oFormat.format(oDate);
 			
+			// create new entry
+			var sValue = oEvent.getParameter("value");
+			var oEntry = {
+					USERID: "홍길동",
+					FEEDINFO: sValue,
+					FEEDDATE: "" + sDate,
+				};
 			
+			// update model
+//			var jsonModel = new JSONModel();
+//			jsonModel.setData({FeedItems : oEntry});
+			this.getView().getModel().setData({FeedItems : oEntry});
 			
+			/*var oModel = this.getView().getModel();
+			var aEntries = oModel.getData().FEED;
+			aEntries.unshift(oEntry);
+			oModel.setData({aEntries});*/
 		}
 	
 	});

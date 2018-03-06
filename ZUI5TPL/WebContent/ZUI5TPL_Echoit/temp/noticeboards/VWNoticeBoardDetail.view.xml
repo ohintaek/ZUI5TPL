@@ -40,7 +40,21 @@
 						<ux:subSections>
 							<ux:ObjectPageSubSection title = "댓글">
 								<ux:blocks>
-									<Text text="댓글 내용.."/>
+									<FeedInput
+										id="NoticeFeed"
+										icon="sap-icon://comment"
+										buttonTooltip="댓글달기"
+										post="onReplyPost"/>
+									<List
+										id="NoticeFeedList"
+										items="{/FeedItems}">
+										<FeedListItem
+											id="NoticeFeedListItem"
+											sender="{USERID}"
+											text="{FEEDINFO}"
+											timestamp="{FEEDDATE}"
+											convertLinksToAnchorTags="All"/>
+									</List>
 								</ux:blocks>
 							</ux:ObjectPageSubSection>
 						</ux:subSections>
