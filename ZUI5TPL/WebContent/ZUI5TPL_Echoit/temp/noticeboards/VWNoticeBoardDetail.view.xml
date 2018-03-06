@@ -58,49 +58,6 @@
 				</ux:sections>
 				
 			</ux:ObjectPageLayout>
-		
-		
-		
-			<!-- <ObjectHeader
-				 id="NoticeObjHeader"
-				 binding="{/0}"
-				 title="{NOTICETITLE}"
-				 fullScreenOptimized="true"
-				 responsive="true"
-				 showMarkers="false"
-				 markFlagged="true"
-				 markFavorite="true"
-				 backgroundDesign="Translucent">
-			 	<attributes>
-					<ObjectAttribute
-						title="작성자"
-						text="{CRUSERNAME}"/>
-					<ObjectAttribute
-						title="작성일자"
-						text="{CREATEDATE}"/>
-				</attributes>
-			 	<statuses>
-			 		<ObjectStatus id="NoticeObjStatus"/>
-			 	</statuses>
-				<headerContainer>
-					<IconTabBar
-						id="itb01"
-						selectedKey="tab1"
-						class="sapUiResponsiveContentPadding">
-						<items>
-							<IconTabFilter 
-								text="내용"
-								key="tab1">
-								<l:VerticalLayout width="100%">
-					  				<l:content>
-					  					<Text text="{NOTICECONTENTS}"/>
-					  				</l:content>
-			  					</l:VerticalLayout>
-							</IconTabFilter>
-		  				</items>
-					</IconTabBar>
-				</headerContainer>
-			</ObjectHeader> -->
 		</content>
 	</Page>
 </mvc:View>
