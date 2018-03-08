@@ -28,11 +28,11 @@ sap.ui.define([
 		},
 		
 		getNoticeDetailInfo : function(noticeNumber) {
-			
 			var akeyValue = [{
 					key : "Noticeno",
 					value : noticeNumber
 			}]
+			
 			var aNoticeRead = CommonUtil.getGatewayReadData("/ZUI5TPL_TESTSet", akeyValue);
 			if(aNoticeRead.EType == "E")
 				return;
@@ -46,8 +46,8 @@ sap.ui.define([
 		
 		// 공지사항 상세화면의 댓글을 저장한다.
 		onReplyPost : function(oEvent){
+			// 현재 날짜를 구한다.
 			var oFormat = sap.ui.core.format.DateFormat.getDateInstance({ pattern: "yyyy-MM-dd" });
-//			var oDateFormat = sap.ui.core.format.DateFormat.getDateInstance({ format: "yyyy-MM-dd" });
 			var oDate = new Date();
 			var sDate = oFormat.format(oDate);
 			
@@ -60,14 +60,15 @@ sap.ui.define([
 				};
 			
 			// update model
-//			var jsonModel = new JSONModel();
-//			jsonModel.setData({FeedItems : oEntry});
-			this.getView().getModel().setData({FeedItems : oEntry});
-			
-			/*var oModel = this.getView().getModel();
-			var aEntries = oModel.getData().FEED;
-			aEntries.unshift(oEntry);
-			oModel.setData({aEntries});*/
+			var oModel = this.getView().getModel();
+			var oModelData = oModel.getData().FeedItems;
+			if(oModelData == null){
+				oModel.setData({ FeedItems : [oEntry] });
+			} else {
+				oModelData.unshift(oEntry);
+				oModel.refresh();
+			}
+
 		}
 	
 	});

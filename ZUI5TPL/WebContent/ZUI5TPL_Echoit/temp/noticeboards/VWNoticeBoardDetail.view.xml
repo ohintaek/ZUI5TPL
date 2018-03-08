@@ -5,6 +5,20 @@
 	xmlns:ux="sap.uxap"
 	xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:mvc="sap.ui.core.mvc">
+	
+	<html:style>
+	.sapMPanelContent {
+	    padding : 0rem;
+	    padding-top: 1rem;
+	    box-sizing: border-box;
+	    overflow: auto;
+	    white-space: normal;
+	}
+	
+	.sapMPanelContent:not(.sapMPanelBGTransparent) {
+    	border-bottom: 0px;
+	}
+	</html:style>
 	<Page
 		title="공지사항 상세정보"
 		showHeader="true"
@@ -40,21 +54,29 @@
 						<ux:subSections>
 							<ux:ObjectPageSubSection title = "댓글">
 								<ux:blocks>
-									<FeedInput
-										id="NoticeFeed"
-										icon="sap-icon://comment"
-										buttonTooltip="댓글달기"
-										post="onReplyPost"/>
-									<List
-										id="NoticeFeedList"
-										items="{/FeedItems}">
-										<FeedListItem
-											id="NoticeFeedListItem"
-											sender="{USERID}"
-											text="{FEEDINFO}"
-											timestamp="{FEEDDATE}"
-											convertLinksToAnchorTags="All"/>
-									</List>
+									<Panel>
+										<FeedInput
+											id="NoticeFeed"
+											width="100%"
+											icon="sap-icon://comment"
+											buttonTooltip="댓글달기"
+											post="onReplyPost"/>
+										<Panel BackgroundDesign="Transparent">
+										<List
+											id="NoticeFeedList"
+											mode="Delete"
+											delete="onPressNoticeListDelete"
+											showSeparators="Inner"
+											items="{/FeedItems}">
+											<FeedListItem
+												id="NoticeFeedListItem"
+												sender="{USERID}"
+												text="{FEEDINFO}"
+												timestamp="{FEEDDATE}"
+												convertLinksToAnchorTags="All"/>
+										</List>
+										</Panel>
+									</Panel>
 								</ux:blocks>
 							</ux:ObjectPageSubSection>
 						</ux:subSections>

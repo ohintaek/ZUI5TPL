@@ -5,7 +5,7 @@ sap.ui.define([
 		"use strict";
 
 		var CommonUtil = {
-			
+			// Service Url for gateway connection.
 			getOdataServiceUrl : function() {
 			  //for local testing prefix with proxy
 			  //if you and your team use a special host name or IP like 127.0.0.1 for localhost please adapt the if statement below 
@@ -17,7 +17,12 @@ sap.ui.define([
 			  }
 		},
 		
-		// Gateway의 Query (Query)를 호출하는 Function
+		// - Gateway의 Query (Query)를 호출하는 Function
+		/*****************************************************************
+		 * Parameter
+		 * - sEntitySetName : Gateway Entity Set Name
+		 * - oFilter : "sap.ui.model.Filter" Object type
+		 *****************************************************************/
 		getGatewayQueryData : function(oFilter, sEntitySetName){
 			var oModel = new ODataModel(this.getOdataServiceUrl(), true);
 			
@@ -34,7 +39,12 @@ sap.ui.define([
 			return sResult;
 		},
 		
-		// Gateway의 Create Method를 호출하는 Function
+		// - Gateway의 Create Method를 호출하는 Function
+		/*****************************************************************
+		 * Parameter
+		 * - sEntitySetName : Gateway Entity Set Name
+		 * - gateway_parameter : Object type { Entity Property : value }
+		 *****************************************************************/
 		setGatewayCreateData : function(sEntitySetName, gateway_parameter){
 			var oModel = new ODataModel(this.getOdataServiceUrl(), true);
 			
@@ -50,6 +60,13 @@ sap.ui.define([
 			return sResult;
 		},
 		
+		// Function 설명
+		// - Gateway의 Read Method를 호출하는 Function
+		/*****************************************************************
+		 * Parameter
+		 * - sEntitySetName : Gateway Entity Set Name
+		 * - aKeyValue : Array type [{ key of Entity Property : value }]
+		 *****************************************************************/
 		getGatewayReadData : function(sEntitySetName, aKeyValue){
 			
 			if(aKeyValue.length == 0)
