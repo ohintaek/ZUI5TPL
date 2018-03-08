@@ -61,6 +61,7 @@ sap.ui.define([
 			
 			// update model
 			var oModel = this.getView().getModel();
+			var existsModelData = oModel.getData();
 			var oModelData = oModel.getData().FeedItems;
 			if(oModelData == null){
 				oModel.setData({ FeedItems : [oEntry] });

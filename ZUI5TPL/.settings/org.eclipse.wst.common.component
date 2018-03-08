@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="ZUI5TPL">
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <wb-resource deploy-path="/" source-path="/WebContent/ZUI5TPL_Echoit/temp/noticeboards/WebContent"/>
+        <wb-resource deploy-path="/" source-path="/WebContent"/>
         <property name="context-root" value="ZUI5TPL"/>
         <property name="java-output-path" value="/ZUI5TPL/build/classes"/>
     </wb-module>

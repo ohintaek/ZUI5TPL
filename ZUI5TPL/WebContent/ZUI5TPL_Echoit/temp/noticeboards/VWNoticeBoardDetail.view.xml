@@ -62,19 +62,26 @@
 											buttonTooltip="댓글달기"
 											post="onReplyPost"/>
 										<Panel BackgroundDesign="Transparent">
-										<List
-											id="NoticeFeedList"
-											mode="Delete"
-											delete="onPressNoticeListDelete"
-											showSeparators="Inner"
-											items="{/FeedItems}">
-											<FeedListItem
-												id="NoticeFeedListItem"
-												sender="{USERID}"
-												text="{FEEDINFO}"
-												timestamp="{FEEDDATE}"
-												convertLinksToAnchorTags="All"/>
-										</List>
+											<List
+												id="NoticeFeedList"
+												mode="Delete"
+												delete="onPressNoticeListDelete"
+												showSeparators="Inner"
+												items="{/FeedItems}">
+												<FeedListItem
+													id="NoticeFeedListItem"
+													sender="{USERID}"
+													text="{FEEDINFO}"
+													timestamp="{FEEDDATE}"
+													maxCharacters="100"
+													iconActive="false"
+													senderActive="false"
+													convertLinksToAnchorTags="All">
+													<actions>
+														<FeedListItemAction text="삭제" icon="sap-icon://delete" key="delete" press="onPressRepleDelete" />
+													</actions>
+												</FeedListItem>
+											</List>
 										</Panel>
 									</Panel>
 								</ux:blocks>
