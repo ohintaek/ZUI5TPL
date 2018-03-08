@@ -68,7 +68,6 @@ sap.ui.define([
 				oModelData.unshift(oEntry);
 				oModel.refresh();
 			}
-
 		}
 	
 	});
