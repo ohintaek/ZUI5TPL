@@ -29,7 +29,7 @@
 			<ux:ObjectPageLayout
 				id="NoticeObjPageLayout"
 				useIconTabBar="true"
-				binding="{/}">
+				binding="{/notice}">
 				<ux:headerTitle>
 					<ux:ObjectPageHeader objectTitle="{NOTICETITLE}">
 						<ux:actions>
