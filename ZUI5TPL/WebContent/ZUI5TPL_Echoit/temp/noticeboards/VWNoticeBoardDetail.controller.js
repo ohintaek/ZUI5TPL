@@ -18,13 +18,23 @@ sap.ui.define([
 		},
 		
 		onRouteMatched : function(oEvent) {
+			this.onPageInit();
+			
 			var sRouteParam = oEvent.getParameter("arguments");
 			var noticeNumber = sRouteParam.noticeNumber;
 			this.getNoticeDetailInfo(noticeNumber);
 		},
 
 		onNavBack: function() {
+			this.onPageInit();
 			Controller.prototype.onNavBack.apply(this);
+		},
+		
+		onPageInit : function(){
+			var ObjPageSelection = this.getView().byId("NoticePageSection1");
+			
+			var ObjPageLayout = this.getView().byId("NoticeObjPageLayout");
+				ObjPageLayout.setSelectedSection(ObjPageSelection.sId);
 		},
 		
 		getNoticeDetailInfo : function(noticeNumber) {
@@ -40,35 +50,76 @@ sap.ui.define([
 			// 공지사항 정보를 구한다.
 			var aNoticeInfo = JSON.parse(aNoticeRead.OutputJson);
 
-			var JsonModel = new JSONModel(aNoticeInfo[0]);
+			var JsonModel = new JSONModel({ notice : aNoticeInfo[0]});
 			this.getView().setModel(JsonModel);
 		},
 		
 		// 공지사항 상세화면의 댓글을 저장한다.
 		onReplyPost : function(oEvent){
-			// 현재 날짜를 구한다.
-			var oFormat = sap.ui.core.format.DateFormat.getDateInstance({ pattern: "yyyy-MM-dd" });
-			var oDate = new Date();
-			var sDate = oFormat.format(oDate);
 			
-			// create new entry
+			// 현재 날짜와 시간을 구한다.
+			var oDateFormat = sap.ui.core.format.DateFormat.getDateInstance({ pattern: "yyyyMMdd" });
+			var sCurrentDate = oDateFormat.format(new Date());
+			
+			var oTimeFormat = sap.ui.core.format.DateFormat.getDateInstance({ pattern: "HHmmdd" });
+			var sCurrentTime = oTimeFormat.format(new Date());
+			
+			var oModel = this.getView().getModel();
+			var oNoticeData = oModel.getData().notice;
+			if(oNoticeData == null)
+				return;
+			
+			// 댓글 내용을 구한다.
 			var sValue = oEvent.getParameter("value");
+		
+			var oReplyInfo = {
+					noticeno :  oNoticeData.NOTICENO,
+					feedcontent : sValue,
+					feedcrdate : sCurrentDate,
+					feedcrtime : sCurrentTime,
+			}
+			
+			var gwParam = {
+					ZInput : JSON.stringify(oReplyInfo),
+					ZFlag : "NOTICE_REPLY"
+			}
+			
+			var result = CommonUtil.setGatewayCreateData("/ZUI5TPL_TESTSet", gwParam);
+			MessageToast.show(result.EMsg);
+			
+			
+			
+			
+		/*	
 			var oEntry = {
 					USERID: "홍길동",
 					FEEDINFO: sValue,
-					FEEDDATE: "" + sDate,
+					FEEDDATE: oDate,
 				};
 			
 			// update model
 			var oModel = this.getView().getModel();
-			var existsModelData = oModel.getData();
-			var oModelData = oModel.getData().FeedItems;
-			if(oModelData == null){
-				oModel.setData({ FeedItems : [oEntry] });
+			var JModel = new JSONModel();
+			
+			var oModelData = oModel.getData();
+			if(oModelData.FeedItems == null){
+				oModelData.FeedItems = [oEntry];
 			} else {
-				oModelData.unshift(oEntry);
-				oModel.refresh();
+				oModelData.FeedItems.unshift(oEntry);
 			}
+				oModel.refresh();
+				
+			var oNoticeData = oModelData.notice;
+			if(oNoticeData == null)
+				return;
+			
+			var oReplyInfo = {
+					noticeno :  oNoticeData.NOTICENO,
+					feedcontent : sValue,
+					feedcrdate : sCurrentDate,
+					feedcrtime : sCurrentTime,
+			}	*/
+				
 		}
 	
 	});

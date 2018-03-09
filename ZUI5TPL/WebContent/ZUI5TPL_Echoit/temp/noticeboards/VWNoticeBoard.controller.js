@@ -69,7 +69,8 @@ sap.ui.define([
 				
 				// Gateway를 호출하기 위한 Parameter
 				var gwParam = {
-						ZInput : JSON.stringify(noticeInfo)
+						ZInput : JSON.stringify(noticeInfo),
+						ZFlag : "NOTICE_CREATE"
 				}
 				
 				var result = CommonUtil.setGatewayCreateData("/ZUI5TPL_TESTSet", gwParam);

@@ -40,7 +40,7 @@
 				</ux:headerTitle>
 				
 				<ux:sections>
-					<ux:ObjectPageSection title="내용">
+					<ux:ObjectPageSection id="NoticePageSection1" title="내용">
 						<ux:subSections>
 							<ux:ObjectPageSubSection title = "내용">
 								<ux:blocks>
@@ -72,14 +72,23 @@
 													id="NoticeFeedListItem"
 													sender="{USERID}"
 													text="{FEEDINFO}"
-													timestamp="{FEEDDATE}"
+													timestamp="{
+														path : 'FEEDDATE',
+														type: 'sap.ui.model.type.DateTime',
+														formatOptions : {
+															pattern: 'yyyy/MM/dd HH:mm:ss'
+														}
+													}"
 													maxCharacters="100"
 													iconActive="false"
 													senderActive="false"
 													convertLinksToAnchorTags="All">
+													<!--
+														To use this, at least OpenUI5 library version 1.52 update is required.  
 													<actions>
 														<FeedListItemAction text="삭제" icon="sap-icon://delete" key="delete" press="onPressRepleDelete" />
-													</actions>
+													</actions> 
+													-->
 												</FeedListItem>
 											</List>
 										</Panel>
