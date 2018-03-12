@@ -10,7 +10,6 @@
 				data-sap-ui-compatVersion="edge"
 				data-sap-ui-theme="sap_belize"
 				data-sap-ui-preload="async"
-				data-sap-ui-appacheBuster="./"
 				data-sap-ui-resourceroots='{
 				 "echoit.zuitpl.controls" : "./zcontrols",
 				 "echoit.zuitpl.layoutExample" : "./zlayoutExample",
@@ -25,21 +24,27 @@
 		<script>
 
 		
-		// OOOOO Example
+/* 		// OOOOO Example
  		sap.ui.getCore().attachInit(function () {
 	            new sap.ui.core.ComponentContainer({
 	               name : "com.ui5.echoit"
 	            }).placeAt("content");
-	    });
- 				 
- 
- 
+	    }); */
+ 		
 		// Layout Example
-/* 		sap.ui.getCore().attachInit(function () {
+/*  		sap.ui.getCore().attachInit(function () {
 	            new sap.ui.core.ComponentContainer({
 	               name : "echoit.zuitpl.layoutExample"
 	            }).placeAt("content");
 	    }); */
+
+	    sap.ui.getCore().attachInit(function () {
+	    	new sap.m.Shell({
+	        	app: new sap.ui.core.ComponentContainer({
+			         	name : "echoit.zuitpl.layoutExample"
+		        	 })
+	        }).placeAt("content");
+		});	    
 		 
 		</script>
 
