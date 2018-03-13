@@ -43,7 +43,7 @@ sap.ui.define([
 					value : noticeNumber
 			}]
 			
-			var aNoticeRead = CommonUtil.getGatewayReadData("/ZUI5TPL_TESTSet", akeyValue);
+			var aNoticeRead = CommonUtil.getGatewayReadData("/ZUI5TPL_NOTICESet", akeyValue);
 			if(aNoticeRead.EType == "E")
 				return;
 			
@@ -81,10 +81,11 @@ sap.ui.define([
 			
 			var gwParam = {
 					ZInput : JSON.stringify(oReplyInfo),
-					ZFlag : "NOTICE_REPLY"
+					ZFlag : "NOTICE_REPLY",
+					IOperation : "C"
 			}
 			
-			var result = CommonUtil.setGatewayCreateData("/ZUI5TPL_TESTSet", gwParam);
+			var result = CommonUtil.setGatewayCreateData("/ZUI5TPL_NOTICESet", gwParam);
 			MessageToast.show(result.EMsg);
 			
 			

@@ -70,10 +70,11 @@ sap.ui.define([
 				// Gateway를 호출하기 위한 Parameter
 				var gwParam = {
 						ZInput : JSON.stringify(noticeInfo),
-						ZFlag : "NOTICE_CREATE"
+						ZFlag : "NOTICE_CREATE",
+						IOperation : "C"
 				}
 				
-				var result = CommonUtil.setGatewayCreateData("/ZUI5TPL_TESTSet", gwParam);
+				var result = CommonUtil.setGatewayCreateData("/ZUI5TPL_NOTICESet", gwParam);
 				MessageToast.show(result.EMsg);
 				
 				// 공지사항 팝업창 닫기
@@ -93,10 +94,11 @@ sap.ui.define([
 		getNoticeInfo : function(){
 			
 			var oFilter = [
-				new Filter("ZFlag", FilterOperator.EQ, "GETNOTICEINFO")
+				new Filter("ZFlag", FilterOperator.EQ, "GETNOTICEINFO"),
+				new Filter("IOperation", FilterOperator.EQ, "Q")
 			];
 			
-			var selectResult = CommonUtil.getGatewayQueryData(oFilter, "/ZUI5TPL_TESTSet");
+			var selectResult = CommonUtil.getGatewayQueryData(oFilter, "/ZUI5TPL_NOTICESet");
 			if(selectResult[0].EType == 'E')
 				throw selectResult[0].EMsg;
 			
