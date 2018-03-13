@@ -150,6 +150,7 @@ sap.ui.define([
 			});
 		},
 		
+		
 		onPressItem : function(oEvent){
 			
 			var oTable = this.getView().byId("noticeTable");

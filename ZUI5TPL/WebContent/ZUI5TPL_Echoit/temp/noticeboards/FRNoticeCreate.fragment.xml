@@ -27,6 +27,7 @@
   				<Label text="제목"/>
 				<Input id="noticeTitle"/>
 				
+				
 				<Label text="내용"/>
 				<TextArea id="noticeArea" width="100%" height="14rem" maxLength="500"/>
 				

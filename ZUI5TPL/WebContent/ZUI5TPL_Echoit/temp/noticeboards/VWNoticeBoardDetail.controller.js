@@ -60,7 +60,7 @@ sap.ui.define([
 			// 현재 날짜와 시간을 구한다.
 			var oDateFormat = sap.ui.core.format.DateFormat.getDateInstance({ pattern: "yyyyMMdd" });
 			var sCurrentDate = oDateFormat.format(new Date());
-			
+		
 			var oTimeFormat = sap.ui.core.format.DateFormat.getDateInstance({ pattern: "HHmmdd" });
 			var sCurrentTime = oTimeFormat.format(new Date());
 			
