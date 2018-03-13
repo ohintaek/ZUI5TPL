@@ -74,9 +74,9 @@ sap.ui.define([
 		
 			var oReplyInfo = {
 					noticeno :  oNoticeData.NOTICENO,
-					feedcontent : sValue,
-					feedcrdate : sCurrentDate,
-					feedcrtime : sCurrentTime,
+					replycontent : sValue,
+					replycrdate : sCurrentDate,
+					replycrtime : sCurrentTime
 			}
 			
 			var gwParam = {
