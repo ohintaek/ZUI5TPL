@@ -18,7 +18,7 @@ sap.ui.define([
 		},
 		
 		onRouteMatched : function(oEvent) {
-			this.onPageInit();
+			this.onInitTabFocus();
 			
 			var sRouteParam = oEvent.getParameter("arguments");
 			var noticeNumber = sRouteParam.noticeNumber;
@@ -26,23 +26,20 @@ sap.ui.define([
 		},
 
 		onNavBack: function() {
-			this.onPageInit();
+			this.onInitTabFocus();
 			Controller.prototype.onNavBack.apply(this);
 		},
 		
-		onPageInit : function(){
+		onInitTabFocus : function(){
 			var ObjPageSelection = this.getView().byId("NoticePageSection1");
 			
 			var ObjPageLayout = this.getView().byId("NoticeObjPageLayout");
 				ObjPageLayout.setSelectedSection(ObjPageSelection.sId);
 		},
 		
+		// 공지사항 번호를 가지고 댓글 정보를 구한다.
 		getNoticeDetailInfo : function(noticeNumber) {
-		/*	var akeyValue = [{
-					key : "Noticeno",
-					value : noticeNumber
-			}]*/
-			
+
 			var akeyValue = [
 				{ key : "Noticeno", value : noticeNumber },
 				{ key : "Replyno",  value : "" },
@@ -144,24 +141,46 @@ sap.ui.define([
 	
 		},
 		
+		// 공지사항의 댓글을 삭제한다.
 		onPressNoticeListDelete : function(oEvent){
-			var sBindingItemPath = oEvent.getParameter("listItem").getBindingContext().sPath;
+			this.bindPath = oEvent.getParameter("listItem").getBindingContext().sPath;
 			
-			var oList = this.getView().byId("NoticeFeedList");
-			var oListModel = oList.getModel();
-			var oDelListData = oListModel.getProperty(sBindingItemPath);
+			sap.m.MessageBox.confirm("정말 삭제 하시겠습니까?", {
+			    actions : [sap.m.MessageBox.Action.YES, sap.m.MessageBox.Action.NO],
+			    onClose: function(oAction){
+			    	 if(oAction == "YES"){
+			 			var oList = this.getView().byId("NoticeFeedList");
+			 			var oListModel = oList.getModel();
+			 			var oDelListData = oListModel.getProperty(this.bindPath);
+			 			
+			 			var sNoticeNo = oDelListData.NOTICENO;
+			 			var sReplyNo = oDelListData.REPLYNO;
+			 			
+			 			var akeyValue = [
+			 				{ key : "Noticeno", value : sNoticeNo },
+			 				{ key : "Replyno",  value : sReplyNo },
+			 			]
+			 			
+			 			var aNoticeRead = CommonUtil.getGatewayDeleteData("/ZUI5TPL_NOTICESet", akeyValue);
+			 			
+			 			this.getNoticeDetailInfo(sNoticeNo);
+			 			
+			    	 } else {
+			    		 return;
+			    	 }
+			    }.bind(this)
+		    });
+		},
+		
+		// 공지사항을 삭제한다.
+		onPressNoticeDelete : function(oEvent){
+			var oSource = oEvent.getSource();
 			
-			var sNoticeNo = oDelListData.NOTICENO;
-			var sReplyNo = oDelListData.REPLYNO;
+			var oPath = oEvent.getSource().getBindingContext().sPath;
+			var oBindData = this.getView().getModel().getProperty(oPath);
+			var sNoticeNo = oBindData.NOTICENO;
 			
-			var akeyValue = [
-				{ key : "Noticeno", value : sNoticeNo },
-				{ key : "Replyno",  value : sReplyNo },
-			]
 			
-			var aNoticeRead = CommonUtil.getGatewayDeleteData("/ZUI5TPL_NOTICESet", akeyValue);
-			if(aNoticeRead.EType == "E")
-				return;
 		}
 	
 	});
