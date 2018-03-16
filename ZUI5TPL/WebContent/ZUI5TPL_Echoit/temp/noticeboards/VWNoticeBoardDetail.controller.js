@@ -49,8 +49,19 @@ sap.ui.define([
 			
 			// 공지사항 정보를 구한다.
 			var aNoticeInfo = JSON.parse(aNoticeRead.OutputJson);
-
-			var JsonModel = new JSONModel({ notice : aNoticeInfo[0]});
+			
+			// 공지사항 (header) 정보와 댓글 (Item) 정보를 나눈다.
+			var aNotice = [];
+			var aReply = [];
+			for(var i = 0; i < aNoticeInfo.length; i++){
+				if(aNoticeInfo[i].REPLYNO == "0000000000")
+					aNotice.push(aNoticeInfo[i]);
+				else
+					aReply.push(aNoticeInfo[i]);	
+			}
+			aNotice[0].FeedItems = aReply;
+			
+			var JsonModel = new JSONModel({ notice : aNotice[0]});
 			this.getView().setModel(JsonModel);
 		},
 		
@@ -81,15 +92,12 @@ sap.ui.define([
 			
 			var gwParam = {
 					ZInput : JSON.stringify(oReplyInfo),
-					ZFlag : "NOTICE_REPLY",
+					IReply : "X",
 					IOperation : "C"
 			}
 			
 			var result = CommonUtil.setGatewayCreateData("/ZUI5TPL_NOTICESet", gwParam);
 			MessageToast.show(result.EMsg);
-			
-			
-			
 			
 		/*	
 			var oEntry = {

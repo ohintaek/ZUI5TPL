@@ -69,9 +69,9 @@ sap.ui.define([
 				
 				// Gateway를 호출하기 위한 Parameter
 				var gwParam = {
-						ZInput : JSON.stringify(noticeInfo),
-						ZFlag : "NOTICE_CREATE",
-						IOperation : "C"
+						ZInput 		: JSON.stringify(noticeInfo),
+						INotice		: "X",
+						IOperation 	: "C"
 				}
 				
 				var result = CommonUtil.setGatewayCreateData("/ZUI5TPL_NOTICESet", gwParam);
@@ -95,6 +95,7 @@ sap.ui.define([
 			
 			var oFilter = [
 				new Filter("ZFlag", FilterOperator.EQ, "GETNOTICEINFO"),
+				new Filter("INotice", FilterOperator.EQ, "X"),
 				new Filter("IOperation", FilterOperator.EQ, "Q")
 			];
 			

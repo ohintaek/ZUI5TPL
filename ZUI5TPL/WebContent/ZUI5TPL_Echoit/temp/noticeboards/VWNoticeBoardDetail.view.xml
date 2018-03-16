@@ -67,29 +67,38 @@
 												mode="Delete"
 												delete="onPressNoticeListDelete"
 												showSeparators="Inner"
-												items="{/FeedItems}">
+												items="{FeedItems}">
 												<FeedListItem
 													id="NoticeFeedListItem"
-													sender="{USERID}"
-													text="{FEEDINFO}"
+													sender="{REPLYUSERID}"
+													text="{REPLYCONTENT}"
+													timestamp="{REPLYCRTIME}"
+													maxCharacters="100"
+													iconActive="false"
+													senderActive="false"
+													convertLinksToAnchorTags="All"/>
+												<!-- <FeedListItem
+													id="NoticeFeedListItem"
+													sender="{REPLYUSERID}"
+													text="{REPLYCONTENT}"
 													timestamp="{
-														path : 'FEEDDATE',
+														path : 'REPLYCRTIME',
 														type: 'sap.ui.model.type.DateTime',
 														formatOptions : {
-															pattern: 'yyyy/MM/dd HH:mm:ss'
+															pattern: 'HH:mm:ss'
 														}
 													}"
 													maxCharacters="100"
 													iconActive="false"
 													senderActive="false"
 													convertLinksToAnchorTags="All">
-													<!--
+													
 														To use this, at least OpenUI5 library version 1.52 update is required.  
 													<actions>
 														<FeedListItemAction text="삭제" icon="sap-icon://delete" key="delete" press="onPressRepleDelete" />
 													</actions> 
-													-->
-												</FeedListItem>
+													
+												</FeedListItem> -->
 											</List>
 										</Panel>
 									</Panel>
