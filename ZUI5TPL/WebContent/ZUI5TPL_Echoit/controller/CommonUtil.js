@@ -94,6 +94,42 @@ sap.ui.define([
             });
 			
 			return sResult;
+		},
+		
+		// Function 설명
+		// - Gateway의  Delete Method를 호출하는 Function
+		/*****************************************************************
+		 * Parameter
+		 * - sEntitySetName : Gateway Entity Set Name
+		 * - aKeyValue : Array type [{ key of Entity Property : value }]
+		 *****************************************************************/
+		getGatewayDeleteData : function(sEntitySetName, aKeyValue){
+			
+			if(aKeyValue.length == 0)
+				return;
+			
+			var sEntitySetName;
+			for(var i = 0; i < aKeyValue.length; i++){
+				if(i == 0)
+					sEntitySetName += "(";
+				
+				sEntitySetName += aKeyValue[i].key + "="
+				sEntitySetName += "'" + aKeyValue[i].value + "'";
+				
+				if(i == (aKeyValue.length - 1))
+					sEntitySetName += ")";
+				else
+					sEntitySetName += ",";
+			}
+			var oModel = new ODataModel(this.getOdataServiceUrl(), true);
+			
+			var sResult;
+			oModel.remove(sEntitySetName, null, null, false,
+				function(oData, oResponse){ sResult = oData;},
+				function(oError){ MessageBox.error(oError.response.body, { title : "Error" });
+            });
+			
+			return sResult;
 		}
 	};
 		return CommonUtil;

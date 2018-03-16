@@ -38,10 +38,15 @@ sap.ui.define([
 		},
 		
 		getNoticeDetailInfo : function(noticeNumber) {
-			var akeyValue = [{
+		/*	var akeyValue = [{
 					key : "Noticeno",
 					value : noticeNumber
-			}]
+			}]*/
+			
+			var akeyValue = [
+				{ key : "Noticeno", value : noticeNumber },
+				{ key : "Replyno",  value : "" },
+			]
 			
 			var aNoticeRead = CommonUtil.getGatewayReadData("/ZUI5TPL_NOTICESet", akeyValue);
 			if(aNoticeRead.EType == "E")
@@ -61,8 +66,43 @@ sap.ui.define([
 			}
 			aNotice[0].FeedItems = aReply;
 			
-			var JsonModel = new JSONModel({ notice : aNotice[0]});
+			var JsonModel = new JSONModel({ notice : aNotice[0] });
 			this.getView().setModel(JsonModel);
+			
+			var FeedModel = new JSONModel({feed : aReply});
+			var oFeedList = this.getView().byId("NoticeFeedList");
+			oFeedList.setModel(FeedModel);
+			oFeedList.bindItems({
+				path : "/feed",
+				template : new sap.m.FeedListItem({
+					sender  : "{REPLYUSERID}",
+					text 	: "{REPLYCONTENT}",
+					maxCharacters : 100,
+					iconActive : false,
+					senderActive : false
+				}).bindProperty("timestamp", {
+					parts : [
+						{ path : 'REPLYCRDATE' },
+						{ path : 'REPLYCRTIME' }
+					],
+					formatter : function(date, time){
+						if(date == "" || time == "")
+							return;
+						var oDateFormat = sap.ui.core.format.DateFormat.getDateInstance({ pattern: "yyyyMMdd" });
+						var oDate = oDateFormat.parse(date);
+						var oDateFormatCnv = sap.ui.core.format.DateFormat.getDateInstance({ pattern: "yyyy-MM-dd" });
+						var sConvDate = oDateFormatCnv.format(oDate);
+						
+						var oTimeFormat = sap.ui.core.format.DateFormat.getDateInstance({ pattern: "HHmmdd" });
+						var oTime = oTimeFormat.parse(time);
+						var oTimeFormatCnv = sap.ui.core.format.DateFormat.getDateInstance({ pattern: "HH:mm:dd" });
+						var sConvTime = oTimeFormatCnv.format(oTime);
+						
+						return sConvDate + " " + sConvTime;
+					}
+				})
+			})
+			
 		},
 		
 		// 공지사항 상세화면의 댓글을 저장한다.
@@ -97,38 +137,31 @@ sap.ui.define([
 			}
 			
 			var result = CommonUtil.setGatewayCreateData("/ZUI5TPL_NOTICESet", gwParam);
-			MessageToast.show(result.EMsg);
+			if(result.EType == "E")
+				MessageToast.show(result.EMsg);
 			
-		/*	
-			var oEntry = {
-					USERID: "홍길동",
-					FEEDINFO: sValue,
-					FEEDDATE: oDate,
-				};
+			this.getNoticeDetailInfo(oNoticeData.NOTICENO);
+	
+		},
+		
+		onPressNoticeListDelete : function(oEvent){
+			var sBindingItemPath = oEvent.getParameter("listItem").getBindingContext().sPath;
 			
-			// update model
-			var oModel = this.getView().getModel();
-			var JModel = new JSONModel();
+			var oList = this.getView().byId("NoticeFeedList");
+			var oListModel = oList.getModel();
+			var oDelListData = oListModel.getProperty(sBindingItemPath);
 			
-			var oModelData = oModel.getData();
-			if(oModelData.FeedItems == null){
-				oModelData.FeedItems = [oEntry];
-			} else {
-				oModelData.FeedItems.unshift(oEntry);
-			}
-				oModel.refresh();
-				
-			var oNoticeData = oModelData.notice;
-			if(oNoticeData == null)
+			var sNoticeNo = oDelListData.NOTICENO;
+			var sReplyNo = oDelListData.REPLYNO;
+			
+			var akeyValue = [
+				{ key : "Noticeno", value : sNoticeNo },
+				{ key : "Replyno",  value : sReplyNo },
+			]
+			
+			var aNoticeRead = CommonUtil.getGatewayDeleteData("/ZUI5TPL_NOTICESet", akeyValue);
+			if(aNoticeRead.EType == "E")
 				return;
-			
-			var oReplyInfo = {
-					noticeno :  oNoticeData.NOTICENO,
-					feedcontent : sValue,
-					feedcrdate : sCurrentDate,
-					feedcrtime : sCurrentTime,
-			}	*/
-				
 		}
 	
 	});
