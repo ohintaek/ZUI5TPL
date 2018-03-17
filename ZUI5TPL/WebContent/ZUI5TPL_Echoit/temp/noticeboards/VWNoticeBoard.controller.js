@@ -43,7 +43,7 @@ sap.ui.define([
 		},
 		
 		// 공지사항 등록
-		onPressNoticeCreate : function(){
+		onPressNoticeSave : function(){
 			try {
 				var sNoticeWriter = this.getView().byId("noticeWriter").getValue();
 				if(sNoticeWriter == '')
@@ -91,8 +91,8 @@ sap.ui.define([
 			}
 		},
 		
+		// 공지사항의 전체 데이터를 테이블에 바인딩 한다.
 		getNoticeInfo : function(){
-			
 			var oFilter = [
 				new Filter("ZFlag", FilterOperator.EQ, "GETNOTICEINFO"),
 				new Filter("INotice", FilterOperator.EQ, "X"),
@@ -151,9 +151,8 @@ sap.ui.define([
 			});
 		},
 		
-		
+		// 선택한 공지사항의 상세 정보 페이지로 이동한다.
 		onPressItem : function(oEvent){
-			
 			var oTable = this.getView().byId("noticeTable");
 			var oTableModel = oTable.getModel();
 			var selectedContext = oEvent.getSource().getBindingContext();
@@ -162,7 +161,7 @@ sap.ui.define([
 			this.getRouter().navTo("VWNoticeBoardDetail", { noticeNumber: sNoticeNumber });
 		},
 		
-		// Search Field
+		// Search Field 
 		onSearchFieldLiveChange : function(oEvent){
 			var aFilters = [];
 			var sQuery = oEvent.getSource().getValue();

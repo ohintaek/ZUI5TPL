@@ -4,6 +4,7 @@
    xmlns:core="sap.ui.core"
    xmlns:html="http://www.w3.org/1999/xhtml">
   <Dialog
+  	id="noticeDialog"
   	title="공지사항 등록"
   	icon="sap-icon://notification-2"
   	class="sapUiContentPadding"
@@ -43,7 +44,7 @@
   		</l:VerticalLayout>
   	</content>
   	<buttons>
-  		<Button text="저장" press="onPressNoticeCreate"/>
+  		<Button text="저장" press="onPressNoticeSave"/>
   		<Button text="닫기" press="onPressDialogClose"/>
   	</buttons>
   </Dialog>

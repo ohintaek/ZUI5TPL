@@ -33,7 +33,7 @@
 				<ux:headerTitle>
 					<ux:ObjectPageHeader objectTitle="{NOTICETITLE}">
 						<ux:actions>
-							<ux:ObjectPageHeaderActionButton icon="sap-icon://edit" text="수정" />
+							<ux:ObjectPageHeaderActionButton icon="sap-icon://edit" text="수정" press="onPressNoticeUpdate"/>
 							<ux:ObjectPageHeaderActionButton icon="sap-icon://delete" text="삭제" press="onPressNoticeDelete"/>
 						</ux:actions>
 					</ux:ObjectPageHeader>

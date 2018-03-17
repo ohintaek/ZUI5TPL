@@ -174,11 +174,115 @@ sap.ui.define([
 		
 		// 공지사항을 삭제한다.
 		onPressNoticeDelete : function(oEvent){
-			var oSource = oEvent.getSource();
-			
+			try { 
+				var oPath = oEvent.getSource().getBindingContext().sPath;
+				var oBindData = this.getView().getModel().getProperty(oPath);
+				this.sNoticeNo = oBindData.NOTICENO;
+				
+				sap.m.MessageBox.confirm("정말 삭제 하시겠습니까?", {
+				    actions : [sap.m.MessageBox.Action.YES, sap.m.MessageBox.Action.NO],
+				    onClose: function(oAction){
+				    	 if(oAction == "YES"){
+				 			
+				    		 var gwParam = {
+				 					Noticeno : this.sNoticeNo,
+				 					INotice : "X",
+				 					IOperation : "D"
+				 			}
+				 			
+				 			var result = CommonUtil.setGatewayCreateData("/ZUI5TPL_NOTICESet", gwParam);
+				 			if(result.EType == "E")
+				 				throw MessageToast.show(result.EMsg);
+				    		 
+				 			this.getRouter().navTo("VWNoticeBoard");
+				 			
+				    	 } else {
+				    		 return;
+				    	 }
+				    }.bind(this)
+			    });
+				
+			} catch(ex) {
+				MessageToast.show(ex);
+			}
+		},
+		
+		onPressNoticeUpdate : function(oEvent){
 			var oPath = oEvent.getSource().getBindingContext().sPath;
 			var oBindData = this.getView().getModel().getProperty(oPath);
-			var sNoticeNo = oBindData.NOTICENO;
+			
+			this.sNoticeno = oBindData.NOTICENO;
+			
+			if(!this.oNoticeDialog){
+				this.oNoticeDialog = sap.ui.xmlfragment(this.getView().getId(),"com.ui5.echoit.temp.noticeboards.FRNoticeCreate", this);
+				this.getView().addDependent(this.oNoticeDialog);
+			}
+			
+			this.oNoticeDialog.setTitle("공지사항 수정");
+			this.oNoticeDialog.setIcon("sap-icon://edit");
+			this.getView().byId("noticeWriter").setValue(oBindData.CRUSERNAME);
+			this.getView().byId("writeDate").setValue(oBindData.CREATEDATE);
+			this.getView().byId("noticeTitle").setValue(oBindData.NOTICETITLE);
+			this.getView().byId("noticeArea").setValue(oBindData.NOTICECONTENTS);
+			this.getView().byId("globalNotice").setSelected(oBindData.NOTICEALL == "X" ? true : false);
+			this.getView().byId("importantNotice").setSelected(oBindData.IMPFLAG == "X" ? true : false);
+			
+			this.oNoticeDialog.open();
+		},
+		
+		// 공지사항 수정 팝업 닫기
+		onPressDialogClose : function(){
+			this.oNoticeDialog.close();
+		},
+		
+		// 수정된 공지사항을 저장한다.
+		onPressNoticeSave : function(){
+			var sNoticeWriter = this.getView().byId("noticeWriter").getValue();
+			if(sNoticeWriter == '')
+				throw "작성자를 입력하세요";
+			
+			var sNoticeTitle = this.getView().byId("noticeTitle").getValue();
+			if(sNoticeTitle == ''){
+				throw "제목을 입력하세요";
+			}
+			
+			var sNoticeContent = this.getView().byId("noticeArea").getValue();
+			var bImportantNotice = this.getView().byId("importantNotice").getSelected();
+			var bNoticeAll = this.getView().byId("globalNotice").getSelected();
+			var sNoticeNo = this.sNoticeno;
+			
+			// 공지사항 정보를 저장
+			var noticeInfo = {
+					noticeno		: sNoticeNo,
+					noticetitle 	: sNoticeTitle,
+					noticecontents 	: sNoticeContent,
+					impflag 		: (bImportantNotice ? "X" : ""),
+					noticeall 		: (bNoticeAll ? "X" : ""),
+					crusername 		: sNoticeWriter
+			}
+			
+			// Gateway를 호출하기 위한 Parameter
+			var gwParam = {
+					ZInput 		: JSON.stringify(noticeInfo),
+					INotice		: "X",
+					IOperation 	: "U"
+			}
+			
+			var result = CommonUtil.setGatewayCreateData("/ZUI5TPL_NOTICESet", gwParam);
+			if(result.EType == "E"){
+				MessageToast.show(result.EMsg);
+			} else {
+				// 공지사항 팝업창 닫기
+				if(this.oNoticeDialog){
+					this.oNoticeDialog.close();
+				}
+				
+				this.getRouter().navTo("VWNoticeBoard");
+			}
+			
+			
+//			// 공지사항 테이블에 바인딩
+//			this.getNoticeDetailInfo(sNoticeNo);
 			
 			
 		}
