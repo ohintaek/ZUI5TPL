@@ -144,7 +144,19 @@ sap.ui.define([
 						}),
 						new sap.m.Text({ text : "{NOTICETITLE}"}),
 						new sap.m.Text({ text : "{CRUSERNAME}"}),
-						new sap.m.Text({ text : "{CREATEDATE}"})
+//						new sap.m.Text({ text : "{CREATEDATE}"})
+						new sap.m.Text({ text : "{CREATEDATE}"}).bindProperty("text", {
+							parts: [
+								 {path : 'CREATEDATE'},
+								 {path : 'MODIFYDATE'}
+							],
+							formatter : function(CREATEDATE, MODIFYDATE){
+								if(MODIFYDATE == '00000000')
+									return CREATEDATE;
+								else
+									return MODIFYDATE;
+							}
+						})
 						
 					]
 				})

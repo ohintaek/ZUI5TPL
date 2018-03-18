@@ -65,6 +65,8 @@
 											<List
 												id="NoticeFeedList"
 												mode="Delete"
+												growing="true"
+												growingThreshold="4"
 												delete="onPressNoticeListDelete"
 												showSeparators="Inner"
 												items="{/FeedItems}">

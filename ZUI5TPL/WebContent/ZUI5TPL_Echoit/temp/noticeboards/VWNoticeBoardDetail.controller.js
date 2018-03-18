@@ -29,7 +29,7 @@ sap.ui.define([
 			this.onInitTabFocus();
 			Controller.prototype.onNavBack.apply(this);
 		},
-		
+		// 공지사항 상세정보 페이지의 첫번째 탭으로 포커스를 준다.
 		onInitTabFocus : function(){
 			var ObjPageSelection = this.getView().byId("NoticePageSection1");
 			
@@ -61,6 +61,14 @@ sap.ui.define([
 				else
 					aReply.push(aNoticeInfo[i]);	
 			}
+			
+			// 공지사항 댓글 정보를 날짜/시간 별로 내렴차순 정렬한다.
+			aReply.sort(function(a,b){
+				var date1 = a.REPLYCRDATE + a.REPLYCRTIME;
+				var date2 = b.REPLYCRDATE + b.REPLYCRTIME;
+				return date1 > date2 ? -1 : date1 < date2 ? 1 : 0; 
+			});
+
 			aNotice[0].FeedItems = aReply;
 			
 			var JsonModel = new JSONModel({ notice : aNotice[0] });
@@ -85,14 +93,16 @@ sap.ui.define([
 					formatter : function(date, time){
 						if(date == "" || time == "")
 							return;
+						// yyyyMMdd 형태의 날짜 형식을 yyyy-MM-dd 형태로 변환
 						var oDateFormat = sap.ui.core.format.DateFormat.getDateInstance({ pattern: "yyyyMMdd" });
 						var oDate = oDateFormat.parse(date);
 						var oDateFormatCnv = sap.ui.core.format.DateFormat.getDateInstance({ pattern: "yyyy-MM-dd" });
 						var sConvDate = oDateFormatCnv.format(oDate);
 						
-						var oTimeFormat = sap.ui.core.format.DateFormat.getDateInstance({ pattern: "HHmmdd" });
+						// HHmmss 형태의 시간 형식을 HH:mm:ss 형태로 변환
+						var oTimeFormat = sap.ui.core.format.DateFormat.getDateInstance({ pattern: "HHmmss" });
 						var oTime = oTimeFormat.parse(time);
-						var oTimeFormatCnv = sap.ui.core.format.DateFormat.getDateInstance({ pattern: "HH:mm:dd" });
+						var oTimeFormatCnv = sap.ui.core.format.DateFormat.getDateInstance({ pattern: "HH:mm:ss" });
 						var sConvTime = oTimeFormatCnv.format(oTime);
 						
 						return sConvDate + " " + sConvTime;
@@ -109,7 +119,7 @@ sap.ui.define([
 			var oDateFormat = sap.ui.core.format.DateFormat.getDateInstance({ pattern: "yyyyMMdd" });
 			var sCurrentDate = oDateFormat.format(new Date());
 		
-			var oTimeFormat = sap.ui.core.format.DateFormat.getDateInstance({ pattern: "HHmmdd" });
+			var oTimeFormat = sap.ui.core.format.DateFormat.getDateInstance({ pattern: "HHmmss" });
 			var sCurrentTime = oTimeFormat.format(new Date());
 			
 			var oModel = this.getView().getModel();
@@ -121,10 +131,10 @@ sap.ui.define([
 			var sValue = oEvent.getParameter("value");
 		
 			var oReplyInfo = {
-					noticeno :  oNoticeData.NOTICENO,
+					noticeno 	 :  oNoticeData.NOTICENO,
 					replycontent : sValue,
-					replycrdate : sCurrentDate,
-					replycrtime : sCurrentTime
+					replycrdate  : sCurrentDate,
+					replycrtime  : sCurrentTime
 			}
 			
 			var gwParam = {
@@ -207,6 +217,7 @@ sap.ui.define([
 			}
 		},
 		
+		// 공지사항 정보를 수정한다.
 		onPressNoticeUpdate : function(oEvent){
 			var oPath = oEvent.getSource().getBindingContext().sPath;
 			var oBindData = this.getView().getModel().getProperty(oPath);
@@ -249,6 +260,7 @@ sap.ui.define([
 			var sNoticeContent = this.getView().byId("noticeArea").getValue();
 			var bImportantNotice = this.getView().byId("importantNotice").getSelected();
 			var bNoticeAll = this.getView().byId("globalNotice").getSelected();
+			var sNoticeCreateDate = this.getView().byId("writeDate").getValue();
 			var sNoticeNo = this.sNoticeno;
 			
 			// 공지사항 정보를 저장
@@ -258,7 +270,8 @@ sap.ui.define([
 					noticecontents 	: sNoticeContent,
 					impflag 		: (bImportantNotice ? "X" : ""),
 					noticeall 		: (bNoticeAll ? "X" : ""),
-					crusername 		: sNoticeWriter
+					crusername 		: sNoticeWriter,
+					createdate		: sNoticeCreateDate
 			}
 			
 			// Gateway를 호출하기 위한 Parameter
@@ -279,11 +292,6 @@ sap.ui.define([
 				
 				this.getRouter().navTo("VWNoticeBoard");
 			}
-			
-			
-//			// 공지사항 테이블에 바인딩
-//			this.getNoticeDetailInfo(sNoticeNo);
-			
 			
 		}
 	
