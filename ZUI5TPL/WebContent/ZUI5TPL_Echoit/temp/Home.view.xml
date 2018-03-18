@@ -4,10 +4,20 @@
 	xmlns:mvc="sap.ui.core.mvc">
 	<Page
 		title="UI5 Main Temp"
-		showHeader="true"
+		showHeader="false"
 		class="sapUiContentPadding"
 		width="auto"
 		showNavButton="false"
 		navButtonPress="onNavBack">
+	
+		<StandardTile
+			id="noticeTile"
+			icon="sap-icon://notification-2"
+			info="Information"
+			number="11"
+			type="Monitor"
+			title="공지사항"
+			press="onPressNotice"/>
+	
 	</Page>
 </mvc:View>
