@@ -50,6 +50,25 @@
 						</ux:subSections>
 					</ux:ObjectPageSection>
 					
+					<ux:ObjectPageSection title="첨부파일">
+						<ux:subSections>
+							<ux:ObjectPageSubSection title = "첨부파일">
+								<ux:blocks>
+								<UploadCollection
+									id="Fileup"
+									sameFilenameAllowed="true"
+									instantUpload="false"
+									multiple="true"
+									showSeparators="Inner"
+									change="onChange"
+									beforeUploadStarts="onBeforeUploadStarts"
+									uploadComplete="onUploadComplete"
+									fileDeleted="onFileDeleted"/>	
+								</ux:blocks>
+							</ux:ObjectPageSubSection>
+						</ux:subSections>
+					</ux:ObjectPageSection>
+					
 					<ux:ObjectPageSection title="댓글">
 						<ux:subSections>
 							<ux:ObjectPageSubSection title = "댓글">
@@ -71,50 +90,9 @@
 												showSeparators="Inner"
 												items="{/FeedItems}">
 												<FeedListItem/>
-												<!-- <FeedListItem
-													id="NoticeFeedListItem"
-													sender="{REPLYUSERID}"
-													text="{REPLYCONTENT}"
-													timestamp="{REPLYCRTIME}"
-													maxCharacters="100"
-													iconActive="false"
-													senderActive="false"
-													convertLinksToAnchorTags="All"/> -->
-												<!-- <FeedListItem
-													id="NoticeFeedListItem"
-													sender="{REPLYUSERID}"
-													text="{REPLYCONTENT}"
-													timestamp="{
-														path : 'REPLYCRTIME',
-														type: 'sap.ui.model.type.DateTime',
-														formatOptions : {
-															pattern: 'HH:mm:ss'
-														}
-													}"
-													maxCharacters="100"
-													iconActive="false"
-													senderActive="false"
-													convertLinksToAnchorTags="All">
-													
-														To use this, at least OpenUI5 library version 1.52 update is required.  
-													<actions>
-														<FeedListItemAction text="삭제" icon="sap-icon://delete" key="delete" press="onPressRepleDelete" />
-													</actions> 
-													
-												</FeedListItem> -->
 											</List>
 										</Panel>
 									</Panel>
-								</ux:blocks>
-							</ux:ObjectPageSubSection>
-						</ux:subSections>
-					</ux:ObjectPageSection>
-					
-					<ux:ObjectPageSection title="첨부파일">
-						<ux:subSections>
-							<ux:ObjectPageSubSection title = "첨부파일">
-								<ux:blocks>
-									<Text text="첨부파일 내용.."/>
 								</ux:blocks>
 							</ux:ObjectPageSubSection>
 						</ux:subSections>

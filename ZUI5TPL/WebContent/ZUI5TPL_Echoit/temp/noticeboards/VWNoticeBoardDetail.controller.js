@@ -293,8 +293,27 @@ sap.ui.define([
 				this.getRouter().navTo("VWNoticeBoard");
 			}
 			
+		},
+		
+		
+		/*********************	
+		 *  파일 첨부 Function *
+		 *********************/
+		onChange : function(oEvent){
+			MessageToast.show("change event !!");
+		},
+		
+		onBeforeUploadStarts : function(oEvent){
+			MessageToast.show('before upload start !!')
+		},
+		
+		onUploadComplete : function(oEvent){
+			MessageToast.show('Upload Complete!!');
+		},
+		
+		onFileDeleted : function(oEvent){
+			MessageToast.show('FileDeleted Event!!');
 		}
-	
 	});
 
 });
