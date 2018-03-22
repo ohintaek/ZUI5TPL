@@ -1,20 +1,25 @@
 sap.ui.define([
 	"sap/ui/model/odata/ODataModel",
-	"sap/m/MessageBox"
-	], function (ODataModel, MessageBox) {
+	"sap/m/MessageBox",
+	"sap/m/MessageToast"
+	], function (ODataModel, MessageBox, MessageToast) {
 		"use strict";
 
 		var CommonUtil = {
-			// Service Url for gateway connection.
-			getOdataServiceUrl : function() {
-			  //for local testing prefix with proxy
-			  //if you and your team use a special host name or IP like 127.0.0.1 for localhost please adapt the if statement below 
-			  var sServiceUrl = "http/ECHOSAP1.echoit.co.kr:8010" + jQuery.sap.getModulePath("odataservice", "/");
-			  if (window.location.hostname == "localhost") {
-			      return "proxy/" + sServiceUrl;
-			  } else {
-			      return sServiceUrl;
-			  }
+		
+		/*****************************************************************
+		 * Gateway와 연결하기 위한 URL을 리턴한다.
+		 *****************************************************************/
+		// Service Url for gateway connection.
+		getOdataServiceUrl : function() {
+			//for local testing prefix with proxy
+			//if you and your team use a special host name or IP like 127.0.0.1 for localhost please adapt the if statement below 
+			var sServiceUrl = "http/ECHOSAP1.echoit.co.kr:8010" + jQuery.sap.getModulePath("odataservice", "/");
+			if (window.location.hostname == "localhost") {
+			    return "proxy/" + sServiceUrl;
+			} else {
+			    return sServiceUrl;
+			}
 		},
 		
 		// - Gateway의 Query (Query)를 호출하는 Function
@@ -130,6 +135,69 @@ sap.ui.define([
             });
 			
 			return sResult;
+		},
+		
+		// Message Toast common function
+		showMessage : function(Message){
+			MessageToast.show(Message);
+		},
+		
+		// Function 설명
+		// - sap.m.uploadcollection (파일 첨부)
+		/*****************************************************************
+		 * Parameter
+		 * oEvent : UploadCollection Event Object
+		 *****************************************************************/
+		onChange : function(oEvent) {
+			try {
+				var oModel = new ODataModel(this.getOdataServiceUrl(), false);
+				
+				var oFileUpload = oEvent.getSource();
+					oFileUpload.setUploadUrl(oModel.sServiceUrl + "/ZUI5TPL_FILESet");
+				
+				oModel.refreshSecurityToken();
+				
+				var oHeader = new sap.m.UploadCollectionParameter({
+					name : 'x-csrf-token',
+					value : oModel.getHeaders()['x-csrf-token']
+				});
+				
+				oFileUpload.addHeaderParameter(oHeader);
+				
+			} catch(ex) {
+				this.showMessage(ex);
+			}
+		},
+		
+		onBeforeUploadStarts : function(oEvent) {
+			try {
+				 
+				var oFileInfo = {
+						doknm : encodeURI(oEvent.getParameters("fileName").fileName),
+						dokar : "ZUI",
+						doktl : "000",
+						dokvr : "00"
+				}
+				
+				var oHeader = new sap.m.UploadCollectionParameter({
+					name : 'slug',
+					value : JSON.stringify(oFileInfo)
+				});
+				
+				var oModel = new ODataModel(this.getOdataServiceUrl(), false);
+				
+				var oFileUpload = oEvent.getSource();
+					oFileUpload.setUploadUrl(oModel.sServiceUrl + "/ZUI5TPL_FILESet");
+					oFileUpload.addHeaderParameter(oHeader);
+				
+					
+			} catch(ex) {
+				this.showMessage(ex);
+			}
+		},
+		
+		onUploadComplete : function(oEvent){
+			var oFileUpload = oEvent.getSource();
 		}
 	};
 		return CommonUtil;

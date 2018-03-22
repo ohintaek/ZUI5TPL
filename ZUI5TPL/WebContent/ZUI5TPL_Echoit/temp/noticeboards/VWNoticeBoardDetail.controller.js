@@ -5,9 +5,8 @@ sap.ui.define([
 	"sap/ui/model/FilterOperator",
 	"sap/ui/model/json/JSONModel",
 	"sap/ui/core/routing/History",
-	"sap/m/MessageToast",
 	"sap/ui/core/format/DateFormat"
-], function (Controller, CommonUtil, Filter, FilterOperator, JSONModel, History, MessageToast, DateFormat) {
+], function (Controller, CommonUtil, Filter, FilterOperator, JSONModel, History, DateFormat) {
 	"use strict";
 
 	return Controller.extend("com.ui5.echoit.temp.noticeboards.VWNoticeBoardDetail", {
@@ -145,7 +144,7 @@ sap.ui.define([
 			
 			var result = CommonUtil.setGatewayCreateData("/ZUI5TPL_NOTICESet", gwParam);
 			if(result.EType == "E")
-				MessageToast.show(result.EMsg);
+				CommonUtil.showMessage(result.EMsg);
 			
 			this.getNoticeDetailInfo(oNoticeData.NOTICENO);
 	
@@ -202,7 +201,7 @@ sap.ui.define([
 				 			
 				 			var result = CommonUtil.setGatewayCreateData("/ZUI5TPL_NOTICESet", gwParam);
 				 			if(result.EType == "E")
-				 				throw MessageToast.show(result.EMsg);
+				 				throw CommonUtil.showMessage(result.EMsg);
 				    		 
 				 			this.getRouter().navTo("VWNoticeBoard");
 				 			
@@ -213,7 +212,7 @@ sap.ui.define([
 			    });
 				
 			} catch(ex) {
-				MessageToast.show(ex);
+				CommonUtil.showMessage(ex);
 			}
 		},
 		
@@ -283,7 +282,7 @@ sap.ui.define([
 			
 			var result = CommonUtil.setGatewayCreateData("/ZUI5TPL_NOTICESet", gwParam);
 			if(result.EType == "E"){
-				MessageToast.show(result.EMsg);
+				CommonUtil.showMessage(result.EMsg);
 			} else {
 				// 공지사항 팝업창 닫기
 				if(this.oNoticeDialog){
@@ -300,19 +299,19 @@ sap.ui.define([
 		 *  파일 첨부 Function *
 		 *********************/
 		onChange : function(oEvent){
-			MessageToast.show("change event !!");
+			CommonUtil.onChange(oEvent);
 		},
 		
 		onBeforeUploadStarts : function(oEvent){
-			MessageToast.show('before upload start !!')
+			CommonUtil.onBeforeUploadStarts(oEvent);
 		},
 		
 		onUploadComplete : function(oEvent){
-			MessageToast.show('Upload Complete!!');
+			CommonUtil.onUploadComplete(oEvent);
 		},
 		
 		onFileDeleted : function(oEvent){
-			MessageToast.show('FileDeleted Event!!');
+			CommonUtil.showMessage('FileDeleted Event!!');
 		}
 	});
 

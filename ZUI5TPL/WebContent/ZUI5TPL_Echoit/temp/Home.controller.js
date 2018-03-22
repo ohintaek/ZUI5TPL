@@ -3,9 +3,8 @@ sap.ui.define([
 	"com/ui5/echoit/controller/CommonUtil",
 	"sap/ui/core/routing/History",
 	"sap/ui/model/Filter",
-	"sap/ui/model/FilterOperator",
-	"sap/m/MessageToast"
-], function (Controller, CommonUtil, History, Filter, FilterOperator, MessageToast) {
+	"sap/ui/model/FilterOperator"
+], function (Controller, CommonUtil, History, Filter, FilterOperator) {
 	"use strict";
 
 	return Controller.extend("com.ui5.echoit.temp.Home", {

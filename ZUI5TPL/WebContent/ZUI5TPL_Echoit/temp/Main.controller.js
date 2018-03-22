@@ -1,8 +1,7 @@
 sap.ui.define([
 	"com/ui5/echoit/controller/BaseController",
-	"sap/ui/core/routing/History",
-	"sap/m/MessageToast"
-], function (Controller, History, MessageToast) {
+	"sap/ui/core/routing/History"
+], function (Controller, History) {
 	"use strict";
 
 	return Controller.extend("com.ui5.echoit.temp.Main", {

@@ -57,7 +57,7 @@
 								<UploadCollection
 									id="Fileup"
 									sameFilenameAllowed="true"
-									instantUpload="false"
+									instantUpload="true"
 									multiple="true"
 									showSeparators="Inner"
 									change="onChange"

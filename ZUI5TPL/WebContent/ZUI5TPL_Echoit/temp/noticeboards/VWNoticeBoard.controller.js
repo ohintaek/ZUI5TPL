@@ -4,9 +4,8 @@ sap.ui.define([
 	"sap/ui/model/Filter",
 	"sap/ui/model/FilterOperator",
 	"sap/ui/model/json/JSONModel",
-	"sap/ui/core/routing/History",
-	"sap/m/MessageToast"
-], function (Controller, CommonUtil, Filter, FilterOperator, JSONModel, History, MessageToast) {
+	"sap/ui/core/routing/History"
+], function (Controller, CommonUtil, Filter, FilterOperator, JSONModel, History) {
 	"use strict";
 
 	return Controller.extend("com.ui5.echoit.temp.noticeboards.VWNoticeBoard", {
@@ -75,7 +74,7 @@ sap.ui.define([
 				}
 				
 				var result = CommonUtil.setGatewayCreateData("/ZUI5TPL_NOTICESet", gwParam);
-				MessageToast.show(result.EMsg);
+				CommonUtil.showMessage(result.EMsg);
 				
 				// 공지사항 팝업창 닫기
 				if(this.oNoticeDialog){
@@ -87,7 +86,7 @@ sap.ui.define([
 				
 			} catch(ex) {
 				
-				MessageToast.show(ex);
+				CommonUtil.showMessage(ex);
 			}
 		},
 		
