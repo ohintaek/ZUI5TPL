@@ -176,20 +176,22 @@ sap.ui.define([
 						doknm : encodeURI(oEvent.getParameters("fileName").fileName),
 						dokar : "ZUI",
 						doktl : "000",
-						dokvr : "00"
+						dokvr : "00" 
 				}
 				
+
+				var slugValue = JSON.stringify(oFileInfo);
 				var oHeader = new sap.m.UploadCollectionParameter({
-					name : 'slug',
-					value : JSON.stringify(oFileInfo)
+					name : "slug",
+					value : encodeURIComponent(slugValue)
 				});
-				
+
 				var oModel = new ODataModel(this.getOdataServiceUrl(), false);
 				
 				var oFileUpload = oEvent.getSource();
 					oFileUpload.setUploadUrl(oModel.sServiceUrl + "/ZUI5TPL_FILESet");
-					oFileUpload.addHeaderParameter(oHeader);
 				
+				oEvent.getParameters().addHeaderParameter(oHeader);
 					
 			} catch(ex) {
 				this.showMessage(ex);
