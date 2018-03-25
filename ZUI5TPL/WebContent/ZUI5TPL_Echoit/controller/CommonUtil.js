@@ -176,7 +176,7 @@ sap.ui.define([
 						doknm : encodeURI(oEvent.getParameters("fileName").fileName),
 						dokar : "ZUI",
 						doktl : "000",
-						dokvr : "00" 
+						dokvr : "-" 
 				}
 				
 
