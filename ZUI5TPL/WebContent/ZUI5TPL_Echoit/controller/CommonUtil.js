@@ -1,8 +1,9 @@
 sap.ui.define([
 	"sap/ui/model/odata/ODataModel",
+	"sap/ui/model/json/JSONModel",
 	"sap/m/MessageBox",
 	"sap/m/MessageToast"
-	], function (ODataModel, MessageBox, MessageToast) {
+	], function (ODataModel, JSONModel, MessageBox, MessageToast) {
 		"use strict";
 
 		var CommonUtil = {
@@ -200,6 +201,45 @@ sap.ui.define([
 		
 		onUploadComplete : function(oEvent){
 			var oFileUpload = oEvent.getSource();
+			
+			var sResponse = oEvent.getParameters().getParameter("response");
+			var oDocInfo = this.getResponse(sResponse);
+			
+			var aFiles = [];
+				aFiles.push(oDocInfo);
+			
+			var oFileModel = new JSONModel();
+				oFileModel.setData({ files : aFiles });
+				
+				oFileUpload.setModel(oFileModel);
+				oFileUpload.bindItems({
+					path : "/files",
+					template :
+						new sap.m.UploadCollectionItem({
+							documentId : "{DOKNR}",
+							fileName   : "{DOKNM}",
+							url		   : "{URL}",
+							visibleEdit: false,
+							attributes : [
+								new sap.m.ObjectAttribute({
+									title : "File Size",
+									text  : "{DOSIZ} bytes"
+								})
+							]
+						})
+				})
+			
+		},
+		
+		getResponse : function(sResponse){
+			var aResponse = sResponse.split("{")[1];
+			var sDoc = "{" + aResponse;
+			var aDocInfo = JSON.parse(sDoc);
+			
+			var sUrl = sResponse.split(")")[0];
+			aDocInfo.URL = sUrl + ")/$value";
+			
+			return aDocInfo;
 		}
 	};
 		return CommonUtil;
