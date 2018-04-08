@@ -1,12 +1,13 @@
 sap.ui.define([
 	"com/ui5/echoit/controller/BaseController",
 	"com/ui5/echoit/controller/CommonUtil",
+	"sap/ui/model/odata/ODataModel",
 	"sap/ui/model/Filter",
 	"sap/ui/model/FilterOperator",
 	"sap/ui/model/json/JSONModel",
 	"sap/ui/core/routing/History",
 	"sap/ui/core/format/DateFormat"
-], function (Controller, CommonUtil, Filter, FilterOperator, JSONModel, History, DateFormat) {
+], function (Controller, CommonUtil, ODataModel, Filter, FilterOperator, JSONModel, History, DateFormat) {
 	"use strict";
 
 	return Controller.extend("com.ui5.echoit.temp.noticeboards.VWNoticeBoardDetail", {
@@ -20,8 +21,8 @@ sap.ui.define([
 			this.onInitTabFocus();
 			
 			var sRouteParam = oEvent.getParameter("arguments");
-			var noticeNumber = sRouteParam.noticeNumber;
-			this.getNoticeDetailInfo(noticeNumber);
+			this.noticeNumber = sRouteParam.noticeNumber;
+			this.getNoticeDetailInfo(this.noticeNumber);
 		},
 
 		onNavBack: function() {
@@ -294,25 +295,105 @@ sap.ui.define([
 			
 		},
 		
-		
-		/*********************	
-		 *  파일 첨부 Function *
-		 *********************/
-		onChange : function(oEvent){
-			CommonUtil.onChange(oEvent);
+		// Function 설명
+		// - sap.m.uploadcollection (파일 첨부)
+		/*****************************************************************
+		 * Parameter
+		 * oEvent : UploadCollection Event Object
+		 *****************************************************************/
+		onChange : function(oEvent) {
+			try {
+				var oModel = new ODataModel(this.getOdataServiceUrl(), false);
+				
+				var oFileUpload = oEvent.getSource();
+					oFileUpload.setUploadUrl(oModel.sServiceUrl + "/ZUI5TPL_FILESet");
+				
+				oModel.refreshSecurityToken();
+				
+				var oHeader = new sap.m.UploadCollectionParameter({
+					name : 'x-csrf-token',
+					value : oModel.getHeaders()['x-csrf-token']
+				});
+				
+				oFileUpload.addHeaderParameter(oHeader);
+				
+			} catch(ex) {
+				CommonUtil.showMessage(ex);
+			}
 		},
 		
-		onBeforeUploadStarts : function(oEvent){
-			CommonUtil.onBeforeUploadStarts(oEvent);
+		onBeforeUploadStarts : function(oEvent) {
+			try {
+				 
+				var oFileInfo = {
+						doknm : encodeURI(oEvent.getParameters("fileName").fileName),
+						dokar : "ZUI",
+						doktl : "000",
+						dokvr : "-",
+						noticeno : this.noticeNumber
+				}
+				
+				var slugValue = JSON.stringify(oFileInfo);
+				var oHeader = new sap.m.UploadCollectionParameter({
+					name : "slug",
+					value : encodeURIComponent(slugValue)
+				});
+
+				var oModel = new ODataModel(this.getOdataServiceUrl(), false);
+				
+				var oFileUpload = oEvent.getSource();
+					oFileUpload.setUploadUrl(oModel.sServiceUrl + "/ZUI5TPL_FILESet");
+				
+				oEvent.getParameters().addHeaderParameter(oHeader);
+					
+			} catch(ex) {
+				CommonUtil.showMessage(ex);
+			}
 		},
 		
 		onUploadComplete : function(oEvent){
-			CommonUtil.onUploadComplete(oEvent);
+			var oFileUpload = oEvent.getSource();
+			
+			var sResponse = oEvent.getParameters().getParameter("response");
+			var oDocInfo = this.getResponse(sResponse);
+			
+			var aFiles = [];
+				aFiles.push(oDocInfo);
+			
+			var oFileModel = new JSONModel();
+				oFileModel.setData({ files : aFiles });
+				
+				oFileUpload.setModel(oFileModel);
+				oFileUpload.bindItems({
+					path : "/files",
+					template :
+						new sap.m.UploadCollectionItem({
+							documentId : "{DOKNR}",
+							fileName   : "{DOKNM}",
+							url		   : "{URL}",
+							visibleEdit: false,
+							attributes : [
+								new sap.m.ObjectAttribute({
+									title : "File Size",
+									text  : "{DOSIZ} bytes"
+								})
+							]
+						})
+				})
+			
 		},
 		
-		onFileDeleted : function(oEvent){
-			CommonUtil.showMessage('FileDeleted Event!!');
+		getResponse : function(sResponse){
+			var aResponse = sResponse.split("{")[1];
+			var sDoc = "{" + aResponse;
+			var aDocInfo = JSON.parse(sDoc);
+			
+			var sUrl = sResponse.split(")")[0];
+			aDocInfo.URL = sUrl + ")/$value";
+			
+			return aDocInfo;
 		}
+	
 	});
 
 });
