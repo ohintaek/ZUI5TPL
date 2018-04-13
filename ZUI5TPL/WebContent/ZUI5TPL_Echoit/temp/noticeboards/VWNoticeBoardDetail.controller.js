@@ -49,8 +49,9 @@ sap.ui.define([
 			if(aNoticeRead.EType == "E")
 				return;
 			
-			// 공지사항 정보를 구한다.
+			// 공지사항과 첨부파일 정보를 구한다.
 			var aNoticeInfo = JSON.parse(aNoticeRead.OutputJson);
+			var aAttFiles = JSON.parse(aNoticeRead.FilesJson);
 			
 			// 공지사항 (header) 정보와 댓글 (Item) 정보를 나눈다.
 			var aNotice = [];
@@ -71,7 +72,11 @@ sap.ui.define([
 
 			aNotice[0].FeedItems = aReply;
 			
-			var JsonModel = new JSONModel({ notice : aNotice[0] });
+			var JsonModel = new JSONModel({ 
+				notice : aNotice[0],
+				files : aAttFiles
+				
+			});
 			this.getView().setModel(JsonModel);
 			
 			var FeedModel = new JSONModel({feed : aReply});
@@ -108,6 +113,25 @@ sap.ui.define([
 						return sConvDate + " " + sConvTime;
 					}
 				})
+			})
+			
+			var oFileUpload = this.getView().byId("Fileup");
+			oFileUpload.setModel(JsonModel);
+			oFileUpload.bindItems({
+				path : "/files",
+				template :
+					new sap.m.UploadCollectionItem({
+						documentId : "{DOKNR}",
+						fileName   : "{DOKNM}",
+						url		   : "{URL}",
+						visibleEdit: false,
+						attributes : [
+							new sap.m.ObjectAttribute({
+								title : "File Size",
+								text  : "{DOSIZ} bytes"
+							})
+						]
+					})
 			})
 			
 		},
@@ -324,13 +348,13 @@ sap.ui.define([
 		
 		onBeforeUploadStarts : function(oEvent) {
 			try {
-				 
 				var oFileInfo = {
 						doknm : encodeURI(oEvent.getParameters("fileName").fileName),
 						dokar : "ZUI",
 						doktl : "000",
 						dokvr : "-",
-						noticeno : this.noticeNumber
+						dokey :  this.noticeNumber,		// 공지사항 번호
+						entry : "NOTICE"
 				}
 				
 				var slugValue = JSON.stringify(oFileInfo);
@@ -356,7 +380,8 @@ sap.ui.define([
 			
 			var sResponse = oEvent.getParameters().getParameter("response");
 			var oDocInfo = this.getResponse(sResponse);
-			
+				CommonUtil.showMessage(oDocInfo.MSGDT);
+				
 			var aFiles = [];
 				aFiles.push(oDocInfo);
 			
