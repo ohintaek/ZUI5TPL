@@ -40,7 +40,10 @@
 		},
 		"resources": {
 			"css": [
-				{"uri": "../css/style.css"}
+				{ "uri": "../css/style.css" }
+			],
+			"js" : [
+				{ "uri": "../js/test.js" }
 			]
 		},
 		"routing": {
