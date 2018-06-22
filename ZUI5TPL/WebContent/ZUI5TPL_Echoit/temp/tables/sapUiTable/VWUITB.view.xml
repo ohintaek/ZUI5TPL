@@ -2,13 +2,57 @@
 	controllerName="com.ui5.echoit.temp.tables.sapUiTable.VWUITB"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc">
-<Page
-	title="sap.ui.Table"
-	showHeader="true"
-	class="sapUiContentPadding"
-	width="auto"
-	showNavButton="true"
-	navButtonPress="onNavBack">
-</Page>
-
+	<Page
+		title="sap.ui.Table"
+		showHeader="true"
+		class="sapUiContentPadding"
+		width="auto"
+		showNavButton="true"
+		navButtonPress="onNavBack">
+		<content>
+			<Panel 
+				width="100%"
+				height="auto"
+				expandAnimation="true"
+				expandable="true"
+				expended="true"
+				backgroundDesign="Translucent">
+				<headerToolbar>
+					<Toolbar>
+						<Title text="검색조건" level="H2"/>
+					</Toolbar>
+				</headerToolbar>
+				<content>
+					<VBox wrap="Wrap">
+						<items>
+							<HBox>
+								<items>
+									<Text Text="Plant1"/>
+									<Input id="plant1"/>
+								</items>	
+							</HBox>
+							<HBox alignItems="Center">
+								<items>
+									<Label Text="Plant2"/>
+									<Input id="plant2"/>
+								</items>	
+							</HBox>
+							<HBox alignItems="Center">
+								<items>
+									<Label Text="Plant3"/>
+									<Input id="plant3"/>
+								</items>	
+							</HBox>
+							<HBox alignItems="Center">
+								<items>
+									<Label Text="Plant4"/>
+									<Input id="plant4"/>
+								</items>	
+							</HBox>
+						</items>
+					</VBox>
+				</content>
+			</Panel>
+		</content>
+	</Page>
 </mvc:View>
