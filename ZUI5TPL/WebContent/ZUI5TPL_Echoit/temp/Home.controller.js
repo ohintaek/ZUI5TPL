@@ -24,7 +24,7 @@ sap.ui.define([
 		// 공지사항의 총 갯수를 구한다.
 		setTileContentInit : function(){
 			var oFilter = [
-				new Filter("ZFlag", sap.ui.model.FilterOperator.EQ, "NOTICECOUNT")
+				new Filter("ZFlag", sap.ui.model.FilterOperator.EQ, 'NOTICECOUNT')
 			];
 			
 			var selectResult = CommonUtil.getGatewayQueryData(oFilter, "/ZUI5TPL_NOTICESet");
