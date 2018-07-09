@@ -63,7 +63,12 @@
 				{"name": "VWMTB", 		 		"target": "VWMTB", 				 "pattern": "tables/sapMTable"},
 				{"name": "VWUITB", 		 		"target": "VWUITB", 			 "pattern": "tables/sapUiTable"},
 				{"name": "VWNoticeBoard", 		"target": "VWNoticeBoard", 		 "pattern": "noticeboard"},
-				{"name": "VWNoticeBoardDetail", "target": "VWNoticeBoardDetail", "pattern": "noticeboard/{noticeNumber}"}
+				{"name": "VWNoticeBoardDetail", "target": "VWNoticeBoardDetail", "pattern": "noticeboard/{noticeNumber}"},
+				
+				{"name": "VWTile1", 		"target": "VWTile1", 		 "pattern": "tiles/VWTile1"},
+				{"name": "VWTile2", 		"target": "VWTile2", 		 "pattern": "tiles/VWTile2"},
+				{"name": "VWTile3", 		"target": "VWTile3", 		 "pattern": "tiles/VWTile3"},
+				{"name": "VWTile4", 		"target": "VWTile4", 		 "pattern": "tiles/VWTile4"}
 				
 			],
 			"targets": {
@@ -72,6 +77,11 @@
 				"VWUITB"				: {"viewName": "tables/sapUiTable/VWUITB"},
 				"VWNoticeBoard"			: {"viewName": "noticeboards/VWNoticeBoard"},
 				"VWNoticeBoardDetail"	: {"viewName": "noticeboards/VWNoticeBoardDetail"},
+				
+				"VWTile1"	: {"viewName": "tile_pages/tile1/VWTile1"},
+				"VWTile2"	: {"viewName": "tile_pages/tile2/VWTile2"},
+				"VWTile3"	: {"viewName": "tile_pages/tile3/VWTile3"},
+				"VWTile4"	: {"viewName": "tile_pages/tile4/VWTile4"},
 				
 				"notFound"  	: {"viewName": "NotFound"}
 				
