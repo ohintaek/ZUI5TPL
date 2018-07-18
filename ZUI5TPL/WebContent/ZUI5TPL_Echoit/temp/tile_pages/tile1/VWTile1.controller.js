@@ -7,15 +7,23 @@ sap.ui.define([
 		onInit : function() {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.getRoute("VWTile1").attachPatternMatched(this.onRouteMatched, this);
+			
 		},
 		
 		onRouteMatched : function(oEvent) {
+			this.onDefaultSettings();
 			
 		},
 
 		onNavBack: function() {
 			Controller.prototype.onNavBack.apply(this);
+			
 		},
+		
+		onDefaultSettings : function() {
+			var oSlider = this.getView().byId("Slider01");
+			oSlider.setValue(50);
+		}
 	});
 
 });

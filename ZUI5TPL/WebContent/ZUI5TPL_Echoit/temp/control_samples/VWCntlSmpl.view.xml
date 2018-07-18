@@ -1,0 +1,110 @@
+<mvc:View
+	controllerName="com.ui5.echoit.temp.control_samples.VWCntlSmpl"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Page
+		title="Controls Samples"
+		showHeader="true"
+		class="sapUiContentPadding"
+		width="auto"
+		showNavButton="true"
+		navButtonPress="onNavBack">
+		<content>
+		
+		<!-- Panel contents -->
+		
+			<Panel 
+				id="Panel1"
+				width="100%"
+				height="auto"
+				expandable="true"
+				expended="true"
+				backgroundDesign="Translucent">
+				<headerToolbar>
+					<Toolbar
+						design="Transparent"
+						style="Standard">
+						<content>
+							<Title text="Panel" level="H2"/>
+						</content>
+					</Toolbar>
+				</headerToolbar>
+				<content>
+					<HBox>
+						<VBox alignContent="Start" alignItems="Start" justifyContent="Start" wrap="Wrap">
+							<items>
+								<HBox>
+									<core:Icon src="sap-icon://accept"/>
+									<Label text="Panel Background"/>
+								</HBox>
+								<HBox>
+									<CheckBox id="cbPnSolid" text="Solid" select="onPanelBgChange"/>
+								</HBox>
+								<HBox>
+									<CheckBox id="cbPnTl" text="Translucent" select="onPanelBgChange"/>
+								</HBox>
+								<HBox>
+									<CheckBox id="cbPnTr" text="Transparent" select="onPanelBgChange"/>
+								</HBox>
+							</items>
+						</VBox>
+						
+						<VBox>
+							<items>
+								<HBox>
+									<core:Icon src="sap-icon://accept"/>
+									<Label text="Panel Expended"/>
+								</HBox>
+								<HBox>
+									<CheckBox id="cbEx" text="Expended"	select="onPanelExpended"/>
+								</HBox>
+							</items>
+						</VBox>
+					</HBox>
+				</content>
+			</Panel>
+			
+			<!-- HBox contents -->
+			
+			<Panel 
+				id="Panel2"
+				width="100%"
+				height="auto"
+				expandable="true"
+				expended="true"
+				backgroundDesign="Translucent">
+				<headerToolbar>
+					<Toolbar
+						design="Transparent"
+						style="Standard">
+						<content>
+							<Title text="HBox" level="H2"/>
+						</content>
+					</Toolbar>
+				</headerToolbar>
+				<content>
+					<HBox id="p2_HBox">
+						<VBox alignContent="Start" alignItems="Start" justifyContent="Start" wrap="Wrap">
+							<items>
+								<HBox>
+									<core:Icon src="sap-icon://accept"/>
+									<Label text="HBox backgroundDesign"/>
+								</HBox>
+								<HBox>
+									<CheckBox id="cbHBSolid" text="Solid" select="onHBoxBgChange"/>
+								</HBox>
+								<HBox>
+									<CheckBox id="cbHBTl" text="Translucent" select="onHBoxBgChange"/>
+								</HBox>
+								<HBox>
+									<CheckBox id="cbHBTr" text="Transparent" select="onHBoxBgChange"/>
+								</HBox>
+							</items>
+						</VBox>	
+					</HBox>
+				</content>
+			</Panel>
+		</content>
+	</Page>
+</mvc:View>

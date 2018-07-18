@@ -1,16 +1,16 @@
 <mvc:View
-	controllerName="com.ui5.echoit.temp.Home"
+	controllerName="com.ui5.echoit.temp.test.TestPage"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc">
 	<Page
-		title="UI5 Main Temp"
-		showHeader="false"
+		title="Test Page"
+		showHeader="true"
 		class="sapUiContentPadding"
 		width="auto"
 		showNavButton="false"
 		navButtonPress="onNavBack">
 		<ScrollContainer>
-			<StandardTile
+			<StandardTile 
 				id="noticeTile"
 				icon="sap-icon://notification-2"
 				info="Information"

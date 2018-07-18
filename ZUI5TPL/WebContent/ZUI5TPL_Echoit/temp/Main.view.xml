@@ -8,7 +8,9 @@
 	class="sapUiContentPadding"
 	width="auto"
 	showNavButton="false"
-	navButtonPress="onNavBack">
+	navButtonPress="onNavBack"
+	floatingFooter="false"
+	enableScrolling="false">
 	<tnt:ToolPage id="ToolApp">
 		<tnt:header>
 			<tnt:ToolHeader>
@@ -60,7 +62,29 @@
 								key="VWUITB"/>	
 						</tnt:items>
 					</tnt:NavigationListItem>
+					<tnt:NavigationListItem
+							expanded="false"
+							text="Control Samples"
+							icon="sap-icon://database"
+							key="VWControlSamples">
+					</tnt:NavigationListItem>
 				</tnt:NavigationList>
+				<tnt:fixedItem>
+					<tnt:NavigationList>
+						<tnt:NavigationListItem
+								expanded="false"
+								text="테스트페이지"
+								icon=""
+								key="TestPage">
+						</tnt:NavigationListItem>
+						<tnt:NavigationListItem
+								expanded="false"
+								text=""
+								icon=""
+								key="">
+						</tnt:NavigationListItem>
+					</tnt:NavigationList>
+				</tnt:fixedItem>
 			</tnt:SideNavigation>
 		</tnt:sideContent>
 		<tnt:mainContents>

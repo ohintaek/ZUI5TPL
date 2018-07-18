@@ -10,6 +10,13 @@
 		showNavButton="true"
 		navButtonPress="onNavBack">
 		
+		<Slider 
+			id="Slider01"
+			min="0"
+			max="100"
+			name="slider test"
+			step="5"
+			width="100%" />
 	</Page>
 	
 </mvc:View>
