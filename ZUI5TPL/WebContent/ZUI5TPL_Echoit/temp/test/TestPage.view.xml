@@ -1,7 +1,8 @@
 <mvc:View
 	controllerName="com.ui5.echoit.temp.test.TestPage"
 	xmlns="sap.m"
-	xmlns:mvc="sap.ui.core.mvc">
+	xmlns:mvc="sap.ui.core.mvc"
+	id="TestPage">
 	<Page
 		title="Test Page"
 		showHeader="true"
@@ -9,6 +10,7 @@
 		width="auto"
 		showNavButton="false"
 		navButtonPress="onNavBack">
+
 		<ScrollContainer>
 			<StandardTile 
 				id="noticeTile"
@@ -36,33 +38,8 @@
 				type="Monitor"
 				title="Tile2"
 				press="onPressTile2"/>
+=======
+>>>>>>> branch 'master' of https://github.com/ohintaek/ZUI5TPL.git
 		
-			<StandardTile
-				id="Tile3"
-				icon="sap-icon://notification-2"
-				info="Information"
-				number=""
-				type="Monitor"
-				title="Tile3"
-				press="onPressTile3"/>
-				
-			<StandardTile
-				id="Tile4"
-				icon="sap-icon://notification-2"
-				info="Information"
-				number=""
-				type="Monitor"
-				title="Tile4"
-				press="onPressTile4"/>
-				
-			<StandardTile
-				id="Tile5"
-				icon="sap-icon://notification-2"
-				info="Information"
-				number=""
-				type="Monitor"
-				title="Tile5"
-				press="onPressTile5"/>
-		</ScrollContainer>
 	</Page>
 </mvc:View>

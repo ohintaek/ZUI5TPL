@@ -14,7 +14,7 @@ sap.ui.define([
 		},
 		
 		onRouteMatched : function(oEvent) {
-			
+			this.getView().byId("TestPage").placeAt("content");
 		},
 
 		onNavBack: function() {
