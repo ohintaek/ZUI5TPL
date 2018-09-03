@@ -7,7 +7,6 @@ sap.ui.define([
 		onInit : function() {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.getRoute("VWTile1").attachPatternMatched(this.onRouteMatched, this);
-			
 		},
 		
 		onRouteMatched : function(oEvent) {
