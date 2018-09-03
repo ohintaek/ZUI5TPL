@@ -38,8 +38,6 @@
 				type="Monitor"
 				title="Tile2"
 				press="onPressTile2"/>
-=======
->>>>>>> branch 'master' of https://github.com/ohintaek/ZUI5TPL.git
-		
+		</ScrollContainer>
 	</Page>
 </mvc:View>
