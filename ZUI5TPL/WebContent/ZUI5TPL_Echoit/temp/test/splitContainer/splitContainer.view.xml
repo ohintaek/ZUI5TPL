@@ -1,0 +1,18 @@
+<mvc:View
+	controllerName="com.ui5.echoit.temp.test.splitContainer.splitContainer"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	<App>
+		<NavContainer id="splitContents">
+			<Page
+				title="Split Container Test"
+				showHeader="true"
+				class="sapUiContentPadding"
+				width="auto"
+				showNavButton="true"
+				navButtonPress="onNavBack">
+			
+			</Page>
+		</NavContainer>
+	</App>
+</mvc:View>

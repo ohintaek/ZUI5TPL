@@ -7,10 +7,10 @@ sap.ui.define([
 ], function (Controller, CommonUtil, History, Filter, FilterOperator) {
 	"use strict";
 
-	return Controller.extend("com.ui5.echoit.temp.test.TestPage", {
+	return Controller.extend("com.ui5.echoit.temp.test.splitContainer.splitContainer", {
 		onInit : function() {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			oRouter.getRoute("TestPage").attachPatternMatched(this.onRouteMatched, this);
+			oRouter.getRoute("Split1").attachPatternMatched(this.onRouteMatched, this);
 		},
 		
 		onRouteMatched : function(oEvent) {
@@ -21,10 +21,6 @@ sap.ui.define([
 			Controller.prototype.onNavBack.apply(this);
 		},
 		
-		onPressTile1 : function(oEvent){
-			var oRouter = this.getRouter();		
-				oRouter.navTo("Split1");
-		}
 		
 	});
 

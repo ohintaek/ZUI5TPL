@@ -70,6 +70,7 @@
 				{"name": "VWTile3", 			"target": "VWTile3", 			 "pattern": "tiles/VWTile3"},
 				{"name": "VWTile4", 			"target": "VWTile4", 			 "pattern": "tiles/VWTile4"},
 				
+				{"name": "Split1", 				"target": "Split1", 			 "pattern": "test/Split1"},
 				{"name": "TestPage", 			"target": "TestPage", 			 "pattern": "TestPage"},
 				{"name": "VWControlSamples", 	"target": "VWControlSamples", 	 "pattern": "controlSamples"}
 				
@@ -86,6 +87,11 @@
 				"VWTile3"				: {"viewName": "tile_pages/tile3/VWTile3"},
 				"VWTile4"				: {"viewName": "tile_pages/tile4/VWTile4"},
 				
+				"Split1"				: {
+											"viewName" : "test/splitContainer/splitContainer",
+										   	"controlId": "splitContents",
+										   	"controlAggregation": "pages"
+										  },
 				"TestPage"				: {"viewName": "test/TestPage"},
 				"VWControlSamples"		: {"viewName": "control_samples/VWCntlSmpl"},
 				
