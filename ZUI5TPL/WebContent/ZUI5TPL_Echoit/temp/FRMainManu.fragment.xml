@@ -1,0 +1,283 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:l="sap.ui.layout"
+   xmlns:core="sap.ui.core"
+   xmlns:html="http://www.w3.org/1999/xhtml">
+  
+  <VBox class="mainManuPaneBackground">
+  	<VBox class="mainManuPane" id="mainMenuPane">
+  		<html:ui>
+  			<html:li class="selectedMenu">
+  				<Text text="menu 01"/>
+  				<Panel class="subMenuPane">
+  					<content>
+  						<l:Grid defaultSpan="L4 M6 S12">
+  							<l:content>
+  								<CustomListItem class="subMenuListBlock">
+  									<content>
+  										<List showSeparators="false">
+  											<headerToolbar>
+  												<Toolbar>
+  													<core:Icon src="sap-icon://action-settings"/>
+  													<Text text="subMenu 01"/>
+  												</Toolbar>
+  											</headerToolbar>
+  											<items>
+  												<CustomListItem><content><Link id="lnkVWNoticeBoard1" text="공지사항"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWNoticeBoard2" text="공지사항"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWNoticeBoard3" text="공지사항"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWNoticeBoard4" text="공지사항"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWNoticeBoard5" text="공지사항"/></content></CustomListItem>
+  											</items>
+  										</List>
+									</content>
+  								</CustomListItem>
+  								<CustomListItem class="subMenuListBlock">
+  									<content>
+  										<List showSeparators="false">
+  											<headerToolbar>
+  												<Toolbar>
+  													<core:Icon src="sap-icon://action-settings"/>
+  													<Text text="subMenu 02"/>
+  												</Toolbar>
+  											</headerToolbar>
+  											<items>
+  												<CustomListItem><content><Link id="lnkVWCntlSmpl1" text="Control Samples"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWCntlSmpl2" text="Control Samples"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWCntlSmpl3" text="Control Samples"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWCntlSmpl4" text="Control Samples"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWCntlSmpl5" text="Control Samples"/></content></CustomListItem>
+  											</items>
+  										</List>
+									</content>
+  								</CustomListItem>
+  								<CustomListItem class="subMenuListBlock">
+  									<content>
+  										<List showSeparators="false">
+  											<headerToolbar>
+  												<Toolbar>
+  													<core:Icon src="sap-icon://action-settings"/>
+  													<Text text="subMenu 03"/>
+  												</Toolbar>
+  											</headerToolbar>
+  											<items>
+  												<CustomListItem><content><Link id="lnkVWMTB1" text="Sap_M_Table"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWMTB2" text="Sap_M_Table"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWMTB3" text="Sap_M_Table"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWMTB4" text="Sap_M_Table"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWMTB5" text="Sap_M_Table"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWMTB6" text="Sap_M_Table"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWMTB7" text="Sap_M_Table"/></content></CustomListItem>
+  											</items>
+  										</List>
+									</content>
+  								</CustomListItem>
+  								<CustomListItem class="subMenuListBlock">
+  									<content>
+  										<List showSeparators="false">
+  											<headerToolbar>
+  												<Toolbar>
+  													<core:Icon src="sap-icon://action-settings"/>
+  													<Text text="subMenu 04"/>
+  												</Toolbar>
+  											</headerToolbar>
+  											<items>
+  												<CustomListItem><content><Link id="lnkVWTile1" text="Tile1"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWTile2" text="Tile1"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWTile3" text="Tile1"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWTile4" text="Tile1"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWTile5" text="Tile1"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWTile6" text="Tile1"/></content></CustomListItem>
+  											</items>
+  										</List>
+									</content>
+  								</CustomListItem>
+  							</l:content>
+  						</l:Grid>
+  					</content>
+  				</Panel>
+  			</html:li>
+  			<html:li class="selectedMenu">
+  				<Text text="menu 02"/>
+  				<Panel class="subMenuPane">
+  					<content>
+  						<l:Grid defaultSpan="L4 M6 S12">
+  							<l:content>
+  								<CustomListItem class="subMenuListBlock">
+  									<content>
+  										<List showSeparators="false">
+  											<headerToolbar>
+  												<Toolbar>
+  													<core:Icon src="sap-icon://action-settings"/>
+  													<Text text="subMenu 01"/>
+  												</Toolbar>
+  											</headerToolbar>
+  											<items>
+  												<CustomListItem><content><Link id="lnkVWNoticeBoard11" text="공지사항"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWNoticeBoard22" text="공지사항"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWNoticeBoard33" text="공지사항"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWNoticeBoard44" text="공지사항"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWNoticeBoard55" text="공지사항"/></content></CustomListItem>
+  											</items>
+  										</List>
+									</content>
+  								</CustomListItem>
+  								<CustomListItem class="subMenuListBlock">
+  									<content>
+  										<List showSeparators="false">
+  											<headerToolbar>
+  												<Toolbar>
+  													<core:Icon src="sap-icon://action-settings"/>
+  													<Text text="subMenu 02"/>
+  												</Toolbar>
+  											</headerToolbar>
+  											<items>
+  												<CustomListItem><content><Link id="lnkVWCntlSmpl11" text="Control Samples"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWCntlSmpl22" text="Control Samples"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWCntlSmpl33" text="Control Samples"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWCntlSmpl44" text="Control Samples"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWCntlSmpl55" text="Control Samples"/></content></CustomListItem>
+  											</items>
+  										</List>
+									</content>
+  								</CustomListItem>
+  								<CustomListItem class="subMenuListBlock">
+  									<content>
+  										<List showSeparators="false">
+  											<headerToolbar>
+  												<Toolbar>
+  													<core:Icon src="sap-icon://action-settings"/>
+  													<Text text="subMenu 03"/>
+  												</Toolbar>
+  											</headerToolbar>
+  											<items>
+  												<CustomListItem><content><Link id="lnkVWMTB11" text="Sap_M_Table"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWMTB22" text="Sap_M_Table"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWMTB33" text="Sap_M_Table"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWMTB44" text="Sap_M_Table"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWMTB55" text="Sap_M_Table"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWMTB66" text="Sap_M_Table"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWMTB77" text="Sap_M_Table"/></content></CustomListItem>
+  											</items>
+  										</List>
+									</content>
+  								</CustomListItem>
+  								<CustomListItem class="subMenuListBlock">
+  									<content>
+  										<List showSeparators="false">
+  											<headerToolbar>
+  												<Toolbar>
+  													<core:Icon src="sap-icon://action-settings"/>
+  													<Text text="subMenu 04"/>
+  												</Toolbar>
+  											</headerToolbar>
+  											<items>
+  												<CustomListItem><content><Link id="lnkVWTile11" text="Tile1"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWTile22" text="Tile1"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWTile33" text="Tile1"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWTile44" text="Tile1"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWTile55" text="Tile1"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWTile66" text="Tile1"/></content></CustomListItem>
+  											</items>
+  										</List>
+									</content>
+  								</CustomListItem>
+  							</l:content>
+  						</l:Grid>
+  					</content>
+  				</Panel>
+  			</html:li>
+  			<html:li class="selectedMenu">
+  				<Text text="menu 03"/>
+  				<Panel class="subMenuPane">
+  					<content>
+  						<l:Grid defaultSpan="L4 M6 S12">
+  							<l:content>
+  								<CustomListItem class="subMenuListBlock">
+  									<content>
+  										<List showSeparators="false">
+  											<headerToolbar>
+  												<Toolbar>
+  													<core:Icon src="sap-icon://action-settings"/>
+  													<Text text="subMenu 01"/>
+  												</Toolbar>
+  											</headerToolbar>
+  											<items>
+  												<CustomListItem><content><Link id="lnkVWNoticeBoard12" text="공지사항"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWNoticeBoard22" text="공지사항"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWNoticeBoard32" text="공지사항"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWNoticeBoard42" text="공지사항"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWNoticeBoard52" text="공지사항"/></content></CustomListItem>
+  											</items>
+  										</List>
+									</content>
+  								</CustomListItem>
+  								<CustomListItem class="subMenuListBlock">
+  									<content>
+  										<List showSeparators="false">
+  											<headerToolbar>
+  												<Toolbar>
+  													<core:Icon src="sap-icon://action-settings"/>
+  													<Text text="subMenu 02"/>
+  												</Toolbar>
+  											</headerToolbar>
+  											<items>
+  												<CustomListItem><content><Link id="lnkVWCntlSmpl12" text="Control Samples"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWCntlSmpl22" text="Control Samples"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWCntlSmpl32" text="Control Samples"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWCntlSmpl42" text="Control Samples"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWCntlSmpl52" text="Control Samples"/></content></CustomListItem>
+  											</items>
+  										</List>
+									</content>
+  								</CustomListItem>
+  								<CustomListItem class="subMenuListBlock">
+  									<content>
+  										<List showSeparators="false">
+  											<headerToolbar>
+  												<Toolbar>
+  													<core:Icon src="sap-icon://action-settings"/>
+  													<Text text="subMenu 03"/>
+  												</Toolbar>
+  											</headerToolbar>
+  											<items>
+  												<CustomListItem><content><Link id="lnkVWMTB12" text="Sap_M_Table"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWMTB22" text="Sap_M_Table"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWMTB32" text="Sap_M_Table"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWMTB42" text="Sap_M_Table"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWMTB52" text="Sap_M_Table"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWMTB62" text="Sap_M_Table"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWMTB72" text="Sap_M_Table"/></content></CustomListItem>
+  											</items>
+  										</List>
+									</content>
+  								</CustomListItem>
+  								<CustomListItem class="subMenuListBlock">
+  									<content>
+  										<List showSeparators="false">
+  											<headerToolbar>
+  												<Toolbar>
+  													<core:Icon src="sap-icon://action-settings"/>
+  													<Text text="subMenu 04"/>
+  												</Toolbar>
+  											</headerToolbar>
+  											<items>
+  												<CustomListItem><content><Link id="lnkVWTile12" text="Tile1"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWTile22" text="Tile1"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWTile32" text="Tile1"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWTile42" text="Tile1"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWTile52" text="Tile1"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWTile62" text="Tile1"/></content></CustomListItem>
+  											</items>
+  										</List>
+									</content>
+  								</CustomListItem>
+  							</l:content>
+  						</l:Grid>
+  					</content>
+  				</Panel>
+  			</html:li>
+  		</html:ui>
+  	</VBox>
+  </VBox>
+</core:FragmentDefinition>

@@ -47,6 +47,46 @@ sap.ui.define([
 				}
 			},
 			
+			mousePositionOnMenu : false,
+			onAfterRendering : function() {
+				
+				// 1. 메인 메뉴를 마우스 움직임에 따라 동작하도록 한다.
+				$('.mainMenuPane > div > ul > li').each(function(index, oSrc) {
+					$(this).mouseover(function(oEvent) {
+						for(var i in this.parentNode.children){
+							var liNode = this.parentNode.children[i];
+								liNode.classList.remove('selectedMenu');
+						}
+						
+						this.classList.add('selectedMenu');
+					})
+				})
+				
+				// 마우스가 메인메뉴 영역 안에 있거나 (클릭했을 경우) 마우스 위치가 메뉴위에 있음을 설정한다.
+				$('.mainMenuPane').mouseover(function(e) {
+					this.mousePositionOnMenu = true;
+				}.bind(this));
+				
+				$('.mainMenuPane').click(function(e) {
+					this.mousePositionOnMenu = true;
+				}.bind(this));
+				
+				// 마우스가 메인메뉴 영역을 벗어났을 경우 마우스 위치가 메뉴위에 없음을 설정한다.
+				$('.mainMenuPane').mouseout(function(e) {
+					this.mousePositionOnMenu = false;
+				}.bind(this));
+				
+				
+				$('.mainMenuPaneBackground').click(function(e) {
+					if(this.mousePositionOnMenu)
+						return;
+					
+					// 메인메뉴를 안보이도록 접는다.
+					this.collapseMainMenu();
+				}.bind(this));
+				
+			},
+			
 			getOdataServiceUrl : function() {
 				  //for local testing prefix with proxy
 				  //if you and your team use a special host name or IP like 127.0.0.1 for localhost please adapt the if statement below 
