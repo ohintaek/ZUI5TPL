@@ -7,6 +7,8 @@
   <VBox class="mainManuPaneBackground">
   	<VBox class="mainManuPane" id="mainMenuPane">
   		<html:ui>
+  			
+  			<!-- Menu 01 -->
   			<html:li class="selectedMenu">
   				<Text text="menu 01"/>
   				<Panel class="subMenuPane">
@@ -97,6 +99,8 @@
   					</content>
   				</Panel>
   			</html:li>
+  			
+  			<!-- Menu 02 -->
   			<html:li class="selectedMenu">
   				<Text text="menu 02"/>
   				<Panel class="subMenuPane">
@@ -187,6 +191,8 @@
   					</content>
   				</Panel>
   			</html:li>
+  			
+  			<!-- Menu 03 -->
   			<html:li class="selectedMenu">
   				<Text text="menu 03"/>
   				<Panel class="subMenuPane">
