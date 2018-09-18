@@ -40,10 +40,14 @@
 		},
 		"resources": {
 			"css": [
-				{ "uri": "../css/style.css" }
+				{ "uri": "../css/style.css" },
+				{ "uri": "../js/c3/c3.css" },
+				{ "uri": "../js/c3/c3.min.css" }
 			],
 			"js" : [
-				{ "uri": "../js/test.js" }
+				{ "uri": "../js/test.js" },
+				{ "uri": "../js/c3/c3.js" },
+				{ "uri": "../js/c3/c3.min.js" }
 			]
 		},
 		"routing": {
