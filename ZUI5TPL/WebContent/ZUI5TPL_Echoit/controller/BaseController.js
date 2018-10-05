@@ -87,6 +87,21 @@ sap.ui.define([
 				
 			},
 			
+			MenuDisplayStatus : false,
+			onMenuButton : function(oEvent) {
+				var mainManuPaneBackground = $(".mainManuPaneBackground");
+				var menuButton = this.getView().byId("mainMenuButton");
+				if(this.MenuDisplayStatus == false){
+					mainManuPaneBackground.fadeIn( 200 );
+					menuButton.setIcon("sap-icon://decline");
+				} else {
+					mainManuPaneBackground.fadeOut( 200 );
+					menuButton.setIcon("sap-icon://menu");
+				}
+				
+				this.MenuDisplayStatus = !this.MenuDisplayStatus;
+			},
+			
 			getOdataServiceUrl : function() {
 				  //for local testing prefix with proxy
 				  //if you and your team use a special host name or IP like 127.0.0.1 for localhost please adapt the if statement below 

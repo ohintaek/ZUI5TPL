@@ -2,6 +2,7 @@
 	controllerName="com.ui5.echoit.temp.Main"
 	xmlns="sap.m"
 	xmlns:tnt="sap.tnt"
+	xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc">
 <Page
 	showHeader="false"
@@ -10,7 +11,7 @@
 	showNavButton="false"
 	navButtonPress="onNavBack"
 	floatingFooter="false"
-	enableScrolling="false">
+	enableScrolling="false">	
 	<tnt:ToolPage id="ToolApp">
 		<tnt:header>
 			<tnt:ToolHeader>
@@ -24,6 +25,9 @@
 						<OverflowToolbarLayoutData priority="NeverOverflow"/>
 					</layoutData>
 				</Button>
+				
+				<core:Fragment fragmentName="com.ui5.echoit.temp.FRMainHeader" type="XML"/>
+				
 				<Button 
 					id="btnHome" 
 					icon="sap-icon://home"
@@ -33,6 +37,7 @@
 				<ToolbarSpacer/>
 				<Title text="UI5 Sample Project"/>
 				<ToolbarSpacer/>
+				
 			</tnt:ToolHeader>
 		</tnt:header>
 		

@@ -19,6 +19,7 @@ sap.ui.define([
 		},
 		
 		onSideNavButtonPress: function() {
+			com.ui5.echoit.controller.BaseController.prototype.onMenuButton.call(this);
 			var oToolPage = this.byId("ToolApp");
 			var bSideExpanded = oToolPage.getSideExpanded();
 			oToolPage.setSideExpanded(!oToolPage.getSideExpanded());

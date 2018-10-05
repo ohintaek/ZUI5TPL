@@ -209,11 +209,11 @@
   												</Toolbar>
   											</headerToolbar>
   											<items>
-  												<CustomListItem><content><Link id="lnkVWNoticeBoard12" text="공지사항"/></content></CustomListItem>
-  												<CustomListItem><content><Link id="lnkVWNoticeBoard22" text="공지사항"/></content></CustomListItem>
-  												<CustomListItem><content><Link id="lnkVWNoticeBoard32" text="공지사항"/></content></CustomListItem>
-  												<CustomListItem><content><Link id="lnkVWNoticeBoard42" text="공지사항"/></content></CustomListItem>
-  												<CustomListItem><content><Link id="lnkVWNoticeBoard52" text="공지사항"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWNoticeBoard122" text="공지사항"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWNoticeBoard222" text="공지사항"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWNoticeBoard322" text="공지사항"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWNoticeBoard422" text="공지사항"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWNoticeBoard522" text="공지사항"/></content></CustomListItem>
   											</items>
   										</List>
 									</content>
@@ -228,11 +228,11 @@
   												</Toolbar>
   											</headerToolbar>
   											<items>
-  												<CustomListItem><content><Link id="lnkVWCntlSmpl12" text="Control Samples"/></content></CustomListItem>
-  												<CustomListItem><content><Link id="lnkVWCntlSmpl22" text="Control Samples"/></content></CustomListItem>
-  												<CustomListItem><content><Link id="lnkVWCntlSmpl32" text="Control Samples"/></content></CustomListItem>
-  												<CustomListItem><content><Link id="lnkVWCntlSmpl42" text="Control Samples"/></content></CustomListItem>
-  												<CustomListItem><content><Link id="lnkVWCntlSmpl52" text="Control Samples"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWCntlSmpl122" text="Control Samples"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWCntlSmpl222" text="Control Samples"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWCntlSmpl322" text="Control Samples"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWCntlSmpl422" text="Control Samples"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWCntlSmpl522" text="Control Samples"/></content></CustomListItem>
   											</items>
   										</List>
 									</content>
@@ -247,13 +247,13 @@
   												</Toolbar>
   											</headerToolbar>
   											<items>
-  												<CustomListItem><content><Link id="lnkVWMTB12" text="Sap_M_Table"/></content></CustomListItem>
-  												<CustomListItem><content><Link id="lnkVWMTB22" text="Sap_M_Table"/></content></CustomListItem>
-  												<CustomListItem><content><Link id="lnkVWMTB32" text="Sap_M_Table"/></content></CustomListItem>
-  												<CustomListItem><content><Link id="lnkVWMTB42" text="Sap_M_Table"/></content></CustomListItem>
-  												<CustomListItem><content><Link id="lnkVWMTB52" text="Sap_M_Table"/></content></CustomListItem>
-  												<CustomListItem><content><Link id="lnkVWMTB62" text="Sap_M_Table"/></content></CustomListItem>
-  												<CustomListItem><content><Link id="lnkVWMTB72" text="Sap_M_Table"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWMTB122" text="Sap_M_Table"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWMTB222" text="Sap_M_Table"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWMTB322" text="Sap_M_Table"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWMTB422" text="Sap_M_Table"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWMTB522" text="Sap_M_Table"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWMTB622" text="Sap_M_Table"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWMTB722" text="Sap_M_Table"/></content></CustomListItem>
   											</items>
   										</List>
 									</content>
@@ -268,12 +268,12 @@
   												</Toolbar>
   											</headerToolbar>
   											<items>
-  												<CustomListItem><content><Link id="lnkVWTile12" text="Tile1"/></content></CustomListItem>
-  												<CustomListItem><content><Link id="lnkVWTile22" text="Tile1"/></content></CustomListItem>
-  												<CustomListItem><content><Link id="lnkVWTile32" text="Tile1"/></content></CustomListItem>
-  												<CustomListItem><content><Link id="lnkVWTile42" text="Tile1"/></content></CustomListItem>
-  												<CustomListItem><content><Link id="lnkVWTile52" text="Tile1"/></content></CustomListItem>
-  												<CustomListItem><content><Link id="lnkVWTile62" text="Tile1"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWTile122" text="Tile1"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWTile222" text="Tile1"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWTile322" text="Tile1"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWTile422" text="Tile1"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWTile522" text="Tile1"/></content></CustomListItem>
+  												<CustomListItem><content><Link id="lnkVWTile622" text="Tile1"/></content></CustomListItem>
   											</items>
   										</List>
 									</content>
