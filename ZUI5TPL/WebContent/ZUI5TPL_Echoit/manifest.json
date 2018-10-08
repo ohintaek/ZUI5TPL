@@ -41,7 +41,7 @@
 		"resources": {
 			"css": [
 				{ "uri": "../css/style.css" },
-				{ "uri": "../css/mainManu.css" },
+				{ "uri": "../css/mainMenu.css" },
 				{ "uri": "../js/c3/c3.css" },
 				{ "uri": "../js/c3/c3.min.css" }
 			],

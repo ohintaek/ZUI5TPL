@@ -20,7 +20,7 @@ html[dir="rtl"] .myAppDemoWT .myCustomButton.sapMBtn {
 	width : 5rem;
 }
 
-.sapMFlexItemAlignAuto {
+/* .sapMFlexItemAlignAuto {
 	align-self: center;
     margin-right: 1.5rem;
-}
+} */

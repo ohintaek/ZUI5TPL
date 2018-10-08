@@ -4,9 +4,9 @@
    xmlns:core="sap.ui.core"
    xmlns:html="http://www.w3.org/1999/xhtml">
   
-  <VBox class="mainManuPaneBackground">
-  	<VBox class="mainManuPane" id="mainMenuPane">
-  		<html:ui>
+  <VBox class="mainMenuPaneBackground">
+  	<VBox class="mainMenuPane" id="mainMenuPane">
+  		<html:ul>
   			
   			<!-- Menu 01 -->
   			<html:li class="selectedMenu">
@@ -21,7 +21,7 @@
   											<headerToolbar>
   												<Toolbar>
   													<core:Icon src="sap-icon://action-settings"/>
-  													<Text text="subMenu 01"/>
+  													<Text text="Menu 01 - subMenu 01"/>
   												</Toolbar>
   											</headerToolbar>
   											<items>
@@ -40,7 +40,7 @@
   											<headerToolbar>
   												<Toolbar>
   													<core:Icon src="sap-icon://action-settings"/>
-  													<Text text="subMenu 02"/>
+  													<Text text="Menu 01 - subMenu 02"/>
   												</Toolbar>
   											</headerToolbar>
   											<items>
@@ -59,7 +59,7 @@
   											<headerToolbar>
   												<Toolbar>
   													<core:Icon src="sap-icon://action-settings"/>
-  													<Text text="subMenu 03"/>
+  													<Text text="Menu 01 - subMenu 03"/>
   												</Toolbar>
   											</headerToolbar>
   											<items>
@@ -80,7 +80,7 @@
   											<headerToolbar>
   												<Toolbar>
   													<core:Icon src="sap-icon://action-settings"/>
-  													<Text text="subMenu 04"/>
+  													<Text text="Menu 01 - subMenu 04"/>
   												</Toolbar>
   											</headerToolbar>
   											<items>
@@ -101,7 +101,7 @@
   			</html:li>
   			
   			<!-- Menu 02 -->
-  			<html:li class="selectedMenu">
+  			<html:li>
   				<Text text="menu 02"/>
   				<Panel class="subMenuPane">
   					<content>
@@ -113,7 +113,7 @@
   											<headerToolbar>
   												<Toolbar>
   													<core:Icon src="sap-icon://action-settings"/>
-  													<Text text="subMenu 01"/>
+  													<Text text="Menu 02 - subMenu 01"/>
   												</Toolbar>
   											</headerToolbar>
   											<items>
@@ -132,7 +132,7 @@
   											<headerToolbar>
   												<Toolbar>
   													<core:Icon src="sap-icon://action-settings"/>
-  													<Text text="subMenu 02"/>
+  													<Text text="Menu 02 - subMenu 02"/>
   												</Toolbar>
   											</headerToolbar>
   											<items>
@@ -151,7 +151,7 @@
   											<headerToolbar>
   												<Toolbar>
   													<core:Icon src="sap-icon://action-settings"/>
-  													<Text text="subMenu 03"/>
+  													<Text text="Menu 02 - subMenu 03"/>
   												</Toolbar>
   											</headerToolbar>
   											<items>
@@ -172,7 +172,7 @@
   											<headerToolbar>
   												<Toolbar>
   													<core:Icon src="sap-icon://action-settings"/>
-  													<Text text="subMenu 04"/>
+  													<Text text="Menu 02 - subMenu 04"/>
   												</Toolbar>
   											</headerToolbar>
   											<items>
@@ -193,7 +193,7 @@
   			</html:li>
   			
   			<!-- Menu 03 -->
-  			<html:li class="selectedMenu">
+  			<html:li>
   				<Text text="menu 03"/>
   				<Panel class="subMenuPane">
   					<content>
@@ -205,7 +205,7 @@
   											<headerToolbar>
   												<Toolbar>
   													<core:Icon src="sap-icon://action-settings"/>
-  													<Text text="subMenu 01"/>
+  													<Text text="Menu 03 - subMenu 01"/>
   												</Toolbar>
   											</headerToolbar>
   											<items>
@@ -224,14 +224,14 @@
   											<headerToolbar>
   												<Toolbar>
   													<core:Icon src="sap-icon://action-settings"/>
-  													<Text text="subMenu 02"/>
+  													<Text text="Menu 03 - subMenu 02"/>
   												</Toolbar>
   											</headerToolbar>
   											<items>
   												<CustomListItem><content><Link id="lnkVWCntlSmpl122" text="Control Samples"/></content></CustomListItem>
   												<CustomListItem><content><Link id="lnkVWCntlSmpl222" text="Control Samples"/></content></CustomListItem>
-  												<CustomListItem><content><Link id="lnkVWCntlSmpl322" text="Control Samples"/></content></CustomListItem>
-  												<CustomListItem><content><Link id="lnkVWCntlSmpl422" text="Control Samples"/></content></CustomListItem>
+	  												<CustomListItem><content><Link id="lnkVWCntlSmpl322" text="Control Samples"/></content></CustomListItem>
+	  												<CustomListItem><content><Link id="lnkVWCntlSmpl422" text="Control Samples"/></content></CustomListItem>
   												<CustomListItem><content><Link id="lnkVWCntlSmpl522" text="Control Samples"/></content></CustomListItem>
   											</items>
   										</List>
@@ -243,7 +243,7 @@
   											<headerToolbar>
   												<Toolbar>
   													<core:Icon src="sap-icon://action-settings"/>
-  													<Text text="subMenu 03"/>
+  													<Text text="Menu 03 - subMenu 03"/>
   												</Toolbar>
   											</headerToolbar>
   											<items>
@@ -264,7 +264,7 @@
   											<headerToolbar>
   												<Toolbar>
   													<core:Icon src="sap-icon://action-settings"/>
-  													<Text text="subMenu 04"/>
+  													<Text text="Menu 03 - subMenu 04"/>
   												</Toolbar>
   											</headerToolbar>
   											<items>
@@ -283,7 +283,7 @@
   					</content>
   				</Panel>
   			</html:li>
-  		</html:ui>
+  		</html:ul>
   	</VBox>
   </VBox>
 </core:FragmentDefinition>

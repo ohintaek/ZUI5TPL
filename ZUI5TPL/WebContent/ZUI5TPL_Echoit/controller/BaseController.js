@@ -53,7 +53,7 @@ sap.ui.define([
 				// 1. 메인 메뉴를 마우스 움직임에 따라 동작하도록 한다.
 				$('.mainMenuPane > div > ul > li').each(function(index, oSrc) {
 					$(this).mouseover(function(oEvent) {
-						for(var i in this.parentNode.children){
+						for(var i = 0; i < this.parentNode.children.length; i++){
 							var liNode = this.parentNode.children[i];
 								liNode.classList.remove('selectedMenu');
 						}
@@ -89,17 +89,25 @@ sap.ui.define([
 			
 			MenuDisplayStatus : false,
 			onMenuButton : function(oEvent) {
-				var mainManuPaneBackground = $(".mainManuPaneBackground");
+				var mainMenuPaneBackground = $(".mainMenuPaneBackground");
 				var menuButton = this.getView().byId("mainMenuButton");
 				if(this.MenuDisplayStatus == false){
-					mainManuPaneBackground.fadeIn( 200 );
+					mainMenuPaneBackground.fadeIn( 200 );
 					menuButton.setIcon("sap-icon://decline");
 				} else {
-					mainManuPaneBackground.fadeOut( 200 );
+					mainMenuPaneBackground.fadeOut( 200 );
 					menuButton.setIcon("sap-icon://menu");
 				}
 				
 				this.MenuDisplayStatus = !this.MenuDisplayStatus;
+			},
+			
+			// 메인메뉴를 안보이도록 접는다.
+			collapseMainMenu : function() {
+				this.MenuDisplayStatus = false;
+				$('.mainMenuPaneBackground').fadeOut( 200 );
+				this.getView().byId("mainMenuButton").setIcon("sap-icon://menu");
+				
 			},
 			
 			getOdataServiceUrl : function() {
