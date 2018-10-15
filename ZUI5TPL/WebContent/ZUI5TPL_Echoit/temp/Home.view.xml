@@ -1,14 +1,18 @@
 <mvc:View
 	controllerName="com.ui5.echoit.temp.Home"
 	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc">
 	<Page
 		title="UI5 Main Temp"
-		showHeader="false"
+		showHeader="true"
 		class="sapUiContentPadding"
 		width="auto"
 		showNavButton="false"
 		navButtonPress="onNavBack">
+		<!-- <customHeader>
+			<core:Fragment fragmentName="com.ui5.echoit.temp.FRMainHeader" type="XML"/>
+		</customHeader> -->
 		<ScrollContainer>
 			<StandardTile
 				id="noticeTile"

@@ -6,7 +6,7 @@
   
  <Toolbar>
  	<content>
- 		<Button id="mainMenuButton" icon="sap-icon://menu" press="onSideNavButtonPress"/>
+ 		<Button id="mainMenuButton" icon="sap-icon://menu" press="onPressMainManu"/>
  		<core:Fragment fragmentName="com.ui5.echoit.temp.FRMainManu" type="XML"/>
  		<ToolbarSpacer/>
  	</content>

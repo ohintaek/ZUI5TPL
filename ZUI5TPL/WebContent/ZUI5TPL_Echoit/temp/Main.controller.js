@@ -1,7 +1,8 @@
 sap.ui.define([
+	"sap/ui/core/mvc/Controller",
 	"com/ui5/echoit/controller/BaseController",
 	"sap/ui/core/routing/History"
-], function (Controller, History) {
+], function (Controller, BaseController, History) {
 	"use strict";
 
 	return Controller.extend("com.ui5.echoit.temp.Main", {
@@ -15,16 +16,19 @@ sap.ui.define([
 		},
 		
 		onNavBack: function() {
-			Controller.prototype.onNavBack.apply(this);
+			com.ui5.echoit.controller.BaseController.prototype.onNavBack.apply(this);
 		},
 		
 		onSideNavButtonPress: function() {
-			com.ui5.echoit.controller.BaseController.prototype.onMenuButton.call(this);
 			var oToolPage = this.byId("ToolApp");
 			var bSideExpanded = oToolPage.getSideExpanded();
 			oToolPage.setSideExpanded(!oToolPage.getSideExpanded());
 		},
 		
+		onPressMainManu : function() {
+			com.ui5.echoit.controller.BaseController.prototype.onMenuButton.call(this);
+		},
+			
 		onPressItemSelect : function(oEvent){
 			var oItem = oEvent.getParameter('item');
 			var sKey = oItem.getKey();

@@ -59,8 +59,8 @@ sap.ui.define([
 						}
 						
 						this.classList.add('selectedMenu');
-					})
-				})
+					});
+				});
 				
 				// 마우스가 메인메뉴 영역 안에 있거나 (클릭했을 경우) 마우스 위치가 메뉴위에 있음을 설정한다.
 				$('.mainMenuPane').mouseover(function(e) {
@@ -82,13 +82,16 @@ sap.ui.define([
 						return;
 					
 					// 메인메뉴를 안보이도록 접는다.
-					this.collapseMainMenu();
+					this.collapseMainMenu(this.getView());
+					
 				}.bind(this));
 				
 			},
 			
-			MenuDisplayStatus : false,
 			onMenuButton : function(oEvent) {
+				if(this.MenuDisplayStatus == null)
+					this.MenuDisplayStatus = false;
+				
 				var mainMenuPaneBackground = $(".mainMenuPaneBackground");
 				var menuButton = this.getView().byId("mainMenuButton");
 				if(this.MenuDisplayStatus == false){
@@ -103,11 +106,13 @@ sap.ui.define([
 			},
 			
 			// 메인메뉴를 안보이도록 접는다.
-			collapseMainMenu : function() {
+			collapseMainMenu : function(oView) {
 				this.MenuDisplayStatus = false;
 				$('.mainMenuPaneBackground').fadeOut( 200 );
-				this.getView().byId("mainMenuButton").setIcon("sap-icon://menu");
+				//sap.ui.getCore().byId("mainMenuButton").setIcon("sap-icon://menu");
+				oView.byId("mainMenuButton").setIcon("sap-icon://menu");
 				
+				this.MenuDisplayStatus = null;
 			},
 			
 			getOdataServiceUrl : function() {
